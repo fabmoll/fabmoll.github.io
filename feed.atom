@@ -4,19 +4,15 @@
 	<title>Fabrice Moll</title>
 	<link rel="self" href="http://fabmoll.github.io/" />
 	<rights>2019</rights>
-	<updated>2019-07-22T11:57:50Z</updated>
+	<updated>2019-11-18T19:40:39Z</updated>
 	<subtitle>Welcome!</subtitle>
 	<entry>
 		<id>http://fabmoll.github.io/posts/first-post</id>
 		<title>First Post</title>
 		<link href="http://fabmoll.github.io/posts/first-post" />
 		<updated>2016-01-01T00:00:00Z</updated>
-		<content>&lt;p&gt;This is my first post! Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah&lt;/p&gt;
-&lt;p&gt;sqdqsdqsd
-qsdqsd&lt;/p&gt;
-&lt;p&gt;sqdqsdsqd&lt;/p&gt;
-&lt;p&gt;AAA&lt;/p&gt;
+		<content>&lt;p&gt;This is my first post!&lt;/p&gt;
 </content>
-		<summary>&lt;p&gt;This is my first post! Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah&lt;/p&gt;</summary>
+		<summary>&lt;p&gt;This is my first post!&lt;/p&gt;</summary>
 	</entry>
 </feed>
