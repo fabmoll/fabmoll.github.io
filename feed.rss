@@ -5,15 +5,19 @@
 		<link>http://fabmoll.github.io/</link>
 		<description>Welcome!</description>
 		<copyright>2019</copyright>
-		<pubDate>Mon, 18 Nov 2019 19:42:38 GMT</pubDate>
-		<lastBuildDate>Mon, 18 Nov 2019 19:42:38 GMT</lastBuildDate>
+		<pubDate>Tue, 19 Nov 2019 19:55:05 GMT</pubDate>
+		<lastBuildDate>Tue, 19 Nov 2019 19:55:05 GMT</lastBuildDate>
 		<item>
-			<title>First Post</title>
+			<title>A new adventure</title>
 			<link>http://fabmoll.github.io/posts/first-post</link>
-			<description>&lt;p&gt;This is my first post!&lt;/p&gt;</description>
+			<description>&lt;p&gt;Yeah! The first post.&lt;br&gt;
+I really wanted to start my blog and I finally decided to install everything to do so.&lt;br&gt;
+Enjoy ;)&lt;/p&gt;</description>
 			<guid>http://fabmoll.github.io/posts/first-post</guid>
-			<pubDate>Fri, 01 Jan 2016 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;This is my first post!&lt;/p&gt;
+			<pubDate>Fri, 11 Oct 2019 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;Yeah! The first post.&lt;br /&gt;
+I really wanted to start my blog and I finally decided to install everything to do so.&lt;br /&gt;
+Enjoy ;)&lt;/p&gt;
 </content:encoded>
 		</item>
 	</channel>
