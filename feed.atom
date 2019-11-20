@@ -4,6 +4,19 @@
 	<title>Fabrice Moll</title>
 	<link rel="self" href="http://fabmoll.github.io/" />
 	<rights>2019</rights>
-	<updated>2019-11-20T07:14:53Z</updated>
+	<updated>2019-11-20T07:18:18Z</updated>
 	<subtitle>Welcome!</subtitle>
+	<entry>
+		<id>http://fabmoll.github.io/posts/first-post</id>
+		<title>A new adventure</title>
+		<link href="http://fabmoll.github.io/posts/first-post" />
+		<updated>2019-11-19T00:00:00Z</updated>
+		<content>&lt;p&gt;Yeah! The first post.&lt;br /&gt;
+I really wanted to start my blog and I finally decided to install everything to do so.&lt;br /&gt;
+Enjoy ;)&lt;/p&gt;
+</content>
+		<summary>&lt;p&gt;Yeah! The first post.&lt;br&gt;
+I really wanted to start my blog and I finally decided to install everything to do so.&lt;br&gt;
+Enjoy ;)&lt;/p&gt;</summary>
+	</entry>
 </feed>

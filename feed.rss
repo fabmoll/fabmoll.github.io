@@ -1,11 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0">
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
 	<channel>
 		<title>Fabrice Moll</title>
 		<link>http://fabmoll.github.io/</link>
 		<description>Welcome!</description>
 		<copyright>2019</copyright>
-		<pubDate>Wed, 20 Nov 2019 07:14:53 GMT</pubDate>
-		<lastBuildDate>Wed, 20 Nov 2019 07:14:53 GMT</lastBuildDate>
+		<pubDate>Wed, 20 Nov 2019 07:18:18 GMT</pubDate>
+		<lastBuildDate>Wed, 20 Nov 2019 07:18:18 GMT</lastBuildDate>
+		<item>
+			<title>A new adventure</title>
+			<link>http://fabmoll.github.io/posts/first-post</link>
+			<description>&lt;p&gt;Yeah! The first post.&lt;br&gt;
+I really wanted to start my blog and I finally decided to install everything to do so.&lt;br&gt;
+Enjoy ;)&lt;/p&gt;</description>
+			<guid>http://fabmoll.github.io/posts/first-post</guid>
+			<pubDate>Tue, 19 Nov 2019 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;Yeah! The first post.&lt;br /&gt;
+I really wanted to start my blog and I finally decided to install everything to do so.&lt;br /&gt;
+Enjoy ;)&lt;/p&gt;
+</content:encoded>
+		</item>
 	</channel>
 </rss>
