@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
+	<channel>
+		<title>Fabrice Moll</title>
+		<link>http://fabmoll.github.io/</link>
+		<description>Hey! Welcome.</description>
+		<copyright>2019</copyright>
+		<pubDate>Fri, 22 Nov 2019 17:12:18 GMT</pubDate>
+		<lastBuildDate>Fri, 22 Nov 2019 17:12:18 GMT</lastBuildDate>
+		<item>
+			<title>A new adventure</title>
+			<link>http://fabmoll.github.io/posts/first-post</link>
+			<description>&lt;p&gt;Yeah! The first post.&lt;br&gt;
+I really wanted to start my blog and I finally decided to install everything to do so.&lt;br&gt;
+Even if you only see a simple page, I had a fun time with my Azure Pipeline.&lt;/p&gt;</description>
+			<guid>http://fabmoll.github.io/posts/first-post</guid>
+			<pubDate>Tue, 19 Nov 2019 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;Yeah! The first post.&lt;br /&gt;
+I really wanted to start my blog and I finally decided to install everything to do so.&lt;br /&gt;
+Even if you only see a simple page, I had a fun time with my Azure Pipeline.&lt;/p&gt;
+&lt;p&gt;The source code of my blog is hosted on &lt;a href="https://azure.microsoft.com/en-us/services/devops/" target="_blank"&gt;Azure DevOps&lt;/a&gt; and with one push to the Git repository, the Pipeline compiles my blog and publishes the result automatically to my GitHub Pages. It's magic!&lt;br /&gt;
+Like you can see, there are still several things to configure on this blog but if I don't start now I'll never start!&lt;br /&gt;
+Enjoy ;)&lt;/p&gt;
+</content:encoded>
+		</item>
+	</channel>
+</rss>
