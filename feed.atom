@@ -3,9 +3,67 @@
 	<id>http://fabmoll.github.io/</id>
 	<title>Fabrice Moll</title>
 	<link rel="self" href="http://fabmoll.github.io/" />
-	<rights>2019</rights>
-	<updated>2019-11-23T11:19:21Z</updated>
+	<rights>2020</rights>
+	<updated>2020-01-04T10:55:28Z</updated>
 	<subtitle>Hey! Welcome.</subtitle>
+	<entry>
+		<id>http://fabmoll.github.io/posts/RowHeightInListViewItemTemplate</id>
+		<title>Row height in ListView ItemTemplate</title>
+		<link href="http://fabmoll.github.io/posts/RowHeightInListViewItemTemplate" />
+		<updated>2020-01-04T00:00:00Z</updated>
+		<content>&lt;p&gt;For my App I wanted to have a view for my TV shows.&lt;br /&gt;
+As I have a WPF and Windows Phone background, I tried to set the row height on the Grid RowDefinition.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;&amp;lt;ListView ItemsSource=&amp;quot;{Binding Shows}&amp;quot; VerticalOptions=&amp;quot;FillAndExpand&amp;quot; &amp;gt;
+    &amp;lt;ListView.ItemTemplate&amp;gt;
+        &amp;lt;DataTemplate&amp;gt;
+            &amp;lt;ViewCell&amp;gt;
+                &amp;lt;Grid&amp;gt;
+                    &amp;lt;Grid.ColumnDefinitions&amp;gt;
+                         &amp;lt;ColumnDefinition Width=&amp;quot;*&amp;quot;/&amp;gt;
+                    &amp;lt;/Grid.ColumnDefinitions&amp;gt;
+                    &amp;lt;Grid.RowDefinitions&amp;gt;								
+                         &amp;lt;RowDefinition Height=&amp;quot;100&amp;quot;/&amp;gt;
+                    &amp;lt;/Grid.RowDefinitions&amp;gt;
+                    
+                    &amp;lt;ffimageloading:CachedImage Grid.Row=&amp;quot;0&amp;quot; Source=&amp;quot;{Binding Image.Banner}&amp;quot;
+                        Aspect=&amp;quot;AspectFill&amp;quot;							
+                        RetryCount= &amp;quot;3&amp;quot;
+                        RetryDelay= &amp;quot;600&amp;quot;
+                        HeightRequest=&amp;quot;100&amp;quot;
+                        DownsampleToViewSize = &amp;quot;true&amp;quot;	/&amp;gt;
+                        
+                    &amp;lt;Frame Grid.Row=&amp;quot;0&amp;quot; HeightRequest=&amp;quot;20&amp;quot; VerticalOptions=&amp;quot;End&amp;quot; Padding=&amp;quot;0&amp;quot;
+                        BackgroundColor=&amp;quot;#80000000&amp;quot; &amp;gt;
+                        &amp;lt;StackLayout Orientation=&amp;quot;Horizontal&amp;quot;&amp;gt;
+                            &amp;lt;Label Grid.Row=&amp;quot;0&amp;quot;  Text=&amp;quot;{Binding Title}&amp;quot; TextColor=&amp;quot;#FFFFFF&amp;quot; Margin=&amp;quot;5,0,0,0&amp;quot;
+                            LineBreakMode=&amp;quot;TailTruncation&amp;quot; HorizontalOptions=&amp;quot;StartAndExpand&amp;quot;/&amp;gt;
+                            &amp;lt;Label Grid.Row=&amp;quot;0&amp;quot;  Text=&amp;quot;{Binding User.Remaining}&amp;quot; TextColor=&amp;quot;#FFFFFF&amp;quot;
+                            Margin=&amp;quot;0,0,5,0&amp;quot; HorizontalOptions=&amp;quot;End&amp;quot;/&amp;gt;
+                        &amp;lt;/StackLayout&amp;gt;
+                    &amp;lt;/Frame&amp;gt;
+                &amp;lt;/Grid&amp;gt;
+            &amp;lt;/ViewCell&amp;gt;
+        &amp;lt;/DataTemplate&amp;gt;
+    &amp;lt;/ListView.ItemTemplate&amp;gt;
+&amp;lt;/ListView&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;But the result was completely wrong. The black frame is too big and the show title is not displayed.&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;
+&lt;img src="../images/RowHeightInListViewItemTemplate-WrongHeight.jpg" alt="WrongRowHeight" align="center"/&gt;&lt;/p&gt;
+&lt;p&gt;I tried to change the row definition of the Grid to &lt;strong&gt;Auto&lt;/strong&gt; and let the image take the needed height but the result was the same.&lt;/p&gt;
+&lt;p&gt;In fact, you have to set the &lt;strong&gt;HasUnevenRows&lt;/strong&gt; property of the ListView to &lt;strong&gt;True&lt;/strong&gt; to force the row height otherwise the ListView will use his default row height size (and the behaviour will be really strange).&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;&amp;lt;ListView ItemsSource=&amp;quot;{Binding Shows}&amp;quot;  VerticalOptions=&amp;quot;FillAndExpand&amp;quot; HasUnevenRows=&amp;quot;True&amp;quot; &amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;For iOS, I read that you have to set the &lt;strong&gt;RowHeight&lt;/strong&gt; on the ListView or the size will be ignored. I couldn't verify the behaviour but since my items have the same height, I can set the &lt;strong&gt;RowHeight&lt;/strong&gt; property on the ListView and remove the &lt;strong&gt;HasUnevenRows&lt;/strong&gt; property to use its default value (False).&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;&amp;lt;ListView ItemsSource=&amp;quot;{Binding Shows}&amp;quot;  VerticalOptions=&amp;quot;FillAndExpand&amp;quot; RowHeight=&amp;quot;100&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And here is the result:&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;
+&lt;img src="../images/RowHeightInListViewItemTemplate-GoodHeight.jpg" alt="WrongRowHeight" align="center"/&gt;&lt;/p&gt;
+</content>
+		<summary>&lt;p&gt;For my App I wanted to have a view for my TV shows.&lt;br&gt;
+As I have a WPF and Windows Phone background, I tried to set the row height on the Grid RowDefinition.&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>http://fabmoll.github.io/posts/first-post</id>
 		<title>A new adventure</title>
