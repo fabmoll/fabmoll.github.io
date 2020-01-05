@@ -5,16 +5,41 @@
 		<link>http://fabmoll.github.io/</link>
 		<description>Hey! Welcome.</description>
 		<copyright>2020</copyright>
-		<pubDate>Sat, 04 Jan 2020 19:43:42 GMT</pubDate>
-		<lastBuildDate>Sat, 04 Jan 2020 19:43:42 GMT</lastBuildDate>
+		<pubDate>Sun, 05 Jan 2020 09:57:30 GMT</pubDate>
+		<lastBuildDate>Sun, 05 Jan 2020 09:57:30 GMT</lastBuildDate>
+		<item>
+			<title>Syntax Highlighting In Wyam</title>
+			<link>http://fabmoll.github.io/posts/SyntaxHighlightingInWyam</link>
+			<description>&lt;p&gt;In my previous blog &lt;a href="/posts/RowHeightInListViewItemTemplate"&gt;post&lt;/a&gt; I saw that the syntax highlighting was weird on a phone.&lt;br&gt;
+A carriage return was added automatically instead of taking advantage of the &lt;em&gt;power&lt;/em&gt; of a scrollbar.&lt;/p&gt;</description>
+			<guid>http://fabmoll.github.io/posts/SyntaxHighlightingInWyam</guid>
+			<pubDate>Sun, 05 Jan 2020 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;In my previous blog &lt;a href="/posts/RowHeightInListViewItemTemplate"&gt;post&lt;/a&gt; I saw that the syntax highlighting was weird on a phone.&lt;br /&gt;
+A carriage return was added automatically instead of taking advantage of the &lt;em&gt;power&lt;/em&gt; of a scrollbar.&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;
+&lt;img src="../images/SyntaxHighlightingInWyamCarriageReturn.jpg" alt="Syntax with carriage return" align="center"/&gt;&lt;/p&gt;
+To avoid the carriage return and let the scrollbar work as expected we need to override the CSS with the following style:
+&lt;pre&gt;&lt;code class="language-css"&gt;pre code {
+        white-space: pre;
+        word-wrap: normal;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Just create the following folder structure in your input directory, create a file named &lt;strong&gt;override.css&lt;/strong&gt; and add the &lt;strong&gt;pre code&lt;/strong&gt; style in it.&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;
+&lt;img src="../images/SyntaxHighlightingInWyamFolderStructure.jpg" alt="Folder structure" align="center"/&gt;&lt;/p&gt;
+Build your blog and start the preview to see the result.
+&lt;p style="text-align:center;"&gt;
+&lt;img src="../images/SyntaxHighlightingInWyamWiithScrollbar.jpg" alt="Folder structure" align="center"/&gt;&lt;/p&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Row height in ListView ItemTemplate</title>
 			<link>http://fabmoll.github.io/posts/RowHeightInListViewItemTemplate</link>
-			<description>&lt;p&gt;For my App I wanted to have a view for my TV shows.&lt;br&gt;
+			<description>&lt;p&gt;In my App I wanted to have a view for my TV shows.&lt;br&gt;
 As I have a WPF and Windows Phone background, I tried to set the row height on the Grid RowDefinition.&lt;/p&gt;</description>
 			<guid>http://fabmoll.github.io/posts/RowHeightInListViewItemTemplate</guid>
 			<pubDate>Sat, 04 Jan 2020 00:00:00 GMT</pubDate>
-			<content:encoded>&lt;p&gt;For my App I wanted to have a view for my TV shows.&lt;br /&gt;
+			<content:encoded>&lt;p&gt;In my App I wanted to have a view for my TV shows.&lt;br /&gt;
 As I have a WPF and Windows Phone background, I tried to set the row height on the Grid RowDefinition.&lt;/p&gt;
 &lt;pre&gt;&lt;code class="language-csharp"&gt;&amp;lt;ListView ItemsSource=&amp;quot;{Binding Shows}&amp;quot; VerticalOptions=&amp;quot;FillAndExpand&amp;quot; &amp;gt;
     &amp;lt;ListView.ItemTemplate&amp;gt;

@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 
-        <title>Fabrice Moll - Row height in ListView ItemTemplate</title>
+        <title>Fabrice Moll - Syntax Highlighting In Wyam</title>
         <meta name="description" content="Hey! Welcome." />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">        
 
@@ -28,9 +28,9 @@
         <meta name="msapplication-tooltip" content="Fabrice Moll" />
         <meta name="msapplication-starturl" content="/" />
 
-        <meta property="og:title" content="Fabrice Moll - Row height in ListView ItemTemplate" />
+        <meta property="og:title" content="Fabrice Moll - Syntax Highlighting In Wyam" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="http://fabmoll.github.io/posts/RowHeightInListViewItemTemplate" />
+        <meta property="og:url" content="http://fabmoll.github.io/posts/SyntaxHighlightingInWyam" />
         <!-- TODO: More social graph meta tags -->
 
         
@@ -75,11 +75,11 @@
 
     
 <div class="post-heading">
-    <h1>Row height in ListView ItemTemplate</h1>
+    <h1>Syntax Highlighting In Wyam</h1>
     <div class="meta">        
-Published on Saturday, January 4, 2020<br>    </div>
+Published on Sunday, January 5, 2020<br>    </div>
         <div class="tags">
-                    <a role="button" href="/tags/XAMARIN" class="btn btn-default btn-xs">XAMARIN</a>
+                    <a role="button" href="/tags/WYAM" class="btn btn-default btn-xs">WYAM</a>
         </div>     
 </div>
                                         </div>
@@ -93,64 +93,31 @@ Published on Saturday, January 4, 2020<br>    </div>
                                 <div id="content" class="col-md-12">
                                         
 
-<p>In my App I wanted to have a view for my TV shows.<br />
-As I have a WPF and Windows Phone background, I tried to set the row height on the Grid RowDefinition.</p>
-<pre><code class="language-csharp">&lt;ListView ItemsSource=&quot;{Binding Shows}&quot; VerticalOptions=&quot;FillAndExpand&quot; &gt;
-    &lt;ListView.ItemTemplate&gt;
-        &lt;DataTemplate&gt;
-            &lt;ViewCell&gt;
-                &lt;Grid&gt;
-                    &lt;Grid.ColumnDefinitions&gt;
-                         &lt;ColumnDefinition Width=&quot;*&quot;/&gt;
-                    &lt;/Grid.ColumnDefinitions&gt;
-                    &lt;Grid.RowDefinitions&gt;								
-                         &lt;RowDefinition Height=&quot;100&quot;/&gt;
-                    &lt;/Grid.RowDefinitions&gt;
-                    
-                    &lt;ffimageloading:CachedImage Grid.Row=&quot;0&quot; Source=&quot;{Binding Image.Banner}&quot;
-                        Aspect=&quot;AspectFill&quot;							
-                        RetryCount= &quot;3&quot;
-                        RetryDelay= &quot;600&quot;
-                        HeightRequest=&quot;100&quot;
-                        DownsampleToViewSize = &quot;true&quot;	/&gt;
-                        
-                    &lt;Frame Grid.Row=&quot;0&quot; HeightRequest=&quot;20&quot; VerticalOptions=&quot;End&quot; Padding=&quot;0&quot;
-                        BackgroundColor=&quot;#80000000&quot; &gt;
-                        &lt;StackLayout Orientation=&quot;Horizontal&quot;&gt;
-                            &lt;Label Grid.Row=&quot;0&quot;  Text=&quot;{Binding Title}&quot; TextColor=&quot;#FFFFFF&quot; Margin=&quot;5,0,0,0&quot;
-                            LineBreakMode=&quot;TailTruncation&quot; HorizontalOptions=&quot;StartAndExpand&quot;/&gt;
-                            &lt;Label Grid.Row=&quot;0&quot;  Text=&quot;{Binding User.Remaining}&quot; TextColor=&quot;#FFFFFF&quot;
-                            Margin=&quot;0,0,5,0&quot; HorizontalOptions=&quot;End&quot;/&gt;
-                        &lt;/StackLayout&gt;
-                    &lt;/Frame&gt;
-                &lt;/Grid&gt;
-            &lt;/ViewCell&gt;
-        &lt;/DataTemplate&gt;
-    &lt;/ListView.ItemTemplate&gt;
-&lt;/ListView&gt;
-</code></pre>
-<p>But the result was completely wrong. The black frame is too big and the show title is not displayed.</p>
+<p>In my previous blog <a href="/posts/RowHeightInListViewItemTemplate">post</a> I saw that the syntax highlighting was weird on a phone.<br />
+A carriage return was added automatically instead of taking advantage of the <em>power</em> of a scrollbar.</p>
 <p style="text-align:center;">
-<img src="../images/RowHeightInListViewItemTemplate-WrongHeight.jpg" alt="WrongRowHeight" align="center"/></p>
-<p>I tried to change the row definition of the Grid to <strong>Auto</strong> and let the image take the needed height but the result was the same.</p>
-<p>In fact, you have to set the <strong>HasUnevenRows</strong> property of the ListView to <strong>True</strong> to force the row height otherwise the ListView will use his default row height size (and the behaviour will be really strange).</p>
-<pre><code class="language-csharp">&lt;ListView ItemsSource=&quot;{Binding Shows}&quot;  VerticalOptions=&quot;FillAndExpand&quot; HasUnevenRows=&quot;True&quot; &gt;
+<img src="../images/SyntaxHighlightingInWyamCarriageReturn.jpg" alt="Syntax with carriage return" align="center"/></p>
+To avoid the carriage return and let the scrollbar work as expected we need to override the CSS with the following style:
+<pre><code class="language-css">pre code {
+        white-space: pre;
+        word-wrap: normal;
+}
 </code></pre>
-<p>For iOS, I read that you have to set the <strong>RowHeight</strong> on the ListView or the size will be ignored. I couldn't verify the behaviour but since my items have the same height, I can set the <strong>RowHeight</strong> property on the ListView and remove the <strong>HasUnevenRows</strong> property to use its default value (False).</p>
-<pre><code class="language-csharp">&lt;ListView ItemsSource=&quot;{Binding Shows}&quot;  VerticalOptions=&quot;FillAndExpand&quot; RowHeight=&quot;100&quot;&gt;
-</code></pre>
-<p>And here is the result:</p>
+<p>Just create the following folder structure in your input directory, create a file named <strong>override.css</strong> and add the <strong>pre code</strong> style in it.</p>
 <p style="text-align:center;">
-<img src="../images/RowHeightInListViewItemTemplate-GoodHeight.jpg" alt="WrongRowHeight" align="center"/></p>
+<img src="../images/SyntaxHighlightingInWyamFolderStructure.jpg" alt="Folder structure" align="center"/></p>
+Build your blog and start the preview to see the result.
+<p style="text-align:center;">
+<img src="../images/SyntaxHighlightingInWyamWiithScrollbar.jpg" alt="Folder structure" align="center"/></p>
 
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
     var disqus_shortname = 'fabricemoll'; // required: replace example with your forum shortname
-    var disqus_identifier = 'RowHeightInListViewItemTemplate';
-    var disqus_title = 'Row height in ListView ItemTemplate';
-    var disqus_url = 'http://fabmoll.github.io/posts/RowHeightInListViewItemTemplate';
+    var disqus_identifier = 'SyntaxHighlightingInWyam';
+    var disqus_title = 'Syntax Highlighting In Wyam';
+    var disqus_url = 'http://fabmoll.github.io/posts/SyntaxHighlightingInWyam';
 
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {
