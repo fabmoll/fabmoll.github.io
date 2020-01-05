@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-	<id>http://fabmoll.github.io/</id>
+	<id>https://fabmoll.github.io/</id>
 	<title>Fabrice Moll</title>
-	<link rel="self" href="http://fabmoll.github.io/" />
+	<link rel="self" href="https://fabmoll.github.io/" />
 	<rights>2020</rights>
-	<updated>2020-01-05T15:31:02Z</updated>
+	<updated>2020-01-05T16:19:31Z</updated>
 	<subtitle>Hey! Welcome.</subtitle>
 	<entry>
-		<id>http://fabmoll.github.io/posts/SyntaxHighlightingInWyam</id>
+		<id>https://fabmoll.github.io/posts/SyntaxHighlightingInWyam</id>
 		<title>Syntax Highlighting In Wyam</title>
-		<link href="http://fabmoll.github.io/posts/SyntaxHighlightingInWyam" />
+		<link href="https://fabmoll.github.io/posts/SyntaxHighlightingInWyam" />
 		<updated>2020-01-05T00:00:00Z</updated>
 		<content>&lt;p&gt;In my previous blog &lt;a href="/posts/RowHeightInListViewItemTemplate"&gt;post&lt;/a&gt; I saw that the syntax highlighting was weird on a phone.&lt;br /&gt;
 A carriage return was added automatically instead of taking advantage of the &lt;em&gt;power&lt;/em&gt; of a scrollbar.&lt;/p&gt;
@@ -32,9 +32,9 @@ Build your blog and start the preview to see the result.
 A carriage return was added automatically instead of taking advantage of the &lt;em&gt;power&lt;/em&gt; of a scrollbar.&lt;/p&gt;</summary>
 	</entry>
 	<entry>
-		<id>http://fabmoll.github.io/posts/RowHeightInListViewItemTemplate</id>
+		<id>https://fabmoll.github.io/posts/RowHeightInListViewItemTemplate</id>
 		<title>Row height in ListView ItemTemplate</title>
-		<link href="http://fabmoll.github.io/posts/RowHeightInListViewItemTemplate" />
+		<link href="https://fabmoll.github.io/posts/RowHeightInListViewItemTemplate" />
 		<updated>2020-01-04T00:00:00Z</updated>
 		<content>&lt;p&gt;In my App I wanted to have a view for my TV shows.&lt;br /&gt;
 As I have a WPF and Windows Phone background, I tried to set the row height on the Grid RowDefinition.&lt;/p&gt;
@@ -90,9 +90,9 @@ As I have a WPF and Windows Phone background, I tried to set the row height on t
 As I have a WPF and Windows Phone background, I tried to set the row height on the Grid RowDefinition.&lt;/p&gt;</summary>
 	</entry>
 	<entry>
-		<id>http://fabmoll.github.io/posts/first-post</id>
+		<id>https://fabmoll.github.io/posts/first-post</id>
 		<title>A new adventure</title>
-		<link href="http://fabmoll.github.io/posts/first-post" />
+		<link href="https://fabmoll.github.io/posts/first-post" />
 		<updated>2019-11-19T00:00:00Z</updated>
 		<content>&lt;p&gt;Yeah! The first post.&lt;br /&gt;
 I really wanted to start my blog and I finally decided to install everything to do so.&lt;br /&gt;
