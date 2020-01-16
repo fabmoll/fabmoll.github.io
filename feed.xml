@@ -5,8 +5,45 @@
 		<link>https://fabmoll.github.io/</link>
 		<description>Hey! Welcome.</description>
 		<copyright>2020</copyright>
-		<pubDate>Wed, 15 Jan 2020 10:01:57 GMT</pubDate>
-		<lastBuildDate>Wed, 15 Jan 2020 10:01:57 GMT</lastBuildDate>
+		<pubDate>Thu, 16 Jan 2020 19:16:57 GMT</pubDate>
+		<lastBuildDate>Thu, 16 Jan 2020 19:16:57 GMT</lastBuildDate>
+		<item>
+			<title>Frame HeightRequest not applied</title>
+			<link>https://fabmoll.github.io/posts/FrameHeightRequestNotApplied</link>
+			<description>&lt;p&gt;For each of my items in the ListView, I wanted to display the title of the show and the remaining episodes.&lt;br&gt;
+But it can be really difficult to see the label on an image.&lt;/p&gt;</description>
+			<guid>https://fabmoll.github.io/posts/FrameHeightRequestNotApplied</guid>
+			<pubDate>Thu, 16 Jan 2020 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;For each of my items in the ListView, I wanted to display the title of the show and the remaining episodes.&lt;br /&gt;
+But it can be really difficult to see the label on an image.&lt;/p&gt;
+&lt;p&gt;A solution I used in my previous Windows Phone app was to add a border with a background color. So I decided to use the same tip with the &lt;strong&gt;Frame&lt;/strong&gt; control.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;&amp;lt;Frame Grid.Row=&amp;quot;0&amp;quot; HeightRequest=&amp;quot;22&amp;quot; VerticalOptions=&amp;quot;End&amp;quot;  BackgroundColor=&amp;quot;#80000000&amp;quot; &amp;gt;
+    &amp;lt;StackLayout Orientation=&amp;quot;Horizontal&amp;quot;&amp;gt;
+        &amp;lt;Label Grid.Row=&amp;quot;0&amp;quot;  Text=&amp;quot;{Binding Title}&amp;quot; TextColor=&amp;quot;#FFFFFF&amp;quot; Margin=&amp;quot;5,0,0,0&amp;quot; LineBreakMode=&amp;quot;TailTruncation&amp;quot; 
+                    HorizontalOptions=&amp;quot;StartAndExpand&amp;quot; FontAttributes=&amp;quot;Bold&amp;quot; FontSize=&amp;quot;Subtitle&amp;quot;/&amp;gt;
+        &amp;lt;Label Grid.Row=&amp;quot;0&amp;quot;  Text=&amp;quot;{Binding User.Remaining}&amp;quot; TextColor=&amp;quot;#FFFFFF&amp;quot; Margin=&amp;quot;0,0,5,0&amp;quot; HorizontalOptions=&amp;quot;End&amp;quot; 
+                    FontAttributes=&amp;quot;Bold&amp;quot; FontSize=&amp;quot;Subtitle&amp;quot; /&amp;gt;
+    &amp;lt;/StackLayout&amp;gt;
+&amp;lt;/Frame&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p style="text-align:center;"&gt;
+&lt;img src="../images/FrameHeightRequestnotappliedBadHeightRequest.jpg" alt="Wrong HeightRequest" align="center"/&gt;&lt;/p&gt;
+As you can see, the HeightRequest seems to be ignored. It's bigger than expected. In fact, the Frame control has a &lt;a href="https://docs.microsoft.com/en-us/dotnet/api/Xamarin.Forms.Frame?view=xamarin-forms" target="_blank"&gt;default padding&lt;/a&gt; of 20.
+&lt;p&gt;To have the expected result, you just need to set the Frame's &lt;strong&gt;Padding to 0&lt;/strong&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;&amp;lt;Frame Grid.Row=&amp;quot;0&amp;quot; HeightRequest=&amp;quot;22&amp;quot; VerticalOptions=&amp;quot;End&amp;quot;  BackgroundColor=&amp;quot;#80000000&amp;quot; Padding=&amp;quot;0&amp;quot;&amp;gt;
+    &amp;lt;StackLayout Orientation=&amp;quot;Horizontal&amp;quot;&amp;gt;
+        &amp;lt;Label Grid.Row=&amp;quot;0&amp;quot;  Text=&amp;quot;{Binding Title}&amp;quot; TextColor=&amp;quot;#FFFFFF&amp;quot; Margin=&amp;quot;5,0,0,0&amp;quot; LineBreakMode=&amp;quot;TailTruncation&amp;quot; 
+                    HorizontalOptions=&amp;quot;StartAndExpand&amp;quot; FontAttributes=&amp;quot;Bold&amp;quot; FontSize=&amp;quot;Subtitle&amp;quot;/&amp;gt;
+        &amp;lt;Label Grid.Row=&amp;quot;0&amp;quot;  Text=&amp;quot;{Binding User.Remaining}&amp;quot; TextColor=&amp;quot;#FFFFFF&amp;quot; Margin=&amp;quot;0,0,5,0&amp;quot; HorizontalOptions=&amp;quot;End&amp;quot; 
+                    FontAttributes=&amp;quot;Bold&amp;quot; FontSize=&amp;quot;Subtitle&amp;quot; /&amp;gt;
+    &amp;lt;/StackLayout&amp;gt;
+&amp;lt;/Frame&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And now the HeightRequest defined is applied.&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;
+&lt;img src="../images/FrameHeightRequestnotappliedGoodHeightRequest.jpg" alt="Wrong HeightRequest" align="center"/&gt;&lt;/p&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Syntax Highlighting In Wyam</title>
 			<link>https://fabmoll.github.io/posts/SyntaxHighlightingInWyam</link>

@@ -89,6 +89,52 @@
 <div class="row">
     <div style="padding-right:15px;padding-left:15px">
                 <div class="post-preview">
+                    <a href="/posts/FrameHeightRequestNotApplied">
+                        <h2 class="post-title">Frame HeightRequest not applied</h2>
+                    </a>
+                    <p class="post-meta">Thursday, January 16, 2020 - Posted in 
+                                       
+                                <!-- <div class="tags"> -->
+                                            <a role="button" href="/tags/XAMARIN" class="post-meta">XAMARIN</a>
+                                <!-- </div>      -->
+                    </p>
+
+<p>For each of my items in the ListView, I wanted to display the title of the show and the remaining episodes.<br />
+But it can be really difficult to see the label on an image.</p>
+<p>A solution I used in my previous Windows Phone app was to add a border with a background color. So I decided to use the same tip with the <strong>Frame</strong> control.</p>
+<pre><code class="language-csharp">&lt;Frame Grid.Row=&quot;0&quot; HeightRequest=&quot;22&quot; VerticalOptions=&quot;End&quot;  BackgroundColor=&quot;#80000000&quot; &gt;
+    &lt;StackLayout Orientation=&quot;Horizontal&quot;&gt;
+        &lt;Label Grid.Row=&quot;0&quot;  Text=&quot;{Binding Title}&quot; TextColor=&quot;#FFFFFF&quot; Margin=&quot;5,0,0,0&quot; LineBreakMode=&quot;TailTruncation&quot; 
+                    HorizontalOptions=&quot;StartAndExpand&quot; FontAttributes=&quot;Bold&quot; FontSize=&quot;Subtitle&quot;/&gt;
+        &lt;Label Grid.Row=&quot;0&quot;  Text=&quot;{Binding User.Remaining}&quot; TextColor=&quot;#FFFFFF&quot; Margin=&quot;0,0,5,0&quot; HorizontalOptions=&quot;End&quot; 
+                    FontAttributes=&quot;Bold&quot; FontSize=&quot;Subtitle&quot; /&gt;
+    &lt;/StackLayout&gt;
+&lt;/Frame&gt;
+</code></pre>
+<p style="text-align:center;">
+<img src="../images/FrameHeightRequestnotappliedBadHeightRequest.jpg" alt="Wrong HeightRequest" align="center"/></p>
+As you can see, the HeightRequest seems to be ignored. It's bigger than expected. In fact, the Frame control has a <a href="https://docs.microsoft.com/en-us/dotnet/api/Xamarin.Forms.Frame?view=xamarin-forms" target="_blank">default padding</a> of 20.
+<p>To have the expected result, you just need to set the Frame's <strong>Padding to 0</strong>.</p>
+<pre><code class="language-csharp">&lt;Frame Grid.Row=&quot;0&quot; HeightRequest=&quot;22&quot; VerticalOptions=&quot;End&quot;  BackgroundColor=&quot;#80000000&quot; Padding=&quot;0&quot;&gt;
+    &lt;StackLayout Orientation=&quot;Horizontal&quot;&gt;
+        &lt;Label Grid.Row=&quot;0&quot;  Text=&quot;{Binding Title}&quot; TextColor=&quot;#FFFFFF&quot; Margin=&quot;5,0,0,0&quot; LineBreakMode=&quot;TailTruncation&quot; 
+                    HorizontalOptions=&quot;StartAndExpand&quot; FontAttributes=&quot;Bold&quot; FontSize=&quot;Subtitle&quot;/&gt;
+        &lt;Label Grid.Row=&quot;0&quot;  Text=&quot;{Binding User.Remaining}&quot; TextColor=&quot;#FFFFFF&quot; Margin=&quot;0,0,5,0&quot; HorizontalOptions=&quot;End&quot; 
+                    FontAttributes=&quot;Bold&quot; FontSize=&quot;Subtitle&quot; /&gt;
+    &lt;/StackLayout&gt;
+&lt;/Frame&gt;
+</code></pre>
+<p>And now the HeightRequest defined is applied.</p>
+<p style="text-align:center;">
+<img src="../images/FrameHeightRequestnotappliedGoodHeightRequest.jpg" alt="Wrong HeightRequest" align="center"/></p>
+                    <hr/>
+                    <div class="item-footer-tools">
+                        Share on: <a href="https://twitter.com/intent/tweet?url=https://fabmoll.github.io/posts/FrameHeightRequestNotApplied&text=Fabrice Moll&via=fabmoll">Twitter</a>, <a href="https://facebook.com/sharer.php?u=https://fabmoll.github.io/posts/FrameHeightRequestNotApplied">Facebook</a> or use the 
+                                  <a href="https://fabmoll.github.io/posts/FrameHeightRequestNotApplied" class="permalink" rel="bookmark">Permalink</a>
+                    </div>            
+                </div>       
+                    <hr /> 
+                <div class="post-preview">
                     <a href="/posts/SyntaxHighlightingInWyam">
                         <h2 class="post-title">Syntax Highlighting In Wyam</h2>
                     </a>
@@ -188,30 +234,6 @@ As I have a WPF and Windows Phone background, I tried to set the row height on t
                                   <a href="https://fabmoll.github.io/posts/RowHeightInListViewItemTemplate" class="permalink" rel="bookmark">Permalink</a>
                     </div>            
                 </div>       
-                    <hr /> 
-                <div class="post-preview">
-                    <a href="/posts/first-post">
-                        <h2 class="post-title">A new adventure</h2>
-                    </a>
-                    <p class="post-meta">Tuesday, November 19, 2019 - Posted in 
-                                       
-                                <!-- <div class="tags"> -->
-                                            <a role="button" href="/tags/Introduction" class="post-meta">Introduction</a>
-                                <!-- </div>      -->
-                    </p>
-
-<p>Yeah! The first post.<br />
-I really wanted to start my blog and I finally decided to install everything to do so.<br />
-Even if you only see a simple page, I had a fun time with my Azure Pipeline.</p>
-<p>The source code of my blog is hosted on <a href="https://azure.microsoft.com/en-us/services/devops/" target="_blank">Azure DevOps</a> and with one push to the Git repository, the Pipeline compiles my blog and publishes the result automatically to my GitHub Pages. It's magic!<br />
-Like you can see, there are still several things to configure on this blog but if I don't start now I'll never start!<br />
-Enjoy ;)</p>
-                    <hr/>
-                    <div class="item-footer-tools">
-                        Share on: <a href="https://twitter.com/intent/tweet?url=https://fabmoll.github.io/posts/first-post&text=Fabrice Moll&via=fabmoll">Twitter</a>, <a href="https://facebook.com/sharer.php?u=https://fabmoll.github.io/posts/first-post">Facebook</a> or use the 
-                                  <a href="https://fabmoll.github.io/posts/first-post" class="permalink" rel="bookmark">Permalink</a>
-                    </div>            
-                </div>       
         <ul class="pager">
             <li class="previous">                
             </li>
@@ -224,7 +246,7 @@ Enjoy ;)</p>
 
             <h5>Tags</h5>
             <div>
-                    <a role="button" href="/tags/XAMARIN" class="btn btn-default btn-sm"> XAMARIN (1)</a>
+                    <a role="button" href="/tags/XAMARIN" class="btn btn-default btn-sm"> XAMARIN (2)</a>
                     <a role="button" href="/tags/Introduction" class="btn btn-default btn-sm"> Introduction (1)</a>
                     <a role="button" href="/tags/WYAM" class="btn btn-default btn-sm"> WYAM (1)</a>
             </div>
@@ -237,6 +259,7 @@ Enjoy ;)</p>
             <hr />
             <h5>Older Posts</h5>
             <ul class="list-unstyled">
+                    <li><a href="/posts/first-post">A new adventure</a></li>
             </ul>
                 <ul class="pager">
                     <li class="next">
