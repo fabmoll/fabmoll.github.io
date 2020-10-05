@@ -4,8 +4,24 @@
 	<title>Fabrice Moll</title>
 	<link rel="self" href="https://fabmoll.github.io/" />
 	<rights>2020</rights>
-	<updated>2020-02-16T10:02:12Z</updated>
+	<updated>2020-10-05T17:14:39Z</updated>
 	<subtitle>Hey! Welcome.</subtitle>
+	<entry>
+		<id>https://fabmoll.github.io/posts/ChangeStatusBarColorInXamarinForms</id>
+		<title>Change the status bar color in your Xamarin.Forms app</title>
+		<link href="https://fabmoll.github.io/posts/ChangeStatusBarColorInXamarinForms" />
+		<updated>2020-10-05T00:00:00Z</updated>
+		<content>&lt;p&gt;It's the second time I need to change the status bar color in a Xamarin.Forms (Android) and I didn't remember how to do it.&lt;/p&gt;
+&lt;p&gt;As I don't want to search it again, I decided to add the information here.&lt;/p&gt;
+&lt;p&gt;The status bar is the top part of the application where you can find the battery level, the network status,...&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;
+&lt;img src="../images/ChangeStatusBarColorInXamarinForms.jpg" alt="Folder structure" align="center"/&gt;&lt;/p&gt;
+&lt;p&gt;In your Android project, just add the following line in the styles.xml file and use the color you like:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-xml"&gt;&amp;lt;item name=&amp;quot;android:statusBarColor&amp;quot;&amp;gt;#3F4550&amp;lt;/item&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+</content>
+		<summary>&lt;p&gt;It's the second time I need to change the status bar color in a Xamarin.Forms (Android) and I didn't remember how to do it.&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>https://fabmoll.github.io/posts/FrameHeightRequestNotApplied</id>
 		<title>Frame HeightRequest not applied</title>
