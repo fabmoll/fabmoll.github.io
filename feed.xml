@@ -5,8 +5,38 @@
 		<link>https://fabmoll.github.io/</link>
 		<description>Hey! Welcome.</description>
 		<copyright>2020</copyright>
-		<pubDate>Wed, 23 Dec 2020 18:27:27 GMT</pubDate>
-		<lastBuildDate>Wed, 23 Dec 2020 18:27:27 GMT</lastBuildDate>
+		<pubDate>Thu, 24 Dec 2020 08:33:26 GMT</pubDate>
+		<lastBuildDate>Thu, 24 Dec 2020 08:33:26 GMT</lastBuildDate>
+		<item>
+			<title>Change Proximus Internet password</title>
+			<link>https://fabmoll.github.io/posts/ChangeProximusInternetPassword</link>
+			<description>&lt;p&gt;In some cases you'll handle the PPPoE connection in your router.&lt;br&gt;
+The main reason is to connect to the Proximus network from your router and let your personal hardware manage the DHCP.&lt;/p&gt;</description>
+			<guid>https://fabmoll.github.io/posts/ChangeProximusInternetPassword</guid>
+			<pubDate>Thu, 24 Dec 2020 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;In some cases you'll handle the PPPoE connection in your router.&lt;br /&gt;
+The main reason is to connect to the Proximus network from your router and let your personal hardware manage the DHCP.&lt;/p&gt;
+&lt;p&gt;If you know your login and password, it's really easy.  But if like me, you lost your original password / don't remember it / never saved it in your favorite password tool / ... you're doomed.  Or not.&lt;/p&gt;
+&lt;p&gt;Proximus made it simple, you can login on their website and in the MyProducts section you need to select your &amp;quot;Internet&amp;quot; product.&lt;br /&gt;
+From there you'll be able to define a new password without the need to enter your old password.&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;
+&lt;img src="../images/ChangeProximusInternetPassword-ProximusLogin.jpg" alt="Proximus Password change" align="center"/&gt;&lt;/p&gt;
+&lt;p&gt;When the password is changed, it will take effect within two hours.&lt;/p&gt;
+&lt;p&gt;My first error was to change it too in my modem -&amp;gt; No more Internet at home.&lt;br /&gt;
+In fact you can use the old password as long as Proximus didn't validate your new password.&lt;/p&gt;
+&lt;p&gt;Two hours later... No Internet!&lt;/p&gt;
+&lt;p&gt;The &lt;a href="https://en.wikipedia.org/wiki/Wife_acceptance_factor" target="_blank"&gt;WAF&lt;/a&gt; was aligned with the two hours but not with more.&lt;/p&gt;
+&lt;p&gt;I had two solutions:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Try a new password on Proximus website (and wait two more hours)&lt;/li&gt;
+&lt;li&gt;Contact the Support&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;I don't remember my web search but I found a ticket about the PPPoE connection with the Proximus modem and the new password rule.&lt;br /&gt;
+In fact, the new password &lt;strong&gt;must be eight characters long and it must only contain alphanumeric characters&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;The thing I didn't say is that I used a password generator to have something complex on my first try.&lt;/p&gt;
+&lt;p&gt;So before to call the Support, I changed my password to match the rule (on Proximus website and in my router) and it worked right away.&lt;/p&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Change the status bar color in your Xamarin.Forms app</title>
 			<link>https://fabmoll.github.io/posts/ChangeStatusBarColorInXamarinForms</link>
