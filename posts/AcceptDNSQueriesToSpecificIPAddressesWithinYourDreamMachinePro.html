@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 
-        <title>Fabrice Moll - WYAM</title>
+        <title>Fabrice Moll - Accept DNS queries to specific IP addresses within your Dream Machine Pro</title>
         <meta name="description" content="Hey! Welcome." />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">        
 
@@ -28,9 +28,9 @@
         <meta name="msapplication-tooltip" content="Fabrice Moll" />
         <meta name="msapplication-starturl" content="/" />
 
-        <meta property="og:title" content="Fabrice Moll - WYAM" />
+        <meta property="og:title" content="Fabrice Moll - Accept DNS queries to specific IP addresses within your Dream Machine Pro" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://fabmoll.github.io/tags/WYAM" />
+        <meta property="og:url" content="https://fabmoll.github.io/posts/AcceptDNSQueriesToSpecificIPAddressesWithinYourDreamMachinePro" />
         <!-- TODO: More social graph meta tags -->
 
         
@@ -72,9 +72,17 @@
                         <div class="container">
                                 <div class="row">
                                         <div class="col-md-12">
-<div class="site-heading">
-    <h1>WYAM</h1>
-</div>                                            </div>
+
+    
+<div class="post-heading">
+    <h1>Accept DNS queries to specific IP addresses within your Dream Machine Pro</h1>
+    <div class="meta">        
+Published on Sunday, December 27, 2020<br>    </div>
+        <div class="tags">
+                    <a role="button" href="/tags/NETWORK" class="btn btn-default btn-xs">NETWORK</a>
+        </div>     
+</div>
+                                        </div>
                                 </div>
                         </div>
                 </header>
@@ -83,38 +91,80 @@
                 <div class="container">
                         <div class="row">
                                 <div id="content" class="col-md-12">
-                                        <div class="container-sm-height">
-    <div class="row row-sm-height">
-        <div class="col-sm-8 right-border col-sm-height">
-            
-        <div class="post-list">
-            <a href="/posts/SyntaxHighlightingInWyam">
-                <h3 class="post-title">Syntax Highlighting In Wyam</h3>
-            </a>
-            <p class="post-meta">Posted on Sunday, January 5, 2020</p>      
-        </div>   
+                                        
+
+<p>Holidays are nice when you want to try something new.<br />
+In my case, I wanted to install a <a href="https://pi-hole.net/" target="_blank">Pi-Hole</a>.<br />
+If you never heard about Pi-Hole, it's a DNS sinkhole that protects your devices from unwanted content, without installing any client-side software.</p>
+<p>My post isn't a <em>How-to</em> install/configure/... the thing.<br />
+Here we'll see how to create firewall rules on the Dream Machine Pro to refuse all DNS queries except the one to the Pi-Hole.</p>
+<p>The first thing to do is to create two groups in the firewall settings.</p>
+<p>One to specify the DNS port to block (53) and another one to contain the IP addresses that will be used to accept DNS queries (The Pi-Hole address and maybe some other DNS addresses).</p>
+<p>I use groups to be able to add/remove address or port as I wish.</p>
+<p><strong>First group</strong></p>
+<ul>
+<li>Name: DNS Port</li>
+<li>Type: Port</li>
+<li>Port value: 53</li>
+</ul>
+<p><strong>Second group</strong></p>
+<ul>
+<li>Name: DNS to Accept</li>
+<li>Type: Address IPV4</li>
+<li>Address: The address of your PI-Hole and maybe some other public DNS addresses</li>
+</ul>
+<p>When it's done, we need to create two firewall rules.  One to block all outbound traffic to the port 53 and another one to accept all outbound traffic to the port 53 but only for the addresses we trust.</p>
+<p><strong>First rule</strong></p>
+<ul>
+<li>Name: Accept DNS Group</li>
+<li>Rule applied: Before predefined rules</li>
+<li>Action: Accept</li>
+<li>Source Type: Address/Port group</li>
+<li>Source IPv4 Address Group: Any</li>
+<li>Source Port Group: Any</li>
+<li>Destination Type: Address/Port group</li>
+<li>Destination IPv4 Address Group: DNS to Accept (the second group we created)</li>
+<li>Destination Port Group: DNS Port (the first group we created)</li>
+</ul>
+<p><strong>Second rule</strong></p>
+<ul>
+<li>Name: Drop other DNS</li>
+<li>Rule applied: Before predefined rules</li>
+<li>Action: Drop</li>
+<li>Source Type: Address/Port group</li>
+<li>Source IPv4 Address Group: Any</li>
+<li>Source Port Group: Any</li>
+<li>Destination Type: Address/Port group</li>
+<li>Destination IPv4 Address Group: Any</li>
+<li>Destination Port Group: DNS Port (the first group we created)</li>
+</ul>
+<p>With these rules, the devices connected to our LAN will only use the DNS we trust and if a malware tries to bypass our DNS, it will be blocked by the second firewall rule.</p>
 
 
-            <nav>
-                <ul class="pager">
-                    <li class="previous">                
-                    </li>
-                    <li class="next">
-                    </li>
-                </ul>
-            </nav>
-            <hr class="visible-xs-block" />
-        </div>
-		
-        <div class="col-sm-4 col-sm-height">
-                <a role="button" href="/tags/NETWORK" class="btn btn-default btn-xs">NETWORK (2)</a>
-                <a role="button" href="/tags/XAMARIN" class="btn btn-default btn-xs">XAMARIN (2)</a>
-                <a role="button" href="/tags/XAMARINFORMS" class="btn btn-default btn-xs">XAMARIN.FORMS (1)</a>
-                <a role="button" href="/tags/WYAM" class="btn btn-primary btn-xs">WYAM (1)</a>
-                <a role="button" href="/tags/Introduction" class="btn btn-default btn-xs">Introduction (1)</a>
-        </div>
-    </div>
-</div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'fabricemoll'; // required: replace example with your forum shortname
+    var disqus_identifier = 'AcceptDNSQueriesToSpecificIPAddressesWithinYourDreamMachinePro';
+    var disqus_title = 'Accept DNS queries to specific IP addresses within your Dream Machine Pro';
+    var disqus_url = 'https://fabmoll.github.io/posts/AcceptDNSQueriesToSpecificIPAddressesWithinYourDreamMachinePro';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
                                 </div>
                         </div>
                 </div>

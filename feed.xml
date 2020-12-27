@@ -5,8 +5,64 @@
 		<link>https://fabmoll.github.io/</link>
 		<description>Hey! Welcome.</description>
 		<copyright>2020</copyright>
-		<pubDate>Sat, 26 Dec 2020 18:33:28 GMT</pubDate>
-		<lastBuildDate>Sat, 26 Dec 2020 18:33:28 GMT</lastBuildDate>
+		<pubDate>Sun, 27 Dec 2020 10:02:59 GMT</pubDate>
+		<lastBuildDate>Sun, 27 Dec 2020 10:02:59 GMT</lastBuildDate>
+		<item>
+			<title>Accept DNS queries to specific IP addresses within your Dream Machine Pro</title>
+			<link>https://fabmoll.github.io/posts/AcceptDNSQueriesToSpecificIPAddressesWithinYourDreamMachinePro</link>
+			<description>&lt;p&gt;Holidays are nice when you want to try something new.&lt;br&gt;
+In my case, I wanted to install a &lt;a href="https://pi-hole.net/" target="_blank"&gt;Pi-Hole&lt;/a&gt;.&lt;br&gt;
+If you never heard about Pi-Hole, it's a DNS sinkhole that protects your devices from unwanted content, without installing any client-side software.&lt;/p&gt;</description>
+			<guid>https://fabmoll.github.io/posts/AcceptDNSQueriesToSpecificIPAddressesWithinYourDreamMachinePro</guid>
+			<pubDate>Sun, 27 Dec 2020 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;Holidays are nice when you want to try something new.&lt;br /&gt;
+In my case, I wanted to install a &lt;a href="https://pi-hole.net/" target="_blank"&gt;Pi-Hole&lt;/a&gt;.&lt;br /&gt;
+If you never heard about Pi-Hole, it's a DNS sinkhole that protects your devices from unwanted content, without installing any client-side software.&lt;/p&gt;
+&lt;p&gt;My post isn't a &lt;em&gt;How-to&lt;/em&gt; install/configure/... the thing.&lt;br /&gt;
+Here we'll see how to create firewall rules on the Dream Machine Pro to refuse all DNS queries except the one to the Pi-Hole.&lt;/p&gt;
+&lt;p&gt;The first thing to do is to create two groups in the firewall settings.&lt;/p&gt;
+&lt;p&gt;One to specify the DNS port to block (53) and another one to contain the IP addresses that will be used to accept DNS queries (The Pi-Hole address and maybe some other DNS addresses).&lt;/p&gt;
+&lt;p&gt;I use groups to be able to add/remove address or port as I wish.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;First group&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Name: DNS Port&lt;/li&gt;
+&lt;li&gt;Type: Port&lt;/li&gt;
+&lt;li&gt;Port value: 53&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Second group&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Name: DNS to Accept&lt;/li&gt;
+&lt;li&gt;Type: Address IPV4&lt;/li&gt;
+&lt;li&gt;Address: The address of your PI-Hole and maybe some other public DNS addresses&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;When it's done, we need to create two firewall rules.  One to block all outbound traffic to the port 53 and another one to accept all outbound traffic to the port 53 but only for the addresses we trust.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;First rule&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Name: Accept DNS Group&lt;/li&gt;
+&lt;li&gt;Rule applied: Before predefined rules&lt;/li&gt;
+&lt;li&gt;Action: Accept&lt;/li&gt;
+&lt;li&gt;Source Type: Address/Port group&lt;/li&gt;
+&lt;li&gt;Source IPv4 Address Group: Any&lt;/li&gt;
+&lt;li&gt;Source Port Group: Any&lt;/li&gt;
+&lt;li&gt;Destination Type: Address/Port group&lt;/li&gt;
+&lt;li&gt;Destination IPv4 Address Group: DNS to Accept (the second group we created)&lt;/li&gt;
+&lt;li&gt;Destination Port Group: DNS Port (the first group we created)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Second rule&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Name: Drop other DNS&lt;/li&gt;
+&lt;li&gt;Rule applied: Before predefined rules&lt;/li&gt;
+&lt;li&gt;Action: Drop&lt;/li&gt;
+&lt;li&gt;Source Type: Address/Port group&lt;/li&gt;
+&lt;li&gt;Source IPv4 Address Group: Any&lt;/li&gt;
+&lt;li&gt;Source Port Group: Any&lt;/li&gt;
+&lt;li&gt;Destination Type: Address/Port group&lt;/li&gt;
+&lt;li&gt;Destination IPv4 Address Group: Any&lt;/li&gt;
+&lt;li&gt;Destination Port Group: DNS Port (the first group we created)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;With these rules, the devices connected to our LAN will only use the DNS we trust and if a malware tries to bypass our DNS, it will be blocked by the second firewall rule.&lt;/p&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Change Proximus Internet password</title>
 			<link>https://fabmoll.github.io/posts/ChangeProximusInternetPassword</link>
