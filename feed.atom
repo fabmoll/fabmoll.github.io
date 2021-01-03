@@ -4,8 +4,23 @@
 	<title>Fabrice Moll</title>
 	<link rel="self" href="https://fabmoll.github.io/" />
 	<rights>2021</rights>
-	<updated>2021-01-02T13:04:45Z</updated>
+	<updated>2021-01-03T10:02:27Z</updated>
 	<subtitle>Hey! Welcome.</subtitle>
+	<entry>
+		<id>https://fabmoll.github.io/posts/HowToDisplayDeviceNameInYourPiHole</id>
+		<title>How to display device name in your Pi-hole</title>
+		<link href="https://fabmoll.github.io/posts/HowToDisplayDeviceNameInYourPiHole" />
+		<updated>2021-01-03T00:00:00Z</updated>
+		<content>&lt;p&gt;When your &lt;a href="https://pi-hole.net/" target="_blank"&gt;Pi-hole&lt;/a&gt; doesn't act as a DHCP server (because you already have another one) you'll able to see only the IP addresses of the devices.&lt;/p&gt;
+&lt;p&gt;Not really user-friendly when you need to analyze the log of the Pi-Hole.&lt;/p&gt;
+&lt;p&gt;But don't be afraid, there is a &lt;span style="color:green"&gt;solution&lt;/span&gt;!&lt;/p&gt;
+&lt;p&gt;To be able to see the device name, you just need to enable the &lt;strong&gt;Use Conditional Forwarding&lt;/strong&gt; setting in the Settings - DNS.&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;
+&lt;img src="../images/HowtodisplaydevicenameinyourPi-hole.jpg" alt="Enable Use Conditional Forwarding" align="center"/&gt;&lt;/p&gt;
+&lt;p&gt;When the option is enabled, enter the local network to use and the IP address of your DHCP server as described in the screenshot, save and it's done. It's magic.&lt;/p&gt;
+</content>
+		<summary>&lt;p&gt;When your &lt;a href="https://pi-hole.net/" target="_blank"&gt;Pi-hole&lt;/a&gt; doesn't act as a DHCP server (because you already have another one) you'll able to see only the IP addresses of the devices.&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>https://fabmoll.github.io/posts/AcceptDNSQueriesToSpecificIPAddressesWithinYourDreamMachinePro</id>
 		<title>Accept DNS queries to specific IP addresses within your Dream Machine Pro</title>
