@@ -13,3 +13,8 @@ pre code {
         color:#40409F;
         text-decoration: none;        
 }
+
+img {
+  width: 100%;
+  height: auto;
+}
