@@ -7,10 +7,15 @@ pre code {
         text-align: right;        
         font-size: medium;
         padding: 5px;
+        background-color: #0C2D48;
+        color:white;
+        justify-content: space-between;
+        
+        padding: 0.6em 0.6em 0.6em 0.8em;
 }
 
 .item-footer-tools a:link, .item-footer-tools a:visited {
-        color:#40409F;
+        color:#B1D4E0;
         text-decoration: none;        
 }
 
@@ -18,3 +23,18 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+a, a:link,a:visited, a:hover {
+        color:#145DA0;
+        
+        }
+
+.post-title {
+        color:#333333;
+}
+
+.post-meta  a:link, .post-meta a:visited{
+        color:#145DA0;
+        text-decoration: none;
+}
+
