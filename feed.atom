@@ -4,8 +4,32 @@
 	<title>Fabrice Moll</title>
 	<link rel="self" href="https://fabmoll.github.io/" />
 	<rights>2021</rights>
-	<updated>2021-01-09T19:39:51Z</updated>
+	<updated>2021-01-10T10:02:37Z</updated>
 	<subtitle>Hey! Welcome.</subtitle>
+	<entry>
+		<id>https://fabmoll.github.io/posts/RefreshTheXiaomiDoorSensorStatusWithAScenario</id>
+		<title>Refresh the Xiaomi door sensor status with a scenario in Jeedom</title>
+		<link href="https://fabmoll.github.io/posts/RefreshTheXiaomiDoorSensorStatusWithAScenario" />
+		<updated>2021-01-10T00:00:00Z</updated>
+		<content>&lt;p&gt;Since the beginning I've never had an issue with my Xiaomi sensors but for no reason one of them started to not update his status.&lt;/p&gt;
+&lt;p&gt;If I close the door Jeedom still displays the door as opened.&lt;/p&gt;
+&lt;p&gt;I couldn't find the reason and I discovered that a simple refresh command could reset the status and display the right information.&lt;/p&gt;
+&lt;p&gt;If you don't want to refresh the status manually, you can do it with a scenario.&lt;/p&gt;
+&lt;p&gt;First, create a triggered scenario on the Xiaomi sensor for the &lt;em&gt;opening&lt;/em&gt; command and give a name to your scenario.&lt;/p&gt;
+&lt;p&gt;Then in the scenario definition:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;add a &lt;em&gt;Sleep&lt;/em&gt; action for 10 seconds&lt;/li&gt;
+&lt;li&gt;add a &lt;em&gt;refresh&lt;/em&gt; command from your Xiaomi sensor&lt;/li&gt;
+&lt;li&gt;add an &lt;em&gt;IF&lt;/em&gt; condition and check if the &lt;em&gt;opening&lt;/em&gt; command value is equal to 1 (open)&lt;/li&gt;
+&lt;li&gt;add a &lt;em&gt;THEN&lt;/em&gt; condition to execute your current scenario&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;If the status changes, the scenario will wait 10 seconds and then execute the sensor refresh command. If the status is still equal to 1 (open), it will execute again the current scenario.&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;
+&lt;img src="../images/RefreshtheXiaomidoorsensorstatuswithascenario.jpg" alt="Enable Use Conditional Forwarding" align="center"/&gt;&lt;/p&gt;
+&lt;p&gt;Now if the door is closed and the status is not up to date the scenario will update it after 10 seconds.&lt;/p&gt;
+</content>
+		<summary>&lt;p&gt;Since the beginning I've never had an issue with my Xiaomi sensors but for no reason one of them started to not update his status.&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>https://fabmoll.github.io/posts/HowToDisplayDeviceNameInYourPiHole</id>
 		<title>How to display device name in your Pi-hole</title>

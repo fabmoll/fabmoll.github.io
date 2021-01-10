@@ -89,6 +89,52 @@
 <div class="row">
     <div style="padding-right:15px;padding-left:15px">
                 <div class="post-preview">
+                    <a href="/posts/FrameHeightRequestNotApplied">
+                        <h2 class="post-title">Frame HeightRequest not applied</h2>
+                    </a>
+                    <p class="post-meta">Thursday, January 16, 2020 - Posted in 
+                                       
+                                <!-- <div class="tags"> -->
+                                            <a role="button" href="/tags/XAMARIN" class="post-meta">XAMARIN</a>
+                                <!-- </div>      -->
+                    </p>
+
+<p>For each of my items in the ListView, I wanted to display the title of the show and the remaining episodes.<br />
+But it can be really difficult to see the label on an image.</p>
+<p>A solution I used in my previous Windows Phone app was to add a border with a background color. So I decided to use the same tip with the <strong>Frame</strong> control.</p>
+<pre><code class="language-csharp">&lt;Frame Grid.Row=&quot;0&quot; HeightRequest=&quot;22&quot; VerticalOptions=&quot;End&quot;  BackgroundColor=&quot;#80000000&quot; &gt;
+    &lt;StackLayout Orientation=&quot;Horizontal&quot;&gt;
+        &lt;Label Grid.Row=&quot;0&quot;  Text=&quot;{Binding Title}&quot; TextColor=&quot;#FFFFFF&quot; Margin=&quot;5,0,0,0&quot; LineBreakMode=&quot;TailTruncation&quot; 
+                    HorizontalOptions=&quot;StartAndExpand&quot; FontAttributes=&quot;Bold&quot; FontSize=&quot;Subtitle&quot;/&gt;
+        &lt;Label Grid.Row=&quot;0&quot;  Text=&quot;{Binding User.Remaining}&quot; TextColor=&quot;#FFFFFF&quot; Margin=&quot;0,0,5,0&quot; HorizontalOptions=&quot;End&quot; 
+                    FontAttributes=&quot;Bold&quot; FontSize=&quot;Subtitle&quot; /&gt;
+    &lt;/StackLayout&gt;
+&lt;/Frame&gt;
+</code></pre>
+<p style="text-align:center;">
+<img src="../images/FrameHeightRequestnotappliedBadHeightRequest.jpg" alt="Wrong HeightRequest" align="center"/></p>
+As you can see, the HeightRequest seems to be ignored. It's bigger than expected. In fact, the Frame control has a <a href="https://docs.microsoft.com/en-us/dotnet/api/Xamarin.Forms.Frame?view=xamarin-forms" target="_blank">default padding</a> of 20.
+<p>To have the expected result, you just need to set the Frame's <strong>Padding to 0</strong>.</p>
+<pre><code class="language-csharp">&lt;Frame Grid.Row=&quot;0&quot; HeightRequest=&quot;22&quot; VerticalOptions=&quot;End&quot;  BackgroundColor=&quot;#80000000&quot; Padding=&quot;0&quot;&gt;
+    &lt;StackLayout Orientation=&quot;Horizontal&quot;&gt;
+        &lt;Label Grid.Row=&quot;0&quot;  Text=&quot;{Binding Title}&quot; TextColor=&quot;#FFFFFF&quot; Margin=&quot;5,0,0,0&quot; LineBreakMode=&quot;TailTruncation&quot; 
+                    HorizontalOptions=&quot;StartAndExpand&quot; FontAttributes=&quot;Bold&quot; FontSize=&quot;Subtitle&quot;/&gt;
+        &lt;Label Grid.Row=&quot;0&quot;  Text=&quot;{Binding User.Remaining}&quot; TextColor=&quot;#FFFFFF&quot; Margin=&quot;0,0,5,0&quot; HorizontalOptions=&quot;End&quot; 
+                    FontAttributes=&quot;Bold&quot; FontSize=&quot;Subtitle&quot; /&gt;
+    &lt;/StackLayout&gt;
+&lt;/Frame&gt;
+</code></pre>
+<p>And now the HeightRequest defined is applied.</p>
+<p style="text-align:center;">
+<img src="../images/FrameHeightRequestnotappliedGoodHeightRequest.jpg" alt="Wrong HeightRequest" align="center"/></p>
+                    
+                    <div class="item-footer-tools">
+                        Share on: <a href="https://twitter.com/intent/tweet?url=https://fabmoll.github.io/posts/FrameHeightRequestNotApplied&text=Fabrice Moll&via=fabmoll">Twitter</a>, <a href="https://facebook.com/sharer.php?u=https://fabmoll.github.io/posts/FrameHeightRequestNotApplied">Facebook</a> or use the 
+                                  <a href="https://fabmoll.github.io/posts/FrameHeightRequestNotApplied" class="permalink" rel="bookmark">Permalink</a>
+                    </div>            
+                </div>       
+                    <hr /> 
+                <div class="post-preview">
                     <a href="/posts/SyntaxHighlightingInWyam">
                         <h2 class="post-title">Syntax Highlighting In Wyam</h2>
                     </a>
@@ -228,8 +274,9 @@ Enjoy ;)</p>
                     <a role="button" href="/tags/NETWORK" class="btn btn-default btn-sm"> NETWORK (3)</a>
                     <a role="button" href="/tags/XAMARIN" class="btn btn-default btn-sm"> XAMARIN (2)</a>
                     <a role="button" href="/tags/XAMARINFORMS" class="btn btn-default btn-sm"> XAMARIN.FORMS (1)</a>
-                    <a role="button" href="/tags/WYAM" class="btn btn-default btn-sm"> WYAM (1)</a>
+                    <a role="button" href="/tags/JEEDOM" class="btn btn-default btn-sm"> JEEDOM (1)</a>
                     <a role="button" href="/tags/Introduction" class="btn btn-default btn-sm"> Introduction (1)</a>
+                    <a role="button" href="/tags/WYAM" class="btn btn-default btn-sm"> WYAM (1)</a>
             </div>
             <ul class="pager">
                 <li class="next">
