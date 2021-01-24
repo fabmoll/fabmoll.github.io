@@ -5,8 +5,102 @@
 		<link>https://fabmoll.github.io/</link>
 		<description>Hey! Welcome.</description>
 		<copyright>2021</copyright>
-		<pubDate>Sat, 23 Jan 2021 13:30:51 GMT</pubDate>
-		<lastBuildDate>Sat, 23 Jan 2021 13:30:51 GMT</lastBuildDate>
+		<pubDate>Sun, 24 Jan 2021 10:02:47 GMT</pubDate>
+		<lastBuildDate>Sun, 24 Jan 2021 10:02:47 GMT</lastBuildDate>
+		<item>
+			<title>Update Jeedom from version 4.0.x to 4.1.x</title>
+			<link>https://fabmoll.github.io/posts/UpdateJeedomFromVersion4_0_xTo4_1_x</link>
+			<description>&lt;p&gt;Well, Mr. Hunt, this is not Mission: Difficult, its Mission: Impossible. Difficult should be a walk in the park for you. - &lt;em&gt;Boss, Mission: Impossible 2&lt;/em&gt;&lt;/p&gt;</description>
+			<guid>https://fabmoll.github.io/posts/UpdateJeedomFromVersion4_0_xTo4_1_x</guid>
+			<pubDate>Sun, 24 Jan 2021 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;Well, Mr. Hunt, this is not Mission: Difficult, its Mission: Impossible. Difficult should be a walk in the park for you. - &lt;em&gt;Boss, Mission: Impossible 2&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Sometimes, a simple update is harder than you think.
+Since years, I've a &lt;a href="https://www.jeedom.com/en/" target="_blank"&gt;Jeedom&lt;/a&gt; running on a Raspberry 3B+ and the last Jeedom update installed is the version 4.0.x hosted in a Debian 9 Stretch.&lt;/p&gt;
+&lt;p&gt;A few days ago I saw that the Jeedom 4.1.x was available with some really nice &lt;a href="https://doc.jeedom.com/en_US/core/4.1/changelog" target="_blank"&gt;improvements&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The condition to be able to install this version is to have the Debian 10 Buster installed.
+As we can read in the install &lt;a href="https://doc.jeedom.com/en_US/installation/rpi" target="_blank"&gt;documentation&lt;/a&gt;, the best thing to do is to backup your Jeedom and install everything from scratch.&lt;/p&gt;
+&lt;p&gt;And that's what I did, downloaded the ISO x86, burned the SDCard, booted on it and installed Jeedom with the command line.&lt;/p&gt;
+&lt;p&gt;Right after that, I restored my Jeedom backup (I'll not describe that part here).&lt;/p&gt;
+&lt;p&gt;Now the fun part begins: Boot from the SSD.&lt;/p&gt;
+&lt;p&gt;When you check some websites, you'll read that you &lt;strong&gt;just&lt;/strong&gt; need to install Debian on the SSD, plug it in the Raspberry and restart the device to boot from the SSD.  But there are lies! (It was in my case)&lt;/p&gt;
+&lt;p&gt;The best thing I could find was to clone my SDCard to my SSD and it was really easy with the &lt;a href="https://github.com/billw2/rpi-clone" target="_blank"&gt;rpi-clone&lt;/a&gt; script.&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;rpi-clone is a shell script that is for cloning a running Raspberry Pi booted source disk (SD card or USB disk) to a destination disk which will be bootable. Destination disks are SD cards in the SD card slot or a USB card reader, USB flash disks, or USB hard drives.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;First, clone the repository and copy the setup in your /usr/local/sbin directory:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;git clone https://github.com/billw2/rpi-clone.git
+cd rpi-clone
+sudo cp rpi-clone rpi-clone-setup /usr/local/sbin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Stop the following services:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;sudo service mysql stop
+sudo service cron stop
+sudo service apache2 stop
+sudo service nginx stop
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Connect your SSD to your Raspberry and clone your SDCard to your SSD:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;rpi-clone sda -f
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;When it's done, you can restart the services:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;sudo service mysql start
+sudo service cron start
+sudo service apache2 start
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The next thing to do is to configure your Raspberry to be able to boot on the USB port.
+For that, you'll need to backup your current config.txt file, set the boot mode and then restart the Raspberry:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;cp /boot/config.txt /boot/config.txt.old
+echo program_usb_boot_mode=1 | sudo tee -a /boot/config.txt
+sudo reboot
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;When your device restarted, you can check if the boot mode is set to boot on USB with the following command:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;vcgencmd otp_dump | grep 17
+&amp;gt;17:3020000a
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If it returns 17:3020000a, the setting has been taken into account.
+Now we need to change the boot config to be able to boot on the SSD.&lt;/p&gt;
+&lt;p&gt;Get the PARTUUID from your SSD (/dev/sda2):&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;sudo blkid
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p style="text-align:center;"&gt;
+&lt;img src="../images/subo-blkid.jpg" alt="sudo blkid" align="center"/&gt;&lt;/p&gt;
+&lt;p&gt;Backup your current cmdline file:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;sudo cp /boot/cmdline.txt /boot/cmdline.txt.bak
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Edit the cmdline file and replace the PARTUUID with the value we copied from the sudo blkid command, save and quit:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;sudo nano /boot/cmdline.txt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p style="text-align:center;"&gt;
+&lt;img src="../images/cmdline.jpg" alt="cmdline edit" align="center"/&gt;&lt;/p&gt;
+&lt;p&gt;When it's done, you can reboot again:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;sudo reboot
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;After the reboot, the following command should display the /dev/sda2 device:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;findmnt -n -o SOURCE /
+&amp;gt; /dev/sda2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Almost finished, now you need to change fstab to use the PARTUUID from your SSD device, save, quit and reboot again:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;sudo nano /etc/fstab
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p style="text-align:center;"&gt;
+&lt;img src="../images/fstab.jpg" alt="fstab" align="center"/&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;sudo reboot
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The next step is done to create a new partition on your SSD. As you'll see later, the partition size on your SSD is the same as your SDCard. Here we want to use the entire SSD disk size:&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;
+&lt;img src="../images/fdisk.jpg" alt="fdisk" align="center"/&gt;&lt;/p&gt;
+&lt;p&gt;You'll need to reboot again when the partition is created.  This time it may take a little longer.&lt;/p&gt;
+&lt;p&gt;It's not yet finished, now you need to resize the partition:&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;
+&lt;img src="../images/resize2fs.jpg" alt="fdisk" align="center"/&gt;&lt;/p&gt;
+&lt;p&gt;If everything went well, you should see the new partition size with the df command:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-csharp"&gt;df -h
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p style="text-align:center;"&gt;
+&lt;img src="../images/df.jpg" alt="df" align="center"/&gt;&lt;/p&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Refresh the Xiaomi door sensor status with a scenario in Jeedom</title>
 			<link>https://fabmoll.github.io/posts/RefreshTheXiaomiDoorSensorStatusWithAScenario</link>
