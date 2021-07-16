@@ -93,6 +93,9 @@ a.navbar-brand,.navbar-custom .nav li a {
         text-shadow: none;        
         color:#582B39 ;
 }
+.intro-header {
+        margin-bottom: 200px;
+}
 
 .post-list h3 {
         font-size: 20px !important;
