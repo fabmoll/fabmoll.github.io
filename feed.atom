@@ -4,7 +4,7 @@
 	<title>Fabrice Moll</title>
 	<link rel="self" href="https://fabmoll.github.io/" />
 	<rights>2021</rights>
-	<updated>2021-07-16T09:03:17Z</updated>
+	<updated>2021-07-16T11:38:57Z</updated>
 	<entry>
 		<id>https://fabmoll.github.io/posts/CSScurrentColorValue</id>
 		<title>CSS currentColor value</title>
@@ -24,7 +24,7 @@
 &lt;pre&gt;&lt;code class="language-css"&gt;body {
     color: blue;
 }
-body {
+div {
      border: 1px solid currentColor;
 }
 &lt;/code&gt;&lt;/pre&gt;

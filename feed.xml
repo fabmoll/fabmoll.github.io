@@ -5,8 +5,8 @@
 		<link>https://fabmoll.github.io/</link>
 		<description />
 		<copyright>2021</copyright>
-		<pubDate>Fri, 16 Jul 2021 09:03:17 GMT</pubDate>
-		<lastBuildDate>Fri, 16 Jul 2021 09:03:17 GMT</lastBuildDate>
+		<pubDate>Fri, 16 Jul 2021 11:38:57 GMT</pubDate>
+		<lastBuildDate>Fri, 16 Jul 2021 11:38:57 GMT</lastBuildDate>
 		<item>
 			<title>CSS currentColor value</title>
 			<link>https://fabmoll.github.io/posts/CSScurrentColorValue</link>
@@ -27,7 +27,7 @@
 &lt;pre&gt;&lt;code class="language-css"&gt;body {
     color: blue;
 }
-body {
+div {
      border: 1px solid currentColor;
 }
 &lt;/code&gt;&lt;/pre&gt;
