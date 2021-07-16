@@ -111,3 +111,14 @@ a.btn.btn-default.btn-sm:hover{
 .pager li > a{
         background-color: transparent !important;
 }
+
+.a.btn.btn-primary.btn-xs{
+        background-color: transparent !important;
+}
+
+.btn.btn-default.btn-xs{
+        background-color: transparent;
+}
+.btn-primary,.btn-primary:hover{
+        background-color: transparent;
+}
