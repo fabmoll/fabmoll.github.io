@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-	<id>https://fabmoll.github.io/</id>
+	<id>https://www.fabmoll.be/</id>
 	<title>Fabrice Moll</title>
-	<link rel="self" href="https://fabmoll.github.io/" />
+	<link rel="self" href="https://www.fabmoll.be/" />
 	<rights>2021</rights>
-	<updated>2021-07-16T11:38:57Z</updated>
+	<updated>2021-07-16T11:44:42Z</updated>
 	<entry>
-		<id>https://fabmoll.github.io/posts/CSScurrentColorValue</id>
+		<id>https://www.fabmoll.be/posts/CSScurrentColorValue</id>
 		<title>CSS currentColor value</title>
-		<link href="https://fabmoll.github.io/posts/CSScurrentColorValue" />
+		<link href="https://www.fabmoll.be/posts/CSScurrentColorValue" />
 		<updated>2021-07-16T00:00:00Z</updated>
 		<content>&lt;p&gt;A few days ago, I started to learn CSS and HTML.  I already played with CSS and HTML but I had a very very limited knowledge.&lt;/p&gt;
 &lt;p&gt;As I don't like to repeat a code or a property value, I found recently that you can apply a color (defined once) in different properties.&lt;/p&gt;
@@ -32,9 +32,9 @@ div {
 		<summary>&lt;p&gt;A few days ago, I started to learn CSS and HTML.  I already played with CSS and HTML but I had a very very limited knowledge.&lt;/p&gt;</summary>
 	</entry>
 	<entry>
-		<id>https://fabmoll.github.io/posts/UpdateJeedomFromVersion4_0_xTo4_1_x</id>
+		<id>https://www.fabmoll.be/posts/UpdateJeedomFromVersion4_0_xTo4_1_x</id>
 		<title>Update Jeedom from version 4.0.x to 4.1.x</title>
-		<link href="https://fabmoll.github.io/posts/UpdateJeedomFromVersion4_0_xTo4_1_x" />
+		<link href="https://www.fabmoll.be/posts/UpdateJeedomFromVersion4_0_xTo4_1_x" />
 		<updated>2021-01-24T00:00:00Z</updated>
 		<content>&lt;blockquote class="blockquote"&gt;
 &lt;p&gt;Well, Mr. Hunt, this is not Mission: Difficult, its Mission: Impossible. Difficult should be a walk in the park for you. - &lt;em&gt;Boss, Mission: Impossible 2&lt;/em&gt;&lt;/p&gt;
@@ -126,9 +126,9 @@ Now we need to change the boot config to be able to boot on the SSD.&lt;/p&gt;
 		<summary>&lt;p&gt;Well, Mr. Hunt, this is not Mission: Difficult, its Mission: Impossible. Difficult should be a walk in the park for you. - &lt;em&gt;Boss, Mission: Impossible 2&lt;/em&gt;&lt;/p&gt;</summary>
 	</entry>
 	<entry>
-		<id>https://fabmoll.github.io/posts/RefreshTheXiaomiDoorSensorStatusWithAScenario</id>
+		<id>https://www.fabmoll.be/posts/RefreshTheXiaomiDoorSensorStatusWithAScenario</id>
 		<title>Refresh the Xiaomi door sensor status with a scenario in Jeedom</title>
-		<link href="https://fabmoll.github.io/posts/RefreshTheXiaomiDoorSensorStatusWithAScenario" />
+		<link href="https://www.fabmoll.be/posts/RefreshTheXiaomiDoorSensorStatusWithAScenario" />
 		<updated>2021-01-10T00:00:00Z</updated>
 		<content>&lt;p&gt;Since the beginning I've never had an issue with my Xiaomi sensors but for no reason one of them started to not update his status.&lt;/p&gt;
 &lt;p&gt;If I close the door Jeedom still displays the door as opened.&lt;/p&gt;
@@ -150,9 +150,9 @@ Now we need to change the boot config to be able to boot on the SSD.&lt;/p&gt;
 		<summary>&lt;p&gt;Since the beginning I've never had an issue with my Xiaomi sensors but for no reason one of them started to not update his status.&lt;/p&gt;</summary>
 	</entry>
 	<entry>
-		<id>https://fabmoll.github.io/posts/HowToDisplayDeviceNameInYourPiHole</id>
+		<id>https://www.fabmoll.be/posts/HowToDisplayDeviceNameInYourPiHole</id>
 		<title>How to display device name in your Pi-hole</title>
-		<link href="https://fabmoll.github.io/posts/HowToDisplayDeviceNameInYourPiHole" />
+		<link href="https://www.fabmoll.be/posts/HowToDisplayDeviceNameInYourPiHole" />
 		<updated>2021-01-03T00:00:00Z</updated>
 		<content>&lt;p&gt;When your &lt;a href="https://pi-hole.net/" target="_blank"&gt;Pi-hole&lt;/a&gt; doesn't act as a DHCP server (because you already have another one) you'll able to see only the IP addresses of the devices.&lt;/p&gt;
 &lt;p&gt;Not really user-friendly when you need to analyze the log of the Pi-Hole.&lt;/p&gt;
@@ -165,9 +165,9 @@ Now we need to change the boot config to be able to boot on the SSD.&lt;/p&gt;
 		<summary>&lt;p&gt;When your &lt;a href="https://pi-hole.net/" target="_blank"&gt;Pi-hole&lt;/a&gt; doesn't act as a DHCP server (because you already have another one) you'll able to see only the IP addresses of the devices.&lt;/p&gt;</summary>
 	</entry>
 	<entry>
-		<id>https://fabmoll.github.io/posts/AcceptDNSQueriesToSpecificIPAddressesWithinYourDreamMachinePro</id>
+		<id>https://www.fabmoll.be/posts/AcceptDNSQueriesToSpecificIPAddressesWithinYourDreamMachinePro</id>
 		<title>Accept DNS queries to specific IP addresses within your Dream Machine Pro</title>
-		<link href="https://fabmoll.github.io/posts/AcceptDNSQueriesToSpecificIPAddressesWithinYourDreamMachinePro" />
+		<link href="https://www.fabmoll.be/posts/AcceptDNSQueriesToSpecificIPAddressesWithinYourDreamMachinePro" />
 		<updated>2020-12-27T00:00:00Z</updated>
 		<content>&lt;p&gt;Holidays are nice when you want to try something new.&lt;br /&gt;
 In my case, I wanted to install a &lt;a href="https://pi-hole.net/" target="_blank"&gt;Pi-Hole&lt;/a&gt;.&lt;br /&gt;
@@ -221,9 +221,9 @@ In my case, I wanted to install a &lt;a href="https://pi-hole.net/" target="_bla
 If you never heard about Pi-Hole, it's a DNS sinkhole that protects your devices from unwanted content, without installing any client-side software.&lt;/p&gt;</summary>
 	</entry>
 	<entry>
-		<id>https://fabmoll.github.io/posts/ChangeProximusInternetPassword</id>
+		<id>https://www.fabmoll.be/posts/ChangeProximusInternetPassword</id>
 		<title>Change Proximus Internet password</title>
-		<link href="https://fabmoll.github.io/posts/ChangeProximusInternetPassword" />
+		<link href="https://www.fabmoll.be/posts/ChangeProximusInternetPassword" />
 		<updated>2020-12-24T00:00:00Z</updated>
 		<content>&lt;p&gt;In some cases you'll handle the PPPoE connection in your router.&lt;br /&gt;
 The main reason is to connect to the Proximus network from your router and let your personal hardware manage the DHCP.&lt;/p&gt;
@@ -251,9 +251,9 @@ In fact, the new password &lt;strong&gt;must be eight characters long and it mus
 The main reason is to connect to the Proximus network from your router and let your personal hardware manage the DHCP.&lt;/p&gt;</summary>
 	</entry>
 	<entry>
-		<id>https://fabmoll.github.io/posts/ChangeStatusBarColorInXamarinForms</id>
+		<id>https://www.fabmoll.be/posts/ChangeStatusBarColorInXamarinForms</id>
 		<title>Change the status bar color in your Xamarin.Forms app</title>
-		<link href="https://fabmoll.github.io/posts/ChangeStatusBarColorInXamarinForms" />
+		<link href="https://www.fabmoll.be/posts/ChangeStatusBarColorInXamarinForms" />
 		<updated>2020-10-05T00:00:00Z</updated>
 		<content>&lt;p&gt;It's the second time I need to change the status bar color in a Xamarin.Forms (Android) and I didn't remember how to do it.&lt;/p&gt;
 &lt;p&gt;As I don't want to search it again, I decided to add the information here.&lt;/p&gt;
@@ -267,9 +267,9 @@ The main reason is to connect to the Proximus network from your router and let y
 		<summary>&lt;p&gt;It's the second time I need to change the status bar color in a Xamarin.Forms (Android) and I didn't remember how to do it.&lt;/p&gt;</summary>
 	</entry>
 	<entry>
-		<id>https://fabmoll.github.io/posts/FrameHeightRequestNotApplied</id>
+		<id>https://www.fabmoll.be/posts/FrameHeightRequestNotApplied</id>
 		<title>Frame HeightRequest not applied</title>
-		<link href="https://fabmoll.github.io/posts/FrameHeightRequestNotApplied" />
+		<link href="https://www.fabmoll.be/posts/FrameHeightRequestNotApplied" />
 		<updated>2020-01-16T00:00:00Z</updated>
 		<content>&lt;p&gt;For each of my items in the ListView, I wanted to display the title of the show and the remaining episodes.&lt;br /&gt;
 But it can be really difficult to see the label on an image.&lt;/p&gt;
@@ -304,9 +304,9 @@ As you can see, the HeightRequest seems to be ignored. It's bigger than expected
 But it can be really difficult to see the label on an image.&lt;/p&gt;</summary>
 	</entry>
 	<entry>
-		<id>https://fabmoll.github.io/posts/SyntaxHighlightingInWyam</id>
+		<id>https://www.fabmoll.be/posts/SyntaxHighlightingInWyam</id>
 		<title>Syntax Highlighting In Wyam</title>
-		<link href="https://fabmoll.github.io/posts/SyntaxHighlightingInWyam" />
+		<link href="https://www.fabmoll.be/posts/SyntaxHighlightingInWyam" />
 		<updated>2020-01-05T00:00:00Z</updated>
 		<content>&lt;p&gt;In my previous blog &lt;a href="/posts/RowHeightInListViewItemTemplate"&gt;post&lt;/a&gt; I saw that the syntax highlighting was weird on a phone.&lt;br /&gt;
 A carriage return was added automatically instead of taking advantage of the &lt;em&gt;power&lt;/em&gt; of a scrollbar.&lt;/p&gt;
@@ -329,9 +329,9 @@ Build your blog and start the preview to see the result.
 A carriage return was added automatically instead of taking advantage of the &lt;em&gt;power&lt;/em&gt; of a scrollbar.&lt;/p&gt;</summary>
 	</entry>
 	<entry>
-		<id>https://fabmoll.github.io/posts/RowHeightInListViewItemTemplate</id>
+		<id>https://www.fabmoll.be/posts/RowHeightInListViewItemTemplate</id>
 		<title>Row height in ListView ItemTemplate</title>
-		<link href="https://fabmoll.github.io/posts/RowHeightInListViewItemTemplate" />
+		<link href="https://www.fabmoll.be/posts/RowHeightInListViewItemTemplate" />
 		<updated>2020-01-04T00:00:00Z</updated>
 		<content>&lt;p&gt;In my App I wanted to have a view for my TV shows.&lt;br /&gt;
 As I have a WPF and Windows Phone background, I tried to set the row height on the Grid RowDefinition.&lt;/p&gt;
@@ -387,9 +387,9 @@ As I have a WPF and Windows Phone background, I tried to set the row height on t
 As I have a WPF and Windows Phone background, I tried to set the row height on the Grid RowDefinition.&lt;/p&gt;</summary>
 	</entry>
 	<entry>
-		<id>https://fabmoll.github.io/posts/first-post</id>
+		<id>https://www.fabmoll.be/posts/first-post</id>
 		<title>A new adventure</title>
-		<link href="https://fabmoll.github.io/posts/first-post" />
+		<link href="https://www.fabmoll.be/posts/first-post" />
 		<updated>2019-11-19T00:00:00Z</updated>
 		<content>&lt;p&gt;Yeah! The first post.&lt;br /&gt;
 I really wanted to start my blog and I finally decided to install everything to do so.&lt;br /&gt;

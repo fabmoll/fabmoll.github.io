@@ -2,16 +2,16 @@
 <rss xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
 	<channel>
 		<title>Fabrice Moll</title>
-		<link>https://fabmoll.github.io/</link>
+		<link>https://www.fabmoll.be/</link>
 		<description />
 		<copyright>2021</copyright>
-		<pubDate>Fri, 16 Jul 2021 11:38:57 GMT</pubDate>
-		<lastBuildDate>Fri, 16 Jul 2021 11:38:57 GMT</lastBuildDate>
+		<pubDate>Fri, 16 Jul 2021 11:44:42 GMT</pubDate>
+		<lastBuildDate>Fri, 16 Jul 2021 11:44:42 GMT</lastBuildDate>
 		<item>
 			<title>CSS currentColor value</title>
-			<link>https://fabmoll.github.io/posts/CSScurrentColorValue</link>
+			<link>https://www.fabmoll.be/posts/CSScurrentColorValue</link>
 			<description>&lt;p&gt;A few days ago, I started to learn CSS and HTML.  I already played with CSS and HTML but I had a very very limited knowledge.&lt;/p&gt;</description>
-			<guid>https://fabmoll.github.io/posts/CSScurrentColorValue</guid>
+			<guid>https://www.fabmoll.be/posts/CSScurrentColorValue</guid>
 			<pubDate>Fri, 16 Jul 2021 00:00:00 GMT</pubDate>
 			<content:encoded>&lt;p&gt;A few days ago, I started to learn CSS and HTML.  I already played with CSS and HTML but I had a very very limited knowledge.&lt;/p&gt;
 &lt;p&gt;As I don't like to repeat a code or a property value, I found recently that you can apply a color (defined once) in different properties.&lt;/p&gt;
@@ -35,9 +35,9 @@ div {
 		</item>
 		<item>
 			<title>Update Jeedom from version 4.0.x to 4.1.x</title>
-			<link>https://fabmoll.github.io/posts/UpdateJeedomFromVersion4_0_xTo4_1_x</link>
+			<link>https://www.fabmoll.be/posts/UpdateJeedomFromVersion4_0_xTo4_1_x</link>
 			<description>&lt;p&gt;Well, Mr. Hunt, this is not Mission: Difficult, its Mission: Impossible. Difficult should be a walk in the park for you. - &lt;em&gt;Boss, Mission: Impossible 2&lt;/em&gt;&lt;/p&gt;</description>
-			<guid>https://fabmoll.github.io/posts/UpdateJeedomFromVersion4_0_xTo4_1_x</guid>
+			<guid>https://www.fabmoll.be/posts/UpdateJeedomFromVersion4_0_xTo4_1_x</guid>
 			<pubDate>Sun, 24 Jan 2021 00:00:00 GMT</pubDate>
 			<content:encoded>&lt;blockquote class="blockquote"&gt;
 &lt;p&gt;Well, Mr. Hunt, this is not Mission: Difficult, its Mission: Impossible. Difficult should be a walk in the park for you. - &lt;em&gt;Boss, Mission: Impossible 2&lt;/em&gt;&lt;/p&gt;
@@ -129,9 +129,9 @@ Now we need to change the boot config to be able to boot on the SSD.&lt;/p&gt;
 		</item>
 		<item>
 			<title>Refresh the Xiaomi door sensor status with a scenario in Jeedom</title>
-			<link>https://fabmoll.github.io/posts/RefreshTheXiaomiDoorSensorStatusWithAScenario</link>
+			<link>https://www.fabmoll.be/posts/RefreshTheXiaomiDoorSensorStatusWithAScenario</link>
 			<description>&lt;p&gt;Since the beginning I've never had an issue with my Xiaomi sensors but for no reason one of them started to not update his status.&lt;/p&gt;</description>
-			<guid>https://fabmoll.github.io/posts/RefreshTheXiaomiDoorSensorStatusWithAScenario</guid>
+			<guid>https://www.fabmoll.be/posts/RefreshTheXiaomiDoorSensorStatusWithAScenario</guid>
 			<pubDate>Sun, 10 Jan 2021 00:00:00 GMT</pubDate>
 			<content:encoded>&lt;p&gt;Since the beginning I've never had an issue with my Xiaomi sensors but for no reason one of them started to not update his status.&lt;/p&gt;
 &lt;p&gt;If I close the door Jeedom still displays the door as opened.&lt;/p&gt;
@@ -153,9 +153,9 @@ Now we need to change the boot config to be able to boot on the SSD.&lt;/p&gt;
 		</item>
 		<item>
 			<title>How to display device name in your Pi-hole</title>
-			<link>https://fabmoll.github.io/posts/HowToDisplayDeviceNameInYourPiHole</link>
+			<link>https://www.fabmoll.be/posts/HowToDisplayDeviceNameInYourPiHole</link>
 			<description>&lt;p&gt;When your &lt;a href="https://pi-hole.net/" target="_blank"&gt;Pi-hole&lt;/a&gt; doesn't act as a DHCP server (because you already have another one) you'll able to see only the IP addresses of the devices.&lt;/p&gt;</description>
-			<guid>https://fabmoll.github.io/posts/HowToDisplayDeviceNameInYourPiHole</guid>
+			<guid>https://www.fabmoll.be/posts/HowToDisplayDeviceNameInYourPiHole</guid>
 			<pubDate>Sun, 03 Jan 2021 00:00:00 GMT</pubDate>
 			<content:encoded>&lt;p&gt;When your &lt;a href="https://pi-hole.net/" target="_blank"&gt;Pi-hole&lt;/a&gt; doesn't act as a DHCP server (because you already have another one) you'll able to see only the IP addresses of the devices.&lt;/p&gt;
 &lt;p&gt;Not really user-friendly when you need to analyze the log of the Pi-Hole.&lt;/p&gt;
@@ -168,11 +168,11 @@ Now we need to change the boot config to be able to boot on the SSD.&lt;/p&gt;
 		</item>
 		<item>
 			<title>Accept DNS queries to specific IP addresses within your Dream Machine Pro</title>
-			<link>https://fabmoll.github.io/posts/AcceptDNSQueriesToSpecificIPAddressesWithinYourDreamMachinePro</link>
+			<link>https://www.fabmoll.be/posts/AcceptDNSQueriesToSpecificIPAddressesWithinYourDreamMachinePro</link>
 			<description>&lt;p&gt;Holidays are nice when you want to try something new.&lt;br&gt;
 In my case, I wanted to install a &lt;a href="https://pi-hole.net/" target="_blank"&gt;Pi-Hole&lt;/a&gt;.&lt;br&gt;
 If you never heard about Pi-Hole, it's a DNS sinkhole that protects your devices from unwanted content, without installing any client-side software.&lt;/p&gt;</description>
-			<guid>https://fabmoll.github.io/posts/AcceptDNSQueriesToSpecificIPAddressesWithinYourDreamMachinePro</guid>
+			<guid>https://www.fabmoll.be/posts/AcceptDNSQueriesToSpecificIPAddressesWithinYourDreamMachinePro</guid>
 			<pubDate>Sun, 27 Dec 2020 00:00:00 GMT</pubDate>
 			<content:encoded>&lt;p&gt;Holidays are nice when you want to try something new.&lt;br /&gt;
 In my case, I wanted to install a &lt;a href="https://pi-hole.net/" target="_blank"&gt;Pi-Hole&lt;/a&gt;.&lt;br /&gt;
@@ -224,10 +224,10 @@ Here we'll see how to create firewall rules on the Dream Machine Pro to refuse a
 		</item>
 		<item>
 			<title>Change Proximus Internet password</title>
-			<link>https://fabmoll.github.io/posts/ChangeProximusInternetPassword</link>
+			<link>https://www.fabmoll.be/posts/ChangeProximusInternetPassword</link>
 			<description>&lt;p&gt;In some cases you'll handle the PPPoE connection in your router.&lt;br&gt;
 The main reason is to connect to the Proximus network from your router and let your personal hardware manage the DHCP.&lt;/p&gt;</description>
-			<guid>https://fabmoll.github.io/posts/ChangeProximusInternetPassword</guid>
+			<guid>https://www.fabmoll.be/posts/ChangeProximusInternetPassword</guid>
 			<pubDate>Thu, 24 Dec 2020 00:00:00 GMT</pubDate>
 			<content:encoded>&lt;p&gt;In some cases you'll handle the PPPoE connection in your router.&lt;br /&gt;
 The main reason is to connect to the Proximus network from your router and let your personal hardware manage the DHCP.&lt;/p&gt;
@@ -254,9 +254,9 @@ In fact, the new password &lt;strong&gt;must be eight characters long and it mus
 		</item>
 		<item>
 			<title>Change the status bar color in your Xamarin.Forms app</title>
-			<link>https://fabmoll.github.io/posts/ChangeStatusBarColorInXamarinForms</link>
+			<link>https://www.fabmoll.be/posts/ChangeStatusBarColorInXamarinForms</link>
 			<description>&lt;p&gt;It's the second time I need to change the status bar color in a Xamarin.Forms (Android) and I didn't remember how to do it.&lt;/p&gt;</description>
-			<guid>https://fabmoll.github.io/posts/ChangeStatusBarColorInXamarinForms</guid>
+			<guid>https://www.fabmoll.be/posts/ChangeStatusBarColorInXamarinForms</guid>
 			<pubDate>Mon, 05 Oct 2020 00:00:00 GMT</pubDate>
 			<content:encoded>&lt;p&gt;It's the second time I need to change the status bar color in a Xamarin.Forms (Android) and I didn't remember how to do it.&lt;/p&gt;
 &lt;p&gt;As I don't want to search it again, I decided to add the information here.&lt;/p&gt;
@@ -270,10 +270,10 @@ In fact, the new password &lt;strong&gt;must be eight characters long and it mus
 		</item>
 		<item>
 			<title>Frame HeightRequest not applied</title>
-			<link>https://fabmoll.github.io/posts/FrameHeightRequestNotApplied</link>
+			<link>https://www.fabmoll.be/posts/FrameHeightRequestNotApplied</link>
 			<description>&lt;p&gt;For each of my items in the ListView, I wanted to display the title of the show and the remaining episodes.&lt;br&gt;
 But it can be really difficult to see the label on an image.&lt;/p&gt;</description>
-			<guid>https://fabmoll.github.io/posts/FrameHeightRequestNotApplied</guid>
+			<guid>https://www.fabmoll.be/posts/FrameHeightRequestNotApplied</guid>
 			<pubDate>Thu, 16 Jan 2020 00:00:00 GMT</pubDate>
 			<content:encoded>&lt;p&gt;For each of my items in the ListView, I wanted to display the title of the show and the remaining episodes.&lt;br /&gt;
 But it can be really difficult to see the label on an image.&lt;/p&gt;
@@ -307,10 +307,10 @@ As you can see, the HeightRequest seems to be ignored. It's bigger than expected
 		</item>
 		<item>
 			<title>Syntax Highlighting In Wyam</title>
-			<link>https://fabmoll.github.io/posts/SyntaxHighlightingInWyam</link>
+			<link>https://www.fabmoll.be/posts/SyntaxHighlightingInWyam</link>
 			<description>&lt;p&gt;In my previous blog &lt;a href="/posts/RowHeightInListViewItemTemplate"&gt;post&lt;/a&gt; I saw that the syntax highlighting was weird on a phone.&lt;br&gt;
 A carriage return was added automatically instead of taking advantage of the &lt;em&gt;power&lt;/em&gt; of a scrollbar.&lt;/p&gt;</description>
-			<guid>https://fabmoll.github.io/posts/SyntaxHighlightingInWyam</guid>
+			<guid>https://www.fabmoll.be/posts/SyntaxHighlightingInWyam</guid>
 			<pubDate>Sun, 05 Jan 2020 00:00:00 GMT</pubDate>
 			<content:encoded>&lt;p&gt;In my previous blog &lt;a href="/posts/RowHeightInListViewItemTemplate"&gt;post&lt;/a&gt; I saw that the syntax highlighting was weird on a phone.&lt;br /&gt;
 A carriage return was added automatically instead of taking advantage of the &lt;em&gt;power&lt;/em&gt; of a scrollbar.&lt;/p&gt;
@@ -332,10 +332,10 @@ Build your blog and start the preview to see the result.
 		</item>
 		<item>
 			<title>Row height in ListView ItemTemplate</title>
-			<link>https://fabmoll.github.io/posts/RowHeightInListViewItemTemplate</link>
+			<link>https://www.fabmoll.be/posts/RowHeightInListViewItemTemplate</link>
 			<description>&lt;p&gt;In my App I wanted to have a view for my TV shows.&lt;br&gt;
 As I have a WPF and Windows Phone background, I tried to set the row height on the Grid RowDefinition.&lt;/p&gt;</description>
-			<guid>https://fabmoll.github.io/posts/RowHeightInListViewItemTemplate</guid>
+			<guid>https://www.fabmoll.be/posts/RowHeightInListViewItemTemplate</guid>
 			<pubDate>Sat, 04 Jan 2020 00:00:00 GMT</pubDate>
 			<content:encoded>&lt;p&gt;In my App I wanted to have a view for my TV shows.&lt;br /&gt;
 As I have a WPF and Windows Phone background, I tried to set the row height on the Grid RowDefinition.&lt;/p&gt;
@@ -390,11 +390,11 @@ As I have a WPF and Windows Phone background, I tried to set the row height on t
 		</item>
 		<item>
 			<title>A new adventure</title>
-			<link>https://fabmoll.github.io/posts/first-post</link>
+			<link>https://www.fabmoll.be/posts/first-post</link>
 			<description>&lt;p&gt;Yeah! The first post.&lt;br&gt;
 I really wanted to start my blog and I finally decided to install everything to do so.&lt;br&gt;
 Even if you only see a simple page, I had a fun time with my Azure Pipeline.&lt;/p&gt;</description>
-			<guid>https://fabmoll.github.io/posts/first-post</guid>
+			<guid>https://www.fabmoll.be/posts/first-post</guid>
 			<pubDate>Tue, 19 Nov 2019 00:00:00 GMT</pubDate>
 			<content:encoded>&lt;p&gt;Yeah! The first post.&lt;br /&gt;
 I really wanted to start my blog and I finally decided to install everything to do so.&lt;br /&gt;
