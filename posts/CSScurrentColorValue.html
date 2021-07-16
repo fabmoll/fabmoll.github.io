@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 
-        <title>Fabrice Moll - WYAM</title>
+        <title>Fabrice Moll - CSS currentColor value</title>
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">        
 
@@ -28,9 +28,9 @@
         <meta name="msapplication-tooltip" content="Fabrice Moll" />
         <meta name="msapplication-starturl" content="/" />
 
-        <meta property="og:title" content="Fabrice Moll - WYAM" />
+        <meta property="og:title" content="Fabrice Moll - CSS currentColor value" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://fabmoll.github.io/tags/WYAM" />
+        <meta property="og:url" content="https://fabmoll.github.io/posts/CSScurrentColorValue" />
         <!-- TODO: More social graph meta tags -->
 
         
@@ -72,9 +72,18 @@
                         <div class="container">
                                 <div class="row">
                                         <div class="col-md-12">
-<div class="site-heading">
-    <h1>WYAM</h1>
-</div>                                            </div>
+
+    
+<div class="post-heading">
+    <h1>CSS currentColor value</h1>
+    <div class="meta">        
+Friday, July 16, 2021 - Posted in 
+                                        <a role="button" href="/tags/CSS" class="post-meta">CSS</a>
+
+                </div>
+   
+</div>
+                                        </div>
                                 </div>
                         </div>
                 </header>
@@ -83,40 +92,57 @@
                 <div class="container">
                         <div class="row">
                                 <div id="content" class="col-md-12">
-                                        <div class="container-sm-height">
-    <div class="row row-sm-height">
-        <div class="col-sm-8 right-border col-sm-height">
-            
-        <div class="post-list">
-            <a href="/posts/SyntaxHighlightingInWyam">
-                <h3 class="post-title">Syntax Highlighting In Wyam</h3>
-            </a>
-            <p class="post-meta">Posted on Sunday, January 5, 2020</p>      
-        </div>   
+                                        
+
+<p>A few days ago, I started to learn CSS and HTML.  I already played with CSS and HTML but I had a very very limited knowledge.</p>
+<p>As I don't like to repeat a code or a property value, I found recently that you can apply a color (defined once) in different properties.</p>
+<p>Let's see an example:</p>
+<pre><code class="language-css">div {
+    color: blue;
+    border: 1px solid currentColor;
+}
+</code></pre>
+<p>With the <strong>currentColor</strong> property you indicate that you'll use the value of the color property in other properties that accept a color value.</p>
+<p>With my example, the border color will be blue.</p>
+<p>You can even use it in a cascade:</p>
+<pre><code class="language-css">body {
+    color: blue;
+}
+body {
+     border: 1px solid currentColor;
+}
+</code></pre>
 
 
-            <nav>
-                <ul class="pager">
-                    <li class="previous">                
-                    </li>
-                    <li class="next">
-                    </li>
-                </ul>
-            </nav>
-            <hr class="visible-xs-block" />
-        </div>
-		
-        <div class="col-sm-4 col-sm-height">
-                <a role="button" href="/tags/NETWORK" class="btn btn-default btn-xs">NETWORK (3)</a>
-                <a role="button" href="/tags/XAMARIN" class="btn btn-default btn-xs">XAMARIN (2)</a>
-                <a role="button" href="/tags/JEEDOM" class="btn btn-default btn-xs">JEEDOM (2)</a>
-                <a role="button" href="/tags/CSS" class="btn btn-default btn-xs">CSS (1)</a>
-                <a role="button" href="/tags/WYAM" class="btn btn-primary btn-xs">WYAM (1)</a>
-                <a role="button" href="/tags/Introduction" class="btn btn-default btn-xs">Introduction (1)</a>
-                <a role="button" href="/tags/XAMARINFORMS" class="btn btn-default btn-xs">XAMARIN.FORMS (1)</a>
-        </div>
-    </div>
-</div>
+  <div class="item-footer-tools">
+                        Share on: <a href="https://twitter.com/intent/tweet?url=https://fabmoll.github.io/posts/CSScurrentColorValue&text=Fabrice Moll&via=fabmoll">Twitter</a>, <a href="https://facebook.com/sharer.php?u=https://fabmoll.github.io/posts/CSScurrentColorValue">Facebook</a> or use the 
+                                  <a href="https://fabmoll.github.io/posts/CSScurrentColorValue" class="permalink" rel="bookmark">Permalink</a>
+</div> 
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'fabricemoll'; // required: replace example with your forum shortname
+    var disqus_identifier = 'CSScurrentColorValue';
+    var disqus_title = 'CSS currentColor value';
+    var disqus_url = 'https://fabmoll.github.io/posts/CSScurrentColorValue';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
                                 </div>
                         </div>
                 </div>

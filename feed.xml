@@ -5,8 +5,34 @@
 		<link>https://fabmoll.github.io/</link>
 		<description />
 		<copyright>2021</copyright>
-		<pubDate>Thu, 15 Jul 2021 12:00:19 GMT</pubDate>
-		<lastBuildDate>Thu, 15 Jul 2021 12:00:19 GMT</lastBuildDate>
+		<pubDate>Fri, 16 Jul 2021 09:03:17 GMT</pubDate>
+		<lastBuildDate>Fri, 16 Jul 2021 09:03:17 GMT</lastBuildDate>
+		<item>
+			<title>CSS currentColor value</title>
+			<link>https://fabmoll.github.io/posts/CSScurrentColorValue</link>
+			<description>&lt;p&gt;A few days ago, I started to learn CSS and HTML.  I already played with CSS and HTML but I had a very very limited knowledge.&lt;/p&gt;</description>
+			<guid>https://fabmoll.github.io/posts/CSScurrentColorValue</guid>
+			<pubDate>Fri, 16 Jul 2021 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;A few days ago, I started to learn CSS and HTML.  I already played with CSS and HTML but I had a very very limited knowledge.&lt;/p&gt;
+&lt;p&gt;As I don't like to repeat a code or a property value, I found recently that you can apply a color (defined once) in different properties.&lt;/p&gt;
+&lt;p&gt;Let's see an example:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-css"&gt;div {
+    color: blue;
+    border: 1px solid currentColor;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;With the &lt;strong&gt;currentColor&lt;/strong&gt; property you indicate that you'll use the value of the color property in other properties that accept a color value.&lt;/p&gt;
+&lt;p&gt;With my example, the border color will be blue.&lt;/p&gt;
+&lt;p&gt;You can even use it in a cascade:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-css"&gt;body {
+    color: blue;
+}
+body {
+     border: 1px solid currentColor;
+}
+&lt;/code&gt;&lt;/pre&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Update Jeedom from version 4.0.x to 4.1.x</title>
 			<link>https://fabmoll.github.io/posts/UpdateJeedomFromVersion4_0_xTo4_1_x</link>
