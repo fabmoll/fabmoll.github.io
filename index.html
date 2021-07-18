@@ -89,6 +89,45 @@
 <div class="row">
     <div style="padding-right:15px;padding-left:15px">
                 <div class="post-preview">
+                    <a href="/posts/CreateADynHostToAccessJeedom">
+                        <h2 class="post-title">Create a DynHost to access your Jeedom</h2>
+                    </a>
+                    <p class="post-meta">Sunday, July 18, 2021 - Posted in 
+                                       
+                                <!-- <div class="tags"> -->
+                                            <a role="button" href="/tags/JEEDOM" class="post-meta">JEEDOM</a>
+                                <!-- </div>      -->
+                    </p>
+
+<p>If you want to access your Jeedom from outside your private network, you can do it using your public IP address or using a custom domain name pointing to your public IP address (if the HTTP or HTTPS port is opened).</p>
+<p>For me and maybe for you, it's easier to remember a custom domain name and I decided to go with one on <a href="ovh.com" target="_blank">OVH</a>.</p>
+<p>Now that I have my custom domain I would like to use it to access my Jeedom and trust me or not, I didn't know it was so simple.</p>
+<h1 id="create-a-new-user">Create a new user</h1>
+<p style="text-align:center;">
+<img src="../images/OVHCreateUser.png" align="center"/></p>
+<p>Go in the DynHost menu and choose to create a username.</p>
+<p style="text-align:center;">
+<img src="../images/CreateUserOVHDetail.png" align="center"/></p>
+<ul>
+<li>Enter a username suffix</li>
+<li>Enter the sub-domain that you want to define to point to your Jeedom</li>
+<li>Define a password to use with your username and confirm</li>
+</ul>
+<h1 id="create-a-dynhostrecord">Create a DynHostRecord</h1>
+<p>When it's done, you can add a new DynHost record and re-enter the sub-domain name you choosed earlier, enter the target IP (the public IP address of your Jeedom) and confirm.</p>
+<p style="text-align:center;">
+<img src="../images/DynHostRecord.png" align="center"/></p>
+<p style="text-align:center;">
+<img src="../images/DynHostRecordDetail.png" align="center"/></p>
+<p><em>If you want to know your public IP address you can go to <a href="https://whatismyipaddress.com/" target="_blank">whatismyipaddress</a> and copy the address displayed in the IPv4 field.</em></p>
+<p>In an upcoming blog post, we'll see how to automatically refresh your public IP address to DynHost (if you don't have a fixed IP address) and how to redirect incoming traffic on the HTTP port to your Jeedom.</p>
+                    
+                    <div class="item-footer-tools">
+                        Share on: <a href="https://twitter.com/intent/tweet?url=https://www.fabmoll.be/posts/CreateADynHostToAccessJeedom&text=Fabrice Moll&via=fabmoll">Twitter</a>, <a href="https://facebook.com/sharer.php?u=https://www.fabmoll.be/posts/CreateADynHostToAccessJeedom">Facebook</a> or use the 
+                                  <a href="https://www.fabmoll.be/posts/CreateADynHostToAccessJeedom" class="permalink" rel="bookmark">Permalink</a>
+                    </div>            
+                </div>       
+                <div class="post-preview">
                     <a href="/posts/CSScurrentColorValue">
                         <h2 class="post-title">CSS currentColor value</h2>
                     </a>
@@ -283,69 +322,6 @@ Now we need to change the boot config to be able to boot on the SSD.</p>
                                   <a href="https://www.fabmoll.be/posts/HowToDisplayDeviceNameInYourPiHole" class="permalink" rel="bookmark">Permalink</a>
                     </div>            
                 </div>       
-                <div class="post-preview">
-                    <a href="/posts/AcceptDNSQueriesToSpecificIPAddressesWithinYourDreamMachinePro">
-                        <h2 class="post-title">Accept DNS queries to specific IP addresses within your Dream Machine Pro</h2>
-                    </a>
-                    <p class="post-meta">Sunday, December 27, 2020 - Posted in 
-                                       
-                                <!-- <div class="tags"> -->
-                                            <a role="button" href="/tags/NETWORK" class="post-meta">NETWORK</a>
-                                <!-- </div>      -->
-                    </p>
-
-<p>Holidays are nice when you want to try something new.<br />
-In my case, I wanted to install a <a href="https://pi-hole.net/" target="_blank">Pi-Hole</a>.<br />
-If you never heard about Pi-Hole, it's a DNS sinkhole that protects your devices from unwanted content, without installing any client-side software.</p>
-<p>My post isn't a <em>How-to</em> install/configure/... the thing.<br />
-Here we'll see how to create firewall rules on the Dream Machine Pro to refuse all DNS queries except the one to the Pi-Hole.</p>
-<p>The first thing to do is to create two groups in the firewall settings.</p>
-<p>One to specify the DNS port to block (53) and another one to contain the IP addresses that will be used to accept DNS queries (The Pi-Hole address and maybe some other DNS addresses).</p>
-<p>I use groups to be able to add/remove address or port as I wish.</p>
-<p><strong>First group</strong></p>
-<ul>
-<li>Name: DNS Port</li>
-<li>Type: Port</li>
-<li>Port value: 53</li>
-</ul>
-<p><strong>Second group</strong></p>
-<ul>
-<li>Name: DNS to Accept</li>
-<li>Type: Address IPV4</li>
-<li>Address: The address of your PI-Hole and maybe some other public DNS addresses</li>
-</ul>
-<p>When it's done, we need to create two firewall rules.  One to block all outbound traffic to the port 53 and another one to accept all outbound traffic to the port 53 but only for the addresses we trust.</p>
-<p><strong>First rule</strong></p>
-<ul>
-<li>Name: Accept DNS Group</li>
-<li>Rule applied: Before predefined rules</li>
-<li>Action: Accept</li>
-<li>Source Type: Address/Port group</li>
-<li>Source IPv4 Address Group: Any</li>
-<li>Source Port Group: Any</li>
-<li>Destination Type: Address/Port group</li>
-<li>Destination IPv4 Address Group: DNS to Accept (the second group we created)</li>
-<li>Destination Port Group: DNS Port (the first group we created)</li>
-</ul>
-<p><strong>Second rule</strong></p>
-<ul>
-<li>Name: Drop other DNS</li>
-<li>Rule applied: Before predefined rules</li>
-<li>Action: Drop</li>
-<li>Source Type: Address/Port group</li>
-<li>Source IPv4 Address Group: Any</li>
-<li>Source Port Group: Any</li>
-<li>Destination Type: Address/Port group</li>
-<li>Destination IPv4 Address Group: Any</li>
-<li>Destination Port Group: DNS Port (the first group we created)</li>
-</ul>
-<p>With these rules, the devices connected to our LAN will only use the DNS we trust and if a malware tries to bypass our DNS, it will be blocked by the second firewall rule.</p>
-                    
-                    <div class="item-footer-tools">
-                        Share on: <a href="https://twitter.com/intent/tweet?url=https://www.fabmoll.be/posts/AcceptDNSQueriesToSpecificIPAddressesWithinYourDreamMachinePro&text=Fabrice Moll&via=fabmoll">Twitter</a>, <a href="https://facebook.com/sharer.php?u=https://www.fabmoll.be/posts/AcceptDNSQueriesToSpecificIPAddressesWithinYourDreamMachinePro">Facebook</a> or use the 
-                                  <a href="https://www.fabmoll.be/posts/AcceptDNSQueriesToSpecificIPAddressesWithinYourDreamMachinePro" class="permalink" rel="bookmark">Permalink</a>
-                    </div>            
-                </div>       
         <ul class="pager">
             <li class="previous">                
             </li>
@@ -360,12 +336,12 @@ Here we'll see how to create firewall rules on the Dream Machine Pro to refuse a
             <h5>Tags</h5>
             <div>
                     <a role="button" href="/tags/NETWORK" class="btn btn-default btn-sm"> NETWORK (3)</a>
-                    <a role="button" href="/tags/JEEDOM" class="btn btn-default btn-sm"> JEEDOM (2)</a>
+                    <a role="button" href="/tags/JEEDOM" class="btn btn-default btn-sm"> JEEDOM (3)</a>
                     <a role="button" href="/tags/XAMARIN" class="btn btn-default btn-sm"> XAMARIN (2)</a>
                     <a role="button" href="/tags/Introduction" class="btn btn-default btn-sm"> Introduction (1)</a>
-                    <a role="button" href="/tags/XAMARINFORMS" class="btn btn-default btn-sm"> XAMARIN.FORMS (1)</a>
                     <a role="button" href="/tags/CSS" class="btn btn-default btn-sm"> CSS (1)</a>
                     <a role="button" href="/tags/WYAM" class="btn btn-default btn-sm"> WYAM (1)</a>
+                    <a role="button" href="/tags/XAMARINFORMS" class="btn btn-default btn-sm"> XAMARIN.FORMS (1)</a>
             </div>
             <ul class="pager">
                 <li class="next">

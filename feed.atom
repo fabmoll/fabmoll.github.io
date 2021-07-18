@@ -4,7 +4,37 @@
 	<title>Fabrice Moll</title>
 	<link rel="self" href="https://www.fabmoll.be/" />
 	<rights>2021</rights>
-	<updated>2021-07-17T18:45:38Z</updated>
+	<updated>2021-07-18T09:02:31Z</updated>
+	<entry>
+		<id>https://www.fabmoll.be/posts/CreateADynHostToAccessJeedom</id>
+		<title>Create a DynHost to access your Jeedom</title>
+		<link href="https://www.fabmoll.be/posts/CreateADynHostToAccessJeedom" />
+		<updated>2021-07-18T00:00:00Z</updated>
+		<content>&lt;p&gt;If you want to access your Jeedom from outside your private network, you can do it using your public IP address or using a custom domain name pointing to your public IP address (if the HTTP or HTTPS port is opened).&lt;/p&gt;
+&lt;p&gt;For me and maybe for you, it's easier to remember a custom domain name and I decided to go with one on &lt;a href="ovh.com" target="_blank"&gt;OVH&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Now that I have my custom domain I would like to use it to access my Jeedom and trust me or not, I didn't know it was so simple.&lt;/p&gt;
+&lt;h1 id="create-a-new-user"&gt;Create a new user&lt;/h1&gt;
+&lt;p style="text-align:center;"&gt;
+&lt;img src="../images/OVHCreateUser.png" align="center"/&gt;&lt;/p&gt;
+&lt;p&gt;Go in the DynHost menu and choose to create a username.&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;
+&lt;img src="../images/CreateUserOVHDetail.png" align="center"/&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Enter a username suffix&lt;/li&gt;
+&lt;li&gt;Enter the sub-domain that you want to define to point to your Jeedom&lt;/li&gt;
+&lt;li&gt;Define a password to use with your username and confirm&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="create-a-dynhostrecord"&gt;Create a DynHostRecord&lt;/h1&gt;
+&lt;p&gt;When it's done, you can add a new DynHost record and re-enter the sub-domain name you choosed earlier, enter the target IP (the public IP address of your Jeedom) and confirm.&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;
+&lt;img src="../images/DynHostRecord.png" align="center"/&gt;&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;
+&lt;img src="../images/DynHostRecordDetail.png" align="center"/&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;If you want to know your public IP address you can go to &lt;a href="https://whatismyipaddress.com/" target="_blank"&gt;whatismyipaddress&lt;/a&gt; and copy the address displayed in the IPv4 field.&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;In an upcoming blog post, we'll see how to automatically refresh your public IP address to DynHost (if you don't have a fixed IP address) and how to redirect incoming traffic on the HTTP port to your Jeedom.&lt;/p&gt;
+</content>
+		<summary>&lt;p&gt;If you want to access your Jeedom from outside your private network, you can do it using your public IP address or using a custom domain name pointing to your public IP address (if the HTTP or HTTPS port is opened).&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>https://www.fabmoll.be/posts/CSScurrentColorValue</id>
 		<title>CSS currentColor value</title>

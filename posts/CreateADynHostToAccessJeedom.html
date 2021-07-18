@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 
-        <title>Fabrice Moll - XAMARIN.FORMS</title>
+        <title>Fabrice Moll - Create a DynHost to access your Jeedom</title>
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">        
 
@@ -28,9 +28,9 @@
         <meta name="msapplication-tooltip" content="Fabrice Moll" />
         <meta name="msapplication-starturl" content="/" />
 
-        <meta property="og:title" content="Fabrice Moll - XAMARIN.FORMS" />
+        <meta property="og:title" content="Fabrice Moll - Create a DynHost to access your Jeedom" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.fabmoll.be/tags/XAMARINFORMS" />
+        <meta property="og:url" content="https://www.fabmoll.be/posts/CreateADynHostToAccessJeedom" />
         <!-- TODO: More social graph meta tags -->
 
         
@@ -72,9 +72,18 @@
                         <div class="container">
                                 <div class="row">
                                         <div class="col-md-12">
-<div class="site-heading">
-    <h1>XAMARIN.FORMS</h1>
-</div>                                            </div>
+
+    
+<div class="post-heading">
+    <h1>Create a DynHost to access your Jeedom</h1>
+    <div class="meta">        
+Sunday, July 18, 2021 - Posted in 
+                                        <a role="button" href="/tags/JEEDOM" class="post-meta">JEEDOM</a>
+
+                </div>
+   
+</div>
+                                        </div>
                                 </div>
                         </div>
                 </header>
@@ -83,40 +92,61 @@
                 <div class="container">
                         <div class="row">
                                 <div id="content" class="col-md-12">
-                                        <div class="container-sm-height">
-    <div class="row row-sm-height">
-        <div class="col-sm-8 right-border col-sm-height">
-            
-        <div class="post-list">
-            <a href="/posts/ChangeStatusBarColorInXamarinForms">
-                <h3 class="post-title">Change the status bar color in your Xamarin.Forms app</h3>
-            </a>
-            <p class="post-meta">Posted on Monday, October 5, 2020</p>      
-        </div>   
+                                        
+
+<p>If you want to access your Jeedom from outside your private network, you can do it using your public IP address or using a custom domain name pointing to your public IP address (if the HTTP or HTTPS port is opened).</p>
+<p>For me and maybe for you, it's easier to remember a custom domain name and I decided to go with one on <a href="ovh.com" target="_blank">OVH</a>.</p>
+<p>Now that I have my custom domain I would like to use it to access my Jeedom and trust me or not, I didn't know it was so simple.</p>
+<h1 id="create-a-new-user">Create a new user</h1>
+<p style="text-align:center;">
+<img src="../images/OVHCreateUser.png" align="center"/></p>
+<p>Go in the DynHost menu and choose to create a username.</p>
+<p style="text-align:center;">
+<img src="../images/CreateUserOVHDetail.png" align="center"/></p>
+<ul>
+<li>Enter a username suffix</li>
+<li>Enter the sub-domain that you want to define to point to your Jeedom</li>
+<li>Define a password to use with your username and confirm</li>
+</ul>
+<h1 id="create-a-dynhostrecord">Create a DynHostRecord</h1>
+<p>When it's done, you can add a new DynHost record and re-enter the sub-domain name you choosed earlier, enter the target IP (the public IP address of your Jeedom) and confirm.</p>
+<p style="text-align:center;">
+<img src="../images/DynHostRecord.png" align="center"/></p>
+<p style="text-align:center;">
+<img src="../images/DynHostRecordDetail.png" align="center"/></p>
+<p><em>If you want to know your public IP address you can go to <a href="https://whatismyipaddress.com/" target="_blank">whatismyipaddress</a> and copy the address displayed in the IPv4 field.</em></p>
+<p>In an upcoming blog post, we'll see how to automatically refresh your public IP address to DynHost (if you don't have a fixed IP address) and how to redirect incoming traffic on the HTTP port to your Jeedom.</p>
 
 
-            <nav>
-                <ul class="pager">
-                    <li class="previous">                
-                    </li>
-                    <li class="next">
-                    </li>
-                </ul>
-            </nav>
-            <hr class="visible-xs-block" />
-        </div>
-		
-        <div class="col-sm-4 col-sm-height">
-                <a role="button" href="/tags/JEEDOM" class="btn btn-default btn-xs">JEEDOM (3)</a>
-                <a role="button" href="/tags/NETWORK" class="btn btn-default btn-xs">NETWORK (3)</a>
-                <a role="button" href="/tags/XAMARIN" class="btn btn-default btn-xs">XAMARIN (2)</a>
-                <a role="button" href="/tags/CSS" class="btn btn-default btn-xs">CSS (1)</a>
-                <a role="button" href="/tags/XAMARINFORMS" class="btn btn-primary btn-xs">XAMARIN.FORMS (1)</a>
-                <a role="button" href="/tags/WYAM" class="btn btn-default btn-xs">WYAM (1)</a>
-                <a role="button" href="/tags/Introduction" class="btn btn-default btn-xs">Introduction (1)</a>
-        </div>
-    </div>
-</div>
+  <div class="item-footer-tools">
+                        Share on: <a href="https://twitter.com/intent/tweet?url=https://www.fabmoll.be/posts/CreateADynHostToAccessJeedom&text=Fabrice Moll&via=fabmoll">Twitter</a>, <a href="https://facebook.com/sharer.php?u=https://www.fabmoll.be/posts/CreateADynHostToAccessJeedom">Facebook</a> or use the 
+                                  <a href="https://www.fabmoll.be/posts/CreateADynHostToAccessJeedom" class="permalink" rel="bookmark">Permalink</a>
+</div> 
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'fabricemoll'; // required: replace example with your forum shortname
+    var disqus_identifier = 'CreateADynHostToAccessJeedom';
+    var disqus_title = 'Create a DynHost to access your Jeedom';
+    var disqus_url = 'https://www.fabmoll.be/posts/CreateADynHostToAccessJeedom';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
                                 </div>
                         </div>
                 </div>
