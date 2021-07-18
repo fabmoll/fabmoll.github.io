@@ -4,7 +4,7 @@
 	<title>Fabrice Moll</title>
 	<link rel="self" href="https://www.fabmoll.be/" />
 	<rights>2021</rights>
-	<updated>2021-07-18T09:02:31Z</updated>
+	<updated>2021-07-18T12:38:41Z</updated>
 	<entry>
 		<id>https://www.fabmoll.be/posts/CreateADynHostToAccessJeedom</id>
 		<title>Create a DynHost to access your Jeedom</title>
@@ -31,7 +31,7 @@
 &lt;p style="text-align:center;"&gt;
 &lt;img src="../images/DynHostRecordDetail.png" align="center"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;If you want to know your public IP address you can go to &lt;a href="https://whatismyipaddress.com/" target="_blank"&gt;whatismyipaddress&lt;/a&gt; and copy the address displayed in the IPv4 field.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;In an upcoming blog post, we'll see how to automatically refresh your public IP address to DynHost (if you don't have a fixed IP address) and how to redirect incoming traffic on the HTTP port to your Jeedom.&lt;/p&gt;
+&lt;p&gt;In an upcoming blog &lt;a href="/posts/RedirectHTTPPortToJeedom"&gt;post&lt;/a&gt;, we'll see how to automatically refresh your public IP address to DynHost (if you don't have a fixed IP address) and how to redirect incoming traffic on the HTTP port to your Jeedom.&lt;/p&gt;
 </content>
 		<summary>&lt;p&gt;If you want to access your Jeedom from outside your private network, you can do it using your public IP address or using a custom domain name pointing to your public IP address (if the HTTP or HTTPS port is opened).&lt;/p&gt;</summary>
 	</entry>

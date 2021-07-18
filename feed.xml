@@ -5,8 +5,8 @@
 		<link>https://www.fabmoll.be/</link>
 		<description />
 		<copyright>2021</copyright>
-		<pubDate>Sun, 18 Jul 2021 09:02:31 GMT</pubDate>
-		<lastBuildDate>Sun, 18 Jul 2021 09:02:31 GMT</lastBuildDate>
+		<pubDate>Sun, 18 Jul 2021 12:38:41 GMT</pubDate>
+		<lastBuildDate>Sun, 18 Jul 2021 12:38:41 GMT</lastBuildDate>
 		<item>
 			<title>Create a DynHost to access your Jeedom</title>
 			<link>https://www.fabmoll.be/posts/CreateADynHostToAccessJeedom</link>
@@ -34,7 +34,7 @@
 &lt;p style="text-align:center;"&gt;
 &lt;img src="../images/DynHostRecordDetail.png" align="center"/&gt;&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;If you want to know your public IP address you can go to &lt;a href="https://whatismyipaddress.com/" target="_blank"&gt;whatismyipaddress&lt;/a&gt; and copy the address displayed in the IPv4 field.&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;In an upcoming blog post, we'll see how to automatically refresh your public IP address to DynHost (if you don't have a fixed IP address) and how to redirect incoming traffic on the HTTP port to your Jeedom.&lt;/p&gt;
+&lt;p&gt;In an upcoming blog &lt;a href="/posts/RedirectHTTPPortToJeedom"&gt;post&lt;/a&gt;, we'll see how to automatically refresh your public IP address to DynHost (if you don't have a fixed IP address) and how to redirect incoming traffic on the HTTP port to your Jeedom.&lt;/p&gt;
 </content:encoded>
 		</item>
 		<item>
