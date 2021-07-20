@@ -5,8 +5,30 @@
 		<link>https://www.fabmoll.be/</link>
 		<description />
 		<copyright>2021</copyright>
-		<pubDate>Mon, 19 Jul 2021 09:03:23 GMT</pubDate>
-		<lastBuildDate>Mon, 19 Jul 2021 09:03:23 GMT</lastBuildDate>
+		<pubDate>Tue, 20 Jul 2021 09:02:57 GMT</pubDate>
+		<lastBuildDate>Tue, 20 Jul 2021 09:02:57 GMT</lastBuildDate>
+		<item>
+			<title>Redirect HTTP/HTTPS port to your Jeedom</title>
+			<link>https://www.fabmoll.be/posts/RedirectHTTPPortToJeedom</link>
+			<description>&lt;p&gt;In the previous blog &lt;a href="/posts/CreateADynHostToAccessJeedom"&gt;post&lt;/a&gt; we saw how to create a custom domain name to point to our public IP address.
+The main goal was to be able to access our Jeedom from outside our private network.&lt;/p&gt;</description>
+			<guid>https://www.fabmoll.be/posts/RedirectHTTPPortToJeedom</guid>
+			<pubDate>Tue, 20 Jul 2021 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;In the previous blog &lt;a href="/posts/CreateADynHostToAccessJeedom"&gt;post&lt;/a&gt; we saw how to create a custom domain name to point to our public IP address.
+The main goal was to be able to access our Jeedom from outside our private network.&lt;/p&gt;
+&lt;p&gt;But if you just type your public IP address or use the new custom domain name to access Jeedom you'll just hit your modem or firewall and they'll not know what do to with the traffic. And you can be sure the traffic will not go to your Jeedom by default.&lt;/p&gt;
+&lt;p&gt;If you're using a Dream Machine Pro (controller 6.2.26) you can redirect the HTTP/HTTPS traffic to your Jeedom by following these steps:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open your Dream Machine Network Manager web page&lt;/li&gt;
+&lt;li&gt;Go to Advanced features - Advanced Gateway Settings and click on the Create a new Port Forwarding button&lt;/li&gt;
+&lt;li&gt;Fill in the form as below and validate&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p style="text-align:center;"&gt;
+&lt;img src="../images/NewPortForwardingRule.png" align="center"/&gt;&lt;/p&gt;
+&lt;p&gt;You can repeat the process to redirect the HTTPS port (443).&lt;/p&gt;
+&lt;p&gt;Now if you enter your custom domain in a browser, you'll be able to access your Jeedom in your private network&lt;/p&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Create a DynHost to access your Jeedom</title>
 			<link>https://www.fabmoll.be/posts/CreateADynHostToAccessJeedom</link>

@@ -89,6 +89,30 @@
 <div class="row">
     <div style="padding-right:15px;padding-left:15px">
                 <div class="post-preview">
+                    <a href="/posts/HowToDisplayDeviceNameInYourPiHole">
+                        <h2 class="post-title">How to display device name in your Pi-hole</h2>
+                    </a>
+                    <p class="post-meta">Sunday, January 3, 2021 - Posted in 
+                                       
+                                <!-- <div class="tags"> -->
+                                            <a role="button" href="/tags/NETWORK" class="post-meta">NETWORK</a>
+                                <!-- </div>      -->
+                    </p>
+
+<p>When your <a href="https://pi-hole.net/" target="_blank">Pi-hole</a> doesn't act as a DHCP server (because you already have another one) you'll able to see only the IP addresses of the devices.</p>
+<p>Not really user-friendly when you need to analyze the log of the Pi-Hole.</p>
+<p>But don't be afraid, there is a <span style="color:green">solution</span>!</p>
+<p>To be able to see the device name, you just need to enable the <strong>Use Conditional Forwarding</strong> setting in the Settings - DNS.</p>
+<p style="text-align:center;">
+<img src="../images/HowtodisplaydevicenameinyourPi-hole.jpg" alt="Enable Use Conditional Forwarding" align="center"/></p>
+<p>When the option is enabled, enter the local network to use and the IP address of your DHCP server as described in the screenshot, save and it's done. It's magic.</p>
+                    
+                    <div class="item-footer-tools">
+                        Share on: <a href="https://twitter.com/intent/tweet?url=https://www.fabmoll.be/posts/HowToDisplayDeviceNameInYourPiHole&text=Fabrice Moll&via=fabmoll">Twitter</a>, <a href="https://facebook.com/sharer.php?u=https://www.fabmoll.be/posts/HowToDisplayDeviceNameInYourPiHole">Facebook</a> or use the 
+                                  <a href="https://www.fabmoll.be/posts/HowToDisplayDeviceNameInYourPiHole" class="permalink" rel="bookmark">Permalink</a>
+                    </div>            
+                </div>       
+                <div class="post-preview">
                     <a href="/posts/AcceptDNSQueriesToSpecificIPAddressesWithinYourDreamMachinePro">
                         <h2 class="post-title">Accept DNS queries to specific IP addresses within your Dream Machine Pro</h2>
                     </a>
@@ -259,39 +283,6 @@ As you can see, the HeightRequest seems to be ignored. It's bigger than expected
                                   <a href="https://www.fabmoll.be/posts/FrameHeightRequestNotApplied" class="permalink" rel="bookmark">Permalink</a>
                     </div>            
                 </div>       
-                <div class="post-preview">
-                    <a href="/posts/SyntaxHighlightingInWyam">
-                        <h2 class="post-title">Syntax Highlighting In Wyam</h2>
-                    </a>
-                    <p class="post-meta">Sunday, January 5, 2020 - Posted in 
-                                       
-                                <!-- <div class="tags"> -->
-                                            <a role="button" href="/tags/WYAM" class="post-meta">WYAM</a>
-                                <!-- </div>      -->
-                    </p>
-
-<p>In my previous blog <a href="/posts/RowHeightInListViewItemTemplate">post</a> I saw that the syntax highlighting was weird on a phone.<br />
-A carriage return was added automatically instead of taking advantage of the <em>power</em> of a scrollbar.</p>
-<p style="text-align:center;">
-<img src="../images/SyntaxHighlightingInWyamCarriageReturn.jpg" alt="Syntax with carriage return" align="center"/></p>
-To avoid the carriage return and let the scrollbar work as expected we need to override the CSS with the following style:
-<pre><code class="language-css">pre code {
-        white-space: pre;
-        word-wrap: normal;
-}
-</code></pre>
-<p>Just create the following folder structure in your input directory, create a file named <strong>override.css</strong> and add the <strong>pre code</strong> style in it.</p>
-<p style="text-align:center;">
-<img src="../images/SyntaxHighlightingInWyamFolderStructure.jpg" alt="Folder structure" align="center"/></p>
-Build your blog and start the preview to see the result.
-<p style="text-align:center;">
-<img src="../images/SyntaxHighlightingInWyamWiithScrollbar.jpg" alt="Folder structure" align="center"/></p>
-                    
-                    <div class="item-footer-tools">
-                        Share on: <a href="https://twitter.com/intent/tweet?url=https://www.fabmoll.be/posts/SyntaxHighlightingInWyam&text=Fabrice Moll&via=fabmoll">Twitter</a>, <a href="https://facebook.com/sharer.php?u=https://www.fabmoll.be/posts/SyntaxHighlightingInWyam">Facebook</a> or use the 
-                                  <a href="https://www.fabmoll.be/posts/SyntaxHighlightingInWyam" class="permalink" rel="bookmark">Permalink</a>
-                    </div>            
-                </div>       
         <ul class="pager">
             <li class="previous">                
                     <a href="/"><span aria-hidden="true">&larr;</span> Newer</a>
@@ -306,13 +297,13 @@ Build your blog and start the preview to see the result.
 
             <h5>Tags</h5>
             <div>
-                    <a role="button" href="/tags/JEEDOM" class="btn btn-default btn-sm"> JEEDOM (3)</a>
-                    <a role="button" href="/tags/NETWORK" class="btn btn-default btn-sm"> NETWORK (3)</a>
+                    <a role="button" href="/tags/JEEDOM" class="btn btn-default btn-sm"> JEEDOM (4)</a>
+                    <a role="button" href="/tags/NETWORK" class="btn btn-default btn-sm"> NETWORK (4)</a>
                     <a role="button" href="/tags/XAMARIN" class="btn btn-default btn-sm"> XAMARIN (2)</a>
-                    <a role="button" href="/tags/WYAM" class="btn btn-default btn-sm"> WYAM (1)</a>
-                    <a role="button" href="/tags/CSS" class="btn btn-default btn-sm"> CSS (1)</a>
-                    <a role="button" href="/tags/Introduction" class="btn btn-default btn-sm"> Introduction (1)</a>
                     <a role="button" href="/tags/XAMARINFORMS" class="btn btn-default btn-sm"> XAMARIN.FORMS (1)</a>
+                    <a role="button" href="/tags/WYAM" class="btn btn-default btn-sm"> WYAM (1)</a>
+                    <a role="button" href="/tags/Introduction" class="btn btn-default btn-sm"> Introduction (1)</a>
+                    <a role="button" href="/tags/CSS" class="btn btn-default btn-sm"> CSS (1)</a>
             </div>
             <ul class="pager">
                 <li class="next">

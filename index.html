@@ -89,6 +89,37 @@
 <div class="row">
     <div style="padding-right:15px;padding-left:15px">
                 <div class="post-preview">
+                    <a href="/posts/RedirectHTTPPortToJeedom">
+                        <h2 class="post-title">Redirect HTTP/HTTPS port to your Jeedom</h2>
+                    </a>
+                    <p class="post-meta">Tuesday, July 20, 2021 - Posted in 
+                                       
+                                <!-- <div class="tags"> -->
+                                            <a role="button" href="/tags/JEEDOM" class="post-meta">JEEDOM</a>
+                                            <a role="button" href="/tags/NETWORK" class="post-meta">NETWORK</a>
+                                <!-- </div>      -->
+                    </p>
+
+<p>In the previous blog <a href="/posts/CreateADynHostToAccessJeedom">post</a> we saw how to create a custom domain name to point to our public IP address.
+The main goal was to be able to access our Jeedom from outside our private network.</p>
+<p>But if you just type your public IP address or use the new custom domain name to access Jeedom you'll just hit your modem or firewall and they'll not know what do to with the traffic. And you can be sure the traffic will not go to your Jeedom by default.</p>
+<p>If you're using a Dream Machine Pro (controller 6.2.26) you can redirect the HTTP/HTTPS traffic to your Jeedom by following these steps:</p>
+<ol>
+<li>Open your Dream Machine Network Manager web page</li>
+<li>Go to Advanced features - Advanced Gateway Settings and click on the Create a new Port Forwarding button</li>
+<li>Fill in the form as below and validate</li>
+</ol>
+<p style="text-align:center;">
+<img src="../images/NewPortForwardingRule.png" align="center"/></p>
+<p>You can repeat the process to redirect the HTTPS port (443).</p>
+<p>Now if you enter your custom domain in a browser, you'll be able to access your Jeedom in your private network</p>
+                    
+                    <div class="item-footer-tools">
+                        Share on: <a href="https://twitter.com/intent/tweet?url=https://www.fabmoll.be/posts/RedirectHTTPPortToJeedom&text=Fabrice Moll&via=fabmoll">Twitter</a>, <a href="https://facebook.com/sharer.php?u=https://www.fabmoll.be/posts/RedirectHTTPPortToJeedom">Facebook</a> or use the 
+                                  <a href="https://www.fabmoll.be/posts/RedirectHTTPPortToJeedom" class="permalink" rel="bookmark">Permalink</a>
+                    </div>            
+                </div>       
+                <div class="post-preview">
                     <a href="/posts/CreateADynHostToAccessJeedom">
                         <h2 class="post-title">Create a DynHost to access your Jeedom</h2>
                     </a>
@@ -298,30 +329,6 @@ Now we need to change the boot config to be able to boot on the SSD.</p>
                                   <a href="https://www.fabmoll.be/posts/RefreshTheXiaomiDoorSensorStatusWithAScenario" class="permalink" rel="bookmark">Permalink</a>
                     </div>            
                 </div>       
-                <div class="post-preview">
-                    <a href="/posts/HowToDisplayDeviceNameInYourPiHole">
-                        <h2 class="post-title">How to display device name in your Pi-hole</h2>
-                    </a>
-                    <p class="post-meta">Sunday, January 3, 2021 - Posted in 
-                                       
-                                <!-- <div class="tags"> -->
-                                            <a role="button" href="/tags/NETWORK" class="post-meta">NETWORK</a>
-                                <!-- </div>      -->
-                    </p>
-
-<p>When your <a href="https://pi-hole.net/" target="_blank">Pi-hole</a> doesn't act as a DHCP server (because you already have another one) you'll able to see only the IP addresses of the devices.</p>
-<p>Not really user-friendly when you need to analyze the log of the Pi-Hole.</p>
-<p>But don't be afraid, there is a <span style="color:green">solution</span>!</p>
-<p>To be able to see the device name, you just need to enable the <strong>Use Conditional Forwarding</strong> setting in the Settings - DNS.</p>
-<p style="text-align:center;">
-<img src="../images/HowtodisplaydevicenameinyourPi-hole.jpg" alt="Enable Use Conditional Forwarding" align="center"/></p>
-<p>When the option is enabled, enter the local network to use and the IP address of your DHCP server as described in the screenshot, save and it's done. It's magic.</p>
-                    
-                    <div class="item-footer-tools">
-                        Share on: <a href="https://twitter.com/intent/tweet?url=https://www.fabmoll.be/posts/HowToDisplayDeviceNameInYourPiHole&text=Fabrice Moll&via=fabmoll">Twitter</a>, <a href="https://facebook.com/sharer.php?u=https://www.fabmoll.be/posts/HowToDisplayDeviceNameInYourPiHole">Facebook</a> or use the 
-                                  <a href="https://www.fabmoll.be/posts/HowToDisplayDeviceNameInYourPiHole" class="permalink" rel="bookmark">Permalink</a>
-                    </div>            
-                </div>       
         <ul class="pager">
             <li class="previous">                
             </li>
@@ -335,13 +342,13 @@ Now we need to change the boot config to be able to boot on the SSD.</p>
 
             <h5>Tags</h5>
             <div>
-                    <a role="button" href="/tags/JEEDOM" class="btn btn-default btn-sm"> JEEDOM (3)</a>
-                    <a role="button" href="/tags/NETWORK" class="btn btn-default btn-sm"> NETWORK (3)</a>
+                    <a role="button" href="/tags/JEEDOM" class="btn btn-default btn-sm"> JEEDOM (4)</a>
+                    <a role="button" href="/tags/NETWORK" class="btn btn-default btn-sm"> NETWORK (4)</a>
                     <a role="button" href="/tags/XAMARIN" class="btn btn-default btn-sm"> XAMARIN (2)</a>
-                    <a role="button" href="/tags/WYAM" class="btn btn-default btn-sm"> WYAM (1)</a>
-                    <a role="button" href="/tags/CSS" class="btn btn-default btn-sm"> CSS (1)</a>
-                    <a role="button" href="/tags/Introduction" class="btn btn-default btn-sm"> Introduction (1)</a>
                     <a role="button" href="/tags/XAMARINFORMS" class="btn btn-default btn-sm"> XAMARIN.FORMS (1)</a>
+                    <a role="button" href="/tags/WYAM" class="btn btn-default btn-sm"> WYAM (1)</a>
+                    <a role="button" href="/tags/Introduction" class="btn btn-default btn-sm"> Introduction (1)</a>
+                    <a role="button" href="/tags/CSS" class="btn btn-default btn-sm"> CSS (1)</a>
             </div>
             <ul class="pager">
                 <li class="next">
