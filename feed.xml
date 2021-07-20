@@ -5,8 +5,8 @@
 		<link>https://www.fabmoll.be/</link>
 		<description />
 		<copyright>2021</copyright>
-		<pubDate>Tue, 20 Jul 2021 09:02:57 GMT</pubDate>
-		<lastBuildDate>Tue, 20 Jul 2021 09:02:57 GMT</lastBuildDate>
+		<pubDate>Tue, 20 Jul 2021 15:23:46 GMT</pubDate>
+		<lastBuildDate>Tue, 20 Jul 2021 15:23:46 GMT</lastBuildDate>
 		<item>
 			<title>Redirect HTTP/HTTPS port to your Jeedom</title>
 			<link>https://www.fabmoll.be/posts/RedirectHTTPPortToJeedom</link>
@@ -36,7 +36,7 @@ The main goal was to be able to access our Jeedom from outside our private netwo
 			<guid>https://www.fabmoll.be/posts/CreateADynHostToAccessJeedom</guid>
 			<pubDate>Sun, 18 Jul 2021 00:00:00 GMT</pubDate>
 			<content:encoded>&lt;p&gt;If you want to access your Jeedom from outside your private network, you can do it using your public IP address or using a custom domain name pointing to your public IP address (if the HTTP or HTTPS port is opened).&lt;/p&gt;
-&lt;p&gt;For me and maybe for you, it's easier to remember a custom domain name and I decided to go with one on &lt;a href="ovh.com" target="_blank"&gt;OVH&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;For me and maybe for you, it's easier to remember a custom domain name and I decided to go with one on &lt;a href="https://www.ovh.com/" target="_blank"&gt;OVH&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Now that I have my custom domain I would like to use it to access my Jeedom and trust me or not, I didn't know it was so simple.&lt;/p&gt;
 &lt;h1 id="create-a-new-user"&gt;Create a new user&lt;/h1&gt;
 &lt;p style="text-align:center;"&gt;
