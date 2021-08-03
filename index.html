@@ -89,6 +89,54 @@
 <div class="row">
     <div style="padding-right:15px;padding-left:15px">
                 <div class="post-preview">
+                    <a href="/posts/SecureTheAccessToYourJeedomWithCertbot">
+                        <h2 class="post-title">Secure the access to your Jeedom with Certbot</h2>
+                    </a>
+                    <p class="post-meta">Tuesday, August 3, 2021 - Posted in 
+                                       
+                                <!-- <div class="tags"> -->
+                                            <a role="button" href="/tags/JEEDOM" class="post-meta">JEEDOM</a>
+                                            <a role="button" href="/tags/NETWORK" class="post-meta">NETWORK</a>
+                                <!-- </div>      -->
+                    </p>
+
+<p>A few days ago, I created a <a href="/posts/RedirectHTTPPortToJeedom">post</a> on how to redirect the HTTPS external traffic to a Jeedom in a private network.</p>
+<p>Everything will work but you'll see in your browser that the website isn't secure.
+The reason is that there is no certificate available on your webserver (on your Jeedom).</p>
+<p>To generate, use and auto renew a certificate we'll use <a href="https://certbot.eff.org/" target="_blank">CertBot</a></p>
+<blockquote class="blockquote">
+<p>Certbot is a free, open source software tool for automatically using Let’s Encrypt certificates on manually-administrated websites to enable HTTPS.</p>
+<p>Certbot is made by the Electronic Frontier Foundation (EFF), a 501(c)3 nonprofit based in San Francisco, CA, that defends digital privacy, free speech, and innovation.</p>
+</blockquote>
+<p>First, open a SSH connection to your Jeedom.</p>
+<p>Install snapd</p>
+<pre><code class="language-bash">sudo snap install core; sudo snap refresh core
+</code></pre>
+<p>Install Certbot</p>
+<pre><code class="language-bash">sudo snap install --classic certbot
+</code></pre>
+<p>Check if you can run the certbot command</p>
+<pre><code class="language-bash">sudo ln -s /snap/bin/certbot /usr/bin/certbot
+</code></pre>
+<p>To get a certificate and have certbot automatically change your Apache configuration to serve it and to turn on HTTPS access in a single step, use the following command:</p>
+<pre><code class="language-bash">sudo certbot --apache
+</code></pre>
+<p>The certbot comes with a cron to automatically renew your certificate. But if you want to check if the auto renewal is working, you can use this command:</p>
+<pre><code class="language-bash">sudo certbot renew --dry-run
+</code></pre>
+<p>If it completes without errors, your certificate will be renewed automatically.</p>
+<p><strong>Please note that your HTTP(80) and HTTPS(443) port must be opened</strong> or the auto renewal will not work.</p>
+<p>Now you can try to access your Jeedom with the HTTPS url and you'll see that the browser will display that the connection is &quot;secure&quot;.</p>
+<p>As a wise man said once:</p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">HTTPS &amp; SSL doesn&#39;t mean &quot;trust this.&quot; It means &quot;this is private.&quot; You may be having a private conversation with Satan.</p>&mdash; Scott Hanselman (&#64;shanselman) <a href="https://twitter.com/shanselman/status/187572289724887041?ref_src=twsrc%5Etfw">April 4, 2012</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<p>Please note that you'll need to change your Jeedom configuration to add the HTTPS URL (and port) to be able to use the HTTPS URL to access Jeedom.</p>
+                    
+                    <div class="item-footer-tools">
+                        Share on: <a href="https://twitter.com/intent/tweet?url=https://www.fabmoll.be/posts/SecureTheAccessToYourJeedomWithCertbot&text=Fabrice Moll&via=fabmoll">Twitter</a>, <a href="https://facebook.com/sharer.php?u=https://www.fabmoll.be/posts/SecureTheAccessToYourJeedomWithCertbot">Facebook</a> or use the 
+                                  <a href="https://www.fabmoll.be/posts/SecureTheAccessToYourJeedomWithCertbot" class="permalink" rel="bookmark">Permalink</a>
+                    </div>            
+                </div>       
+                <div class="post-preview">
                     <a href="/posts/RedirectHTTPPortToJeedom">
                         <h2 class="post-title">Redirect HTTP/HTTPS port to your Jeedom</h2>
                     </a>
@@ -296,39 +344,6 @@ Now we need to change the boot config to be able to boot on the SSD.</p>
                                   <a href="https://www.fabmoll.be/posts/UpdateJeedomFromVersion4_0_xTo4_1_x" class="permalink" rel="bookmark">Permalink</a>
                     </div>            
                 </div>       
-                <div class="post-preview">
-                    <a href="/posts/RefreshTheXiaomiDoorSensorStatusWithAScenario">
-                        <h2 class="post-title">Refresh the Xiaomi door sensor status with a scenario in Jeedom</h2>
-                    </a>
-                    <p class="post-meta">Sunday, January 10, 2021 - Posted in 
-                                       
-                                <!-- <div class="tags"> -->
-                                            <a role="button" href="/tags/JEEDOM" class="post-meta">JEEDOM</a>
-                                <!-- </div>      -->
-                    </p>
-
-<p>Since the beginning I've never had an issue with my Xiaomi sensors but for no reason one of them started to not update his status.</p>
-<p>If I close the door Jeedom still displays the door as opened.</p>
-<p>I couldn't find the reason and I discovered that a simple refresh command could reset the status and display the right information.</p>
-<p>If you don't want to refresh the status manually, you can do it with a scenario.</p>
-<p>First, create a triggered scenario on the Xiaomi sensor for the <em>opening</em> command and give a name to your scenario.</p>
-<p>Then in the scenario definition:</p>
-<ol>
-<li>add a <em>Sleep</em> action for 10 seconds</li>
-<li>add a <em>refresh</em> command from your Xiaomi sensor</li>
-<li>add an <em>IF</em> condition and check if the <em>opening</em> command value is equal to 1 (open)</li>
-<li>add a <em>THEN</em> condition to execute your current scenario</li>
-</ol>
-<p>If the status changes, the scenario will wait 10 seconds and then execute the sensor refresh command. If the status is still equal to 1 (open), it will execute again the current scenario.</p>
-<p style="text-align:center;">
-<img src="../images/RefreshtheXiaomidoorsensorstatuswithascenario.jpg" alt="Enable Use Conditional Forwarding" align="center"/></p>
-<p>Now if the door is closed and the status is not up to date the scenario will update it after 10 seconds.</p>
-                    
-                    <div class="item-footer-tools">
-                        Share on: <a href="https://twitter.com/intent/tweet?url=https://www.fabmoll.be/posts/RefreshTheXiaomiDoorSensorStatusWithAScenario&text=Fabrice Moll&via=fabmoll">Twitter</a>, <a href="https://facebook.com/sharer.php?u=https://www.fabmoll.be/posts/RefreshTheXiaomiDoorSensorStatusWithAScenario">Facebook</a> or use the 
-                                  <a href="https://www.fabmoll.be/posts/RefreshTheXiaomiDoorSensorStatusWithAScenario" class="permalink" rel="bookmark">Permalink</a>
-                    </div>            
-                </div>       
         <ul class="pager">
             <li class="previous">                
             </li>
@@ -342,13 +357,13 @@ Now we need to change the boot config to be able to boot on the SSD.</p>
 
             <h5>Tags</h5>
             <div>
-                    <a role="button" href="/tags/NETWORK" class="btn btn-default btn-sm"> NETWORK (4)</a>
-                    <a role="button" href="/tags/JEEDOM" class="btn btn-default btn-sm"> JEEDOM (4)</a>
+                    <a role="button" href="/tags/JEEDOM" class="btn btn-default btn-sm"> JEEDOM (5)</a>
+                    <a role="button" href="/tags/NETWORK" class="btn btn-default btn-sm"> NETWORK (5)</a>
                     <a role="button" href="/tags/XAMARIN" class="btn btn-default btn-sm"> XAMARIN (2)</a>
-                    <a role="button" href="/tags/CSS" class="btn btn-default btn-sm"> CSS (1)</a>
-                    <a role="button" href="/tags/XAMARINFORMS" class="btn btn-default btn-sm"> XAMARIN.FORMS (1)</a>
                     <a role="button" href="/tags/WYAM" class="btn btn-default btn-sm"> WYAM (1)</a>
                     <a role="button" href="/tags/Introduction" class="btn btn-default btn-sm"> Introduction (1)</a>
+                    <a role="button" href="/tags/XAMARINFORMS" class="btn btn-default btn-sm"> XAMARIN.FORMS (1)</a>
+                    <a role="button" href="/tags/CSS" class="btn btn-default btn-sm"> CSS (1)</a>
             </div>
             <ul class="pager">
                 <li class="next">

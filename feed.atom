@@ -4,7 +4,45 @@
 	<title>Fabrice Moll</title>
 	<link rel="self" href="https://www.fabmoll.be/" />
 	<rights>2021</rights>
-	<updated>2021-08-02T09:02:57Z</updated>
+	<updated>2021-08-03T09:03:20Z</updated>
+	<entry>
+		<id>https://www.fabmoll.be/posts/SecureTheAccessToYourJeedomWithCertbot</id>
+		<title>Secure the access to your Jeedom with Certbot</title>
+		<link href="https://www.fabmoll.be/posts/SecureTheAccessToYourJeedomWithCertbot" />
+		<updated>2021-08-03T00:00:00Z</updated>
+		<content>&lt;p&gt;A few days ago, I created a &lt;a href="/posts/RedirectHTTPPortToJeedom"&gt;post&lt;/a&gt; on how to redirect the HTTPS external traffic to a Jeedom in a private network.&lt;/p&gt;
+&lt;p&gt;Everything will work but you'll see in your browser that the website isn't secure.
+The reason is that there is no certificate available on your webserver (on your Jeedom).&lt;/p&gt;
+&lt;p&gt;To generate, use and auto renew a certificate we'll use &lt;a href="https://certbot.eff.org/" target="_blank"&gt;CertBot&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote class="blockquote"&gt;
+&lt;p&gt;Certbot is a free, open source software tool for automatically using Let’s Encrypt certificates on manually-administrated websites to enable HTTPS.&lt;/p&gt;
+&lt;p&gt;Certbot is made by the Electronic Frontier Foundation (EFF), a 501(c)3 nonprofit based in San Francisco, CA, that defends digital privacy, free speech, and innovation.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;First, open a SSH connection to your Jeedom.&lt;/p&gt;
+&lt;p&gt;Install snapd&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;sudo snap install core; sudo snap refresh core
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Install Certbot&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;sudo snap install --classic certbot
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Check if you can run the certbot command&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;sudo ln -s /snap/bin/certbot /usr/bin/certbot
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To get a certificate and have certbot automatically change your Apache configuration to serve it and to turn on HTTPS access in a single step, use the following command:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;sudo certbot --apache
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The certbot comes with a cron to automatically renew your certificate. But if you want to check if the auto renewal is working, you can use this command:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;sudo certbot renew --dry-run
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;If it completes without errors, your certificate will be renewed automatically.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Please note that your HTTP(80) and HTTPS(443) port must be opened&lt;/strong&gt; or the auto renewal will not work.&lt;/p&gt;
+&lt;p&gt;Now you can try to access your Jeedom with the HTTPS url and you'll see that the browser will display that the connection is &amp;quot;secure&amp;quot;.&lt;/p&gt;
+&lt;p&gt;As a wise man said once:&lt;/p&gt;
+&lt;blockquote class="twitter-tweet"&gt;&lt;p lang="en" dir="ltr"&gt;HTTPS &amp;amp; SSL doesn&amp;#39;t mean &amp;quot;trust this.&amp;quot; It means &amp;quot;this is private.&amp;quot; You may be having a private conversation with Satan.&lt;/p&gt;&amp;mdash; Scott Hanselman (&amp;#64;shanselman) &lt;a href="https://twitter.com/shanselman/status/187572289724887041?ref_src=twsrc%5Etfw"&gt;April 4, 2012&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+&lt;p&gt;Please note that you'll need to change your Jeedom configuration to add the HTTPS URL (and port) to be able to use the HTTPS URL to access Jeedom.&lt;/p&gt;
+</content>
+		<summary>&lt;p&gt;A few days ago, I created a &lt;a href="/posts/RedirectHTTPPortToJeedom"&gt;post&lt;/a&gt; on how to redirect the HTTPS external traffic to a Jeedom in a private network.&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>https://www.fabmoll.be/posts/RedirectHTTPPortToJeedom</id>
 		<title>Redirect HTTP/HTTPS port to your Jeedom</title>
