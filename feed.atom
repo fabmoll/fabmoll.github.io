@@ -4,7 +4,43 @@
 	<title>Fabrice Moll</title>
 	<link rel="self" href="https://www.fabmoll.be/" />
 	<rights>2021</rights>
-	<updated>2021-08-13T09:03:07Z</updated>
+	<updated>2021-08-14T09:02:29Z</updated>
+	<entry>
+		<id>https://www.fabmoll.be/posts/ForceHttpsAccessInApache</id>
+		<title>Force HTTPS access in Apache</title>
+		<link href="https://www.fabmoll.be/posts/ForceHttpsAccessInApache" />
+		<updated>2021-08-14T00:00:00Z</updated>
+		<content>&lt;p&gt;If you configured a certificate to access your Jeedom with HTTPS and you don't want to let the HTTP access available, you can change your Apache settings to redirect HTTP access to the HTTPS automatically.&lt;/p&gt;
+&lt;p&gt;You'll need to ssh on your Jeedom server and edit the following file:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;nano /etc/apache2/sites-available/000-default.conf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The part we want to modify is the virtual host defined for the HTTP port (80)&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;&amp;lt;VirtualHost *:80&amp;gt;
+        ServerAdmin webmaster&amp;#64;localhost
+        DocumentRoot /var/www/html
+        ErrorLog /var/www/html/log/http.error
+&amp;lt;/VirtualHost&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;And we'll edit the file to rewrite the HTTP access to the HTTPS access&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;&amp;lt;VirtualHost *:80&amp;gt;
+        ServerAdmin webmaster&amp;#64;localhost
+        DocumentRoot /var/www/html
+
+        RewriteEngine on
+        RewriteCond %{SERVER_NAME} =My.JeedomDomain.com
+        RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,QSA,R=permanent]
+
+        ErrorLog /var/www/html/log/http.error
+&amp;lt;/VirtualHost&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;You need to replace the &amp;quot;My.JeedomDomain.com&amp;quot; by your actual domain name used to access your Jeedom from outside your network.&lt;/p&gt;
+&lt;p&gt;When it's done, you just need to enable the rewrite module and restart Apache:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;a2enmod rewrite
+systemctl restart apache2
+&lt;/code&gt;&lt;/pre&gt;
+</content>
+		<summary>&lt;p&gt;If you configured a certificate to access your Jeedom with HTTPS and you don't want to let the HTTP access available, you can change your Apache settings to redirect HTTP access to the HTTPS automatically.&lt;/p&gt;</summary>
+	</entry>
 	<entry>
 		<id>https://www.fabmoll.be/posts/SecureTheAccessToYourJeedomWithCertbot</id>
 		<title>Secure the access to your Jeedom with Certbot</title>

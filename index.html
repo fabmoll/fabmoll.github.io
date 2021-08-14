@@ -89,6 +89,51 @@
 <div class="row">
     <div style="padding-right:15px;padding-left:15px">
                 <div class="post-preview">
+                    <a href="/posts/ForceHttpsAccessInApache">
+                        <h2 class="post-title">Force HTTPS access in Apache</h2>
+                    </a>
+                    <p class="post-meta">Saturday, August 14, 2021 - Posted in 
+                                       
+                                <!-- <div class="tags"> -->
+                                            <a role="button" href="/tags/JEEDOM" class="post-meta">JEEDOM</a>
+                                <!-- </div>      -->
+                    </p>
+
+<p>If you configured a certificate to access your Jeedom with HTTPS and you don't want to let the HTTP access available, you can change your Apache settings to redirect HTTP access to the HTTPS automatically.</p>
+<p>You'll need to ssh on your Jeedom server and edit the following file:</p>
+<pre><code class="language-bash">nano /etc/apache2/sites-available/000-default.conf
+</code></pre>
+<p>The part we want to modify is the virtual host defined for the HTTP port (80)</p>
+<pre><code class="language-bash">&lt;VirtualHost *:80&gt;
+        ServerAdmin webmaster&#64;localhost
+        DocumentRoot /var/www/html
+        ErrorLog /var/www/html/log/http.error
+&lt;/VirtualHost&gt;
+</code></pre>
+<p>And we'll edit the file to rewrite the HTTP access to the HTTPS access</p>
+<pre><code class="language-bash">&lt;VirtualHost *:80&gt;
+        ServerAdmin webmaster&#64;localhost
+        DocumentRoot /var/www/html
+
+        RewriteEngine on
+        RewriteCond %{SERVER_NAME} =My.JeedomDomain.com
+        RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,QSA,R=permanent]
+
+        ErrorLog /var/www/html/log/http.error
+&lt;/VirtualHost&gt;
+</code></pre>
+<p>You need to replace the &quot;My.JeedomDomain.com&quot; by your actual domain name used to access your Jeedom from outside your network.</p>
+<p>When it's done, you just need to enable the rewrite module and restart Apache:</p>
+<pre><code class="language-bash">a2enmod rewrite
+systemctl restart apache2
+</code></pre>
+                    
+                    <div class="item-footer-tools">
+                        Share on: <a href="https://twitter.com/intent/tweet?url=https://www.fabmoll.be/posts/ForceHttpsAccessInApache&text=Fabrice Moll&via=fabmoll">Twitter</a>, <a href="https://facebook.com/sharer.php?u=https://www.fabmoll.be/posts/ForceHttpsAccessInApache">Facebook</a> or use the 
+                                  <a href="https://www.fabmoll.be/posts/ForceHttpsAccessInApache" class="permalink" rel="bookmark">Permalink</a>
+                    </div>            
+                </div>       
+                <div class="post-preview">
                     <a href="/posts/SecureTheAccessToYourJeedomWithCertbot">
                         <h2 class="post-title">Secure the access to your Jeedom with Certbot</h2>
                     </a>
@@ -241,109 +286,6 @@ div {
                                   <a href="https://www.fabmoll.be/posts/CSScurrentColorValue" class="permalink" rel="bookmark">Permalink</a>
                     </div>            
                 </div>       
-                <div class="post-preview">
-                    <a href="/posts/UpdateJeedomFromVersion4_0_xTo4_1_x">
-                        <h2 class="post-title">Update Jeedom from version 4.0.x to 4.1.x</h2>
-                    </a>
-                    <p class="post-meta">Sunday, January 24, 2021 - Posted in 
-                                       
-                                <!-- <div class="tags"> -->
-                                            <a role="button" href="/tags/JEEDOM" class="post-meta">JEEDOM</a>
-                                <!-- </div>      -->
-                    </p>
-
-<blockquote class="blockquote">
-<p>Well, Mr. Hunt, this is not Mission: Difficult, its Mission: Impossible. Difficult should be a walk in the park for you. - <em>Boss, Mission: Impossible 2</em></p>
-</blockquote>
-<p>Sometimes, a simple update is harder than you think.
-Since years, I've a <a href="https://www.jeedom.com/en/" target="_blank">Jeedom</a> running on a Raspberry 3B+ and the last Jeedom update installed is the version 4.0.x hosted in a Debian 9 Stretch.</p>
-<p>A few days ago I saw that the Jeedom 4.1.x was available with some really nice <a href="https://doc.jeedom.com/en_US/core/4.1/changelog" target="_blank">improvements</a>.</p>
-<p>The condition to be able to install this version is to have the Debian 10 Buster installed.
-As we can read in the install <a href="https://doc.jeedom.com/en_US/installation/rpi" target="_blank">documentation</a>, the best thing to do is to backup your Jeedom and install everything from scratch.</p>
-<p>And that's what I did, downloaded the ISO x86, burned the SDCard, booted on it and installed Jeedom with the command line.</p>
-<p>Right after that, I restored my Jeedom backup (I'll not describe that part here).</p>
-<p>Now the fun part begins: Boot from the SSD.</p>
-<p>When you check some websites, you'll read that you <strong>just</strong> need to install Debian on the SSD, plug it in the Raspberry and restart the device to boot from the SSD.  But there are lies! (It was in my case)</p>
-<p>The best thing I could find was to clone my SDCard to my SSD and it was really easy with the <a href="https://github.com/billw2/rpi-clone" target="_blank">rpi-clone</a> script.</p>
-<blockquote class="blockquote">
-<p>rpi-clone is a shell script that is for cloning a running Raspberry Pi booted source disk (SD card or USB disk) to a destination disk which will be bootable. Destination disks are SD cards in the SD card slot or a USB card reader, USB flash disks, or USB hard drives.</p>
-</blockquote>
-<p>First, clone the repository and copy the setup in your /usr/local/sbin directory:</p>
-<pre><code class="language-csharp">git clone https://github.com/billw2/rpi-clone.git
-cd rpi-clone
-sudo cp rpi-clone rpi-clone-setup /usr/local/sbin
-</code></pre>
-<p>Stop the following services:</p>
-<pre><code class="language-csharp">sudo service mysql stop
-sudo service cron stop
-sudo service apache2 stop
-sudo service nginx stop
-</code></pre>
-<p>Connect your SSD to your Raspberry and clone your SDCard to your SSD:</p>
-<pre><code class="language-csharp">rpi-clone sda -f
-</code></pre>
-<p>When it's done, you can restart the services:</p>
-<pre><code class="language-csharp">sudo service mysql start
-sudo service cron start
-sudo service apache2 start
-</code></pre>
-<p>The next thing to do is to configure your Raspberry to be able to boot on the USB port.
-For that, you'll need to backup your current config.txt file, set the boot mode and then restart the Raspberry:</p>
-<pre><code class="language-csharp">cp /boot/config.txt /boot/config.txt.old
-echo program_usb_boot_mode=1 | sudo tee -a /boot/config.txt
-sudo reboot
-</code></pre>
-<p>When your device restarted, you can check if the boot mode is set to boot on USB with the following command:</p>
-<pre><code class="language-csharp">vcgencmd otp_dump | grep 17
-&gt;17:3020000a
-</code></pre>
-<p>If it returns 17:3020000a, the setting has been taken into account.
-Now we need to change the boot config to be able to boot on the SSD.</p>
-<p>Get the PARTUUID from your SSD (/dev/sda2):</p>
-<pre><code class="language-csharp">sudo blkid
-</code></pre>
-<p style="text-align:center;">
-<img src="../images/subo-blkid.jpg" alt="sudo blkid" align="center"/></p>
-<p>Backup your current cmdline file:</p>
-<pre><code class="language-csharp">sudo cp /boot/cmdline.txt /boot/cmdline.txt.bak
-</code></pre>
-<p>Edit the cmdline file and replace the PARTUUID with the value we copied from the sudo blkid command, save and quit:</p>
-<pre><code class="language-csharp">sudo nano /boot/cmdline.txt
-</code></pre>
-<p style="text-align:center;">
-<img src="../images/cmdline.jpg" alt="cmdline edit" align="center"/></p>
-<p>When it's done, you can reboot again:</p>
-<pre><code class="language-csharp">sudo reboot
-</code></pre>
-<p>After the reboot, the following command should display the /dev/sda2 device:</p>
-<pre><code class="language-csharp">findmnt -n -o SOURCE /
-&gt; /dev/sda2
-</code></pre>
-<p>Almost finished, now you need to change fstab to use the PARTUUID from your SSD device, save, quit and reboot again:</p>
-<pre><code class="language-csharp">sudo nano /etc/fstab
-</code></pre>
-<p style="text-align:center;">
-<img src="../images/fstab.jpg" alt="fstab" align="center"/></p>
-<pre><code class="language-csharp">sudo reboot
-</code></pre>
-<p>The next step is done to create a new partition on your SSD. As you'll see later, the partition size on your SSD is the same as your SDCard. Here we want to use the entire SSD disk size:</p>
-<p style="text-align:center;">
-<img src="../images/fdisk.jpg" alt="fdisk" align="center"/></p>
-<p>You'll need to reboot again when the partition is created.  This time it may take a little longer.</p>
-<p>It's not yet finished, now you need to resize the partition:</p>
-<p style="text-align:center;">
-<img src="../images/resize2fs.jpg" alt="fdisk" align="center"/></p>
-<p>If everything went well, you should see the new partition size with the df command:</p>
-<pre><code class="language-csharp">df -h
-</code></pre>
-<p style="text-align:center;">
-<img src="../images/df.jpg" alt="df" align="center"/></p>
-                    
-                    <div class="item-footer-tools">
-                        Share on: <a href="https://twitter.com/intent/tweet?url=https://www.fabmoll.be/posts/UpdateJeedomFromVersion4_0_xTo4_1_x&text=Fabrice Moll&via=fabmoll">Twitter</a>, <a href="https://facebook.com/sharer.php?u=https://www.fabmoll.be/posts/UpdateJeedomFromVersion4_0_xTo4_1_x">Facebook</a> or use the 
-                                  <a href="https://www.fabmoll.be/posts/UpdateJeedomFromVersion4_0_xTo4_1_x" class="permalink" rel="bookmark">Permalink</a>
-                    </div>            
-                </div>       
         <ul class="pager">
             <li class="previous">                
             </li>
@@ -357,13 +299,13 @@ Now we need to change the boot config to be able to boot on the SSD.</p>
 
             <h5>Tags</h5>
             <div>
+                    <a role="button" href="/tags/JEEDOM" class="btn btn-default btn-sm"> JEEDOM (6)</a>
                     <a role="button" href="/tags/NETWORK" class="btn btn-default btn-sm"> NETWORK (5)</a>
-                    <a role="button" href="/tags/JEEDOM" class="btn btn-default btn-sm"> JEEDOM (5)</a>
                     <a role="button" href="/tags/XAMARIN" class="btn btn-default btn-sm"> XAMARIN (2)</a>
-                    <a role="button" href="/tags/CSS" class="btn btn-default btn-sm"> CSS (1)</a>
-                    <a role="button" href="/tags/Introduction" class="btn btn-default btn-sm"> Introduction (1)</a>
-                    <a role="button" href="/tags/XAMARINFORMS" class="btn btn-default btn-sm"> XAMARIN.FORMS (1)</a>
                     <a role="button" href="/tags/WYAM" class="btn btn-default btn-sm"> WYAM (1)</a>
+                    <a role="button" href="/tags/XAMARINFORMS" class="btn btn-default btn-sm"> XAMARIN.FORMS (1)</a>
+                    <a role="button" href="/tags/Introduction" class="btn btn-default btn-sm"> Introduction (1)</a>
+                    <a role="button" href="/tags/CSS" class="btn btn-default btn-sm"> CSS (1)</a>
             </div>
             <ul class="pager">
                 <li class="next">

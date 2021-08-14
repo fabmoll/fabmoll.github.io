@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 
-        <title>Fabrice Moll - JEEDOM</title>
+        <title>Fabrice Moll - Force HTTPS access in Apache</title>
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">        
 
@@ -28,9 +28,9 @@
         <meta name="msapplication-tooltip" content="Fabrice Moll" />
         <meta name="msapplication-starturl" content="/" />
 
-        <meta property="og:title" content="Fabrice Moll - JEEDOM" />
+        <meta property="og:title" content="Fabrice Moll - Force HTTPS access in Apache" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.fabmoll.be/tags/JEEDOM" />
+        <meta property="og:url" content="https://www.fabmoll.be/posts/ForceHttpsAccessInApache" />
         <!-- TODO: More social graph meta tags -->
 
         
@@ -72,9 +72,18 @@
                         <div class="container">
                                 <div class="row">
                                         <div class="col-md-12">
-<div class="site-heading">
-    <h1>JEEDOM</h1>
-</div>                                            </div>
+
+    
+<div class="post-heading">
+    <h1>Force HTTPS access in Apache</h1>
+    <div class="meta">        
+Saturday, August 14, 2021 - Posted in 
+                                        <a role="button" href="/tags/JEEDOM" class="post-meta">JEEDOM</a>
+
+                </div>
+   
+</div>
+                                        </div>
                                 </div>
                         </div>
                 </header>
@@ -83,70 +92,67 @@
                 <div class="container">
                         <div class="row">
                                 <div id="content" class="col-md-12">
-                                        <div class="container-sm-height">
-    <div class="row row-sm-height">
-        <div class="col-sm-8 right-border col-sm-height">
-            
-        <div class="post-list">
-            <a href="/posts/ForceHttpsAccessInApache">
-                <h3 class="post-title">Force HTTPS access in Apache</h3>
-            </a>
-            <p class="post-meta">Posted on Saturday, August 14, 2021</p>      
-        </div>   
-        <div class="post-list">
-            <a href="/posts/SecureTheAccessToYourJeedomWithCertbot">
-                <h3 class="post-title">Secure the access to your Jeedom with Certbot</h3>
-            </a>
-            <p class="post-meta">Posted on Tuesday, August 3, 2021</p>      
-        </div>   
-        <div class="post-list">
-            <a href="/posts/RedirectHTTPPortToJeedom">
-                <h3 class="post-title">Redirect HTTP/HTTPS port to your Jeedom</h3>
-            </a>
-            <p class="post-meta">Posted on Tuesday, July 20, 2021</p>      
-        </div>   
-        <div class="post-list">
-            <a href="/posts/CreateADynHostToAccessJeedom">
-                <h3 class="post-title">Create a DynHost to access your Jeedom</h3>
-            </a>
-            <p class="post-meta">Posted on Sunday, July 18, 2021</p>      
-        </div>   
-        <div class="post-list">
-            <a href="/posts/UpdateJeedomFromVersion4_0_xTo4_1_x">
-                <h3 class="post-title">Update Jeedom from version 4.0.x to 4.1.x</h3>
-            </a>
-            <p class="post-meta">Posted on Sunday, January 24, 2021</p>      
-        </div>   
-        <div class="post-list">
-            <a href="/posts/RefreshTheXiaomiDoorSensorStatusWithAScenario">
-                <h3 class="post-title">Refresh the Xiaomi door sensor status with a scenario in Jeedom</h3>
-            </a>
-            <p class="post-meta">Posted on Sunday, January 10, 2021</p>      
-        </div>   
+                                        
+
+<p>If you configured a certificate to access your Jeedom with HTTPS and you don't want to let the HTTP access available, you can change your Apache settings to redirect HTTP access to the HTTPS automatically.</p>
+<p>You'll need to ssh on your Jeedom server and edit the following file:</p>
+<pre><code class="language-bash">nano /etc/apache2/sites-available/000-default.conf
+</code></pre>
+<p>The part we want to modify is the virtual host defined for the HTTP port (80)</p>
+<pre><code class="language-bash">&lt;VirtualHost *:80&gt;
+        ServerAdmin webmaster&#64;localhost
+        DocumentRoot /var/www/html
+        ErrorLog /var/www/html/log/http.error
+&lt;/VirtualHost&gt;
+</code></pre>
+<p>And we'll edit the file to rewrite the HTTP access to the HTTPS access</p>
+<pre><code class="language-bash">&lt;VirtualHost *:80&gt;
+        ServerAdmin webmaster&#64;localhost
+        DocumentRoot /var/www/html
+
+        RewriteEngine on
+        RewriteCond %{SERVER_NAME} =My.JeedomDomain.com
+        RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,QSA,R=permanent]
+
+        ErrorLog /var/www/html/log/http.error
+&lt;/VirtualHost&gt;
+</code></pre>
+<p>You need to replace the &quot;My.JeedomDomain.com&quot; by your actual domain name used to access your Jeedom from outside your network.</p>
+<p>When it's done, you just need to enable the rewrite module and restart Apache:</p>
+<pre><code class="language-bash">a2enmod rewrite
+systemctl restart apache2
+</code></pre>
 
 
-            <nav>
-                <ul class="pager">
-                    <li class="previous">                
-                    </li>
-                    <li class="next">
-                    </li>
-                </ul>
-            </nav>
-            <hr class="visible-xs-block" />
-        </div>
-		
-        <div class="col-sm-4 col-sm-height">
-                <a role="button" href="/tags/JEEDOM" class="btn btn-primary btn-xs">JEEDOM (6)</a>
-                <a role="button" href="/tags/NETWORK" class="btn btn-default btn-xs">NETWORK (5)</a>
-                <a role="button" href="/tags/XAMARIN" class="btn btn-default btn-xs">XAMARIN (2)</a>
-                <a role="button" href="/tags/CSS" class="btn btn-default btn-xs">CSS (1)</a>
-                <a role="button" href="/tags/XAMARINFORMS" class="btn btn-default btn-xs">XAMARIN.FORMS (1)</a>
-                <a role="button" href="/tags/Introduction" class="btn btn-default btn-xs">Introduction (1)</a>
-                <a role="button" href="/tags/WYAM" class="btn btn-default btn-xs">WYAM (1)</a>
-        </div>
-    </div>
-</div>
+  <div class="item-footer-tools">
+                        Share on: <a href="https://twitter.com/intent/tweet?url=https://www.fabmoll.be/posts/ForceHttpsAccessInApache&text=Fabrice Moll&via=fabmoll">Twitter</a>, <a href="https://facebook.com/sharer.php?u=https://www.fabmoll.be/posts/ForceHttpsAccessInApache">Facebook</a> or use the 
+                                  <a href="https://www.fabmoll.be/posts/ForceHttpsAccessInApache" class="permalink" rel="bookmark">Permalink</a>
+</div> 
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'fabricemoll'; // required: replace example with your forum shortname
+    var disqus_identifier = 'ForceHttpsAccessInApache';
+    var disqus_title = 'Force HTTPS access in Apache';
+    var disqus_url = 'https://www.fabmoll.be/posts/ForceHttpsAccessInApache';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
                                 </div>
                         </div>
                 </div>
