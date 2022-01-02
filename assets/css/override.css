@@ -7,7 +7,7 @@ pre code {
         text-align: right;        
         font-size: medium;
         padding: 5px;
-        background-color: #582B39;
+        background-color: #536889;
         color:white;
         justify-content: space-between;
         
@@ -25,26 +25,26 @@ img {
 }
 
 a, a:link,a:visited, a:hover {
-        color:#FF8351 !important;
+        color:#8FB3EA !important;
         text-decoration: none !important;
         
         }
 
 .post-title, .post-heading>h1 {
-        color:#873E23;
+        color:#536889;
         text-shadow: none !important;
-        color:#873E23 !important;
+        color:#536889 !important;
         font-size: 36px !important;
 }
 
 .post-meta  a:link, .post-meta a:visited, .post-meta a:hover{
-        color:#582B39 !important;
+        color:#536889 !important;
         text-decoration: none !important;
         font-size: 14px;
         font-weight: bold;
 }
 a.post-meta {
-        color:#582B39 !important;
+        color:#536889 !important;
         text-decoration: none !important;
         font-size: 14px;
         font-weight: bold;
@@ -73,14 +73,14 @@ div.meta{
        
 }
 .navbar {
-        background-color: #582B39;
+        background-color: #536889;
 }
 a.navbar-brand,.navbar-custom .nav li a {
         color: #FFF4EB !important;
 }
 
 .navbar-custom .nav li a:hover  {
-        color: #FF8351 !important;
+        color: #8FB3EA !important;
 }
 
 #disqus_recommendations {
@@ -91,7 +91,7 @@ a.navbar-brand,.navbar-custom .nav li a {
 .intro-header .site-heading h1, .intro-header .page-heading h1{
         margin: 60px 0px 0px 0px;
         text-shadow: none;        
-        color:#582B39 ;
+        color:#536889 ;
 }
 .intro-header {
         margin-bottom: 200px;

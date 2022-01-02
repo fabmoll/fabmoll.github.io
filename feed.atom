@@ -3,8 +3,8 @@
 	<id>https://www.fabmoll.be/</id>
 	<title>Fabrice Moll</title>
 	<link rel="self" href="https://www.fabmoll.be/" />
-	<rights>2021</rights>
-	<updated>2021-08-25T09:02:38Z</updated>
+	<rights>2022</rights>
+	<updated>2022-01-02T14:03:52Z</updated>
 	<entry>
 		<id>https://www.fabmoll.be/posts/ForceHttpsAccessInApache</id>
 		<title>Force HTTPS access in Apache</title>
