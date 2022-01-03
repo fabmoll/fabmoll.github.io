@@ -5,8 +5,8 @@
 		<link>https://www.fabmoll.be/</link>
 		<description />
 		<copyright>2022</copyright>
-		<pubDate>Mon, 03 Jan 2022 17:10:59 GMT</pubDate>
-		<lastBuildDate>Mon, 03 Jan 2022 17:10:59 GMT</lastBuildDate>
+		<pubDate>Mon, 03 Jan 2022 17:19:55 GMT</pubDate>
+		<lastBuildDate>Mon, 03 Jan 2022 17:19:55 GMT</lastBuildDate>
 		<item>
 			<title>Add the Xiaomi Air Purifier 3C in Jeedom</title>
 			<link>https://www.fabmoll.be/posts/XiaomiAirPurifierInJeedom</link>
@@ -28,7 +28,7 @@
 &lt;pre&gt;&lt;code class="language-bash"&gt;sudo apt-get install libffi-dev libssl-dev -y
 sudo pip3 install python-miio
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;To be able to see what you can do with the Air Purifier 3C, you can the help command result and it will describe the options and commands you can use:&lt;/p&gt;
+&lt;p&gt;To be able to see what you can do with the Air Purifier 3C, you can type the help command and it will describe the options and commands you can use:&lt;/p&gt;
 &lt;pre&gt;&lt;code class="language-bash"&gt;sudo miiocli airpurifiermb4 --ip [YourPurifierIP] --token [YourPurifierToken] --help
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The parameter &amp;quot;airpurifiermb4&amp;quot; is the device type to use with the command and is linked to the &lt;strong&gt;Xiaomi Air Purifier 3C&lt;/strong&gt;.&lt;/p&gt;
@@ -39,7 +39,7 @@ sudo pip3 install python-miio
 &lt;p style="text-align:center;"&gt;
 &lt;img src="../images/air-purifier-xiaomi-jeedom.png" alt="script-1" align="center"/&gt;&lt;/p&gt;
 &lt;p&gt;The first command is used to get a json with all the information from the purifier (power, air quality, ...) and then I save it in a file on my server (don't forget to set the IP of your purifier and its token).&lt;/p&gt;
-&lt;p&gt;The second command is used to query the json file and get the power value (here the IP enter the IP of your Jeedom host).&lt;/p&gt;
+&lt;p&gt;The second command is used to query the json file and get the power value (enter the IP of your Jeedom host).&lt;/p&gt;
 &lt;p&gt;The third command is used to power on the purifier and so on...&lt;/p&gt;
 &lt;p&gt;As you understood the sample, you'll be able to add more commands to get the rest of the information and with a few click you'll have a widget to control your device and I'm sure most of you will have a better design.&lt;/p&gt;
 &lt;p style="text-align:center;"&gt;

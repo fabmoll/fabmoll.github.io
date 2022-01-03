@@ -109,7 +109,7 @@ Monday, January 3, 2022 - Posted in
 <pre><code class="language-bash">sudo apt-get install libffi-dev libssl-dev -y
 sudo pip3 install python-miio
 </code></pre>
-<p>To be able to see what you can do with the Air Purifier 3C, you can the help command result and it will describe the options and commands you can use:</p>
+<p>To be able to see what you can do with the Air Purifier 3C, you can type the help command and it will describe the options and commands you can use:</p>
 <pre><code class="language-bash">sudo miiocli airpurifiermb4 --ip [YourPurifierIP] --token [YourPurifierToken] --help
 </code></pre>
 <p>The parameter &quot;airpurifiermb4&quot; is the device type to use with the command and is linked to the <strong>Xiaomi Air Purifier 3C</strong>.</p>
@@ -120,7 +120,7 @@ sudo pip3 install python-miio
 <p style="text-align:center;">
 <img src="../images/air-purifier-xiaomi-jeedom.png" alt="script-1" align="center"/></p>
 <p>The first command is used to get a json with all the information from the purifier (power, air quality, ...) and then I save it in a file on my server (don't forget to set the IP of your purifier and its token).</p>
-<p>The second command is used to query the json file and get the power value (here the IP enter the IP of your Jeedom host).</p>
+<p>The second command is used to query the json file and get the power value (enter the IP of your Jeedom host).</p>
 <p>The third command is used to power on the purifier and so on...</p>
 <p>As you understood the sample, you'll be able to add more commands to get the rest of the information and with a few click you'll have a widget to control your device and I'm sure most of you will have a better design.</p>
 <p style="text-align:center;">
