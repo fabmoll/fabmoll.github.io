@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
 
-        <title>Fabrice Moll - WYAM</title>
+        <title>Fabrice Moll - Add the Xiaomi Air Purifier 3C in Jeedom</title>
         <meta name="description" content="" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">        
 
@@ -28,9 +28,9 @@
         <meta name="msapplication-tooltip" content="Fabrice Moll" />
         <meta name="msapplication-starturl" content="/" />
 
-        <meta property="og:title" content="Fabrice Moll - WYAM" />
+        <meta property="og:title" content="Fabrice Moll - Add the Xiaomi Air Purifier 3C in Jeedom" />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.fabmoll.be/tags/WYAM" />
+        <meta property="og:url" content="https://www.fabmoll.be/posts/XiaomiAirPurifierInJeedom" />
         <!-- TODO: More social graph meta tags -->
 
         
@@ -72,9 +72,18 @@
                         <div class="container">
                                 <div class="row">
                                         <div class="col-md-12">
-<div class="site-heading">
-    <h1>WYAM</h1>
-</div>                                            </div>
+
+    
+<div class="post-heading">
+    <h1>Add the Xiaomi Air Purifier 3C in Jeedom</h1>
+    <div class="meta">        
+Monday, January 3, 2022 - Posted in 
+                                        <a role="button" href="/tags/JEEDOM" class="post-meta">JEEDOM</a>
+
+                </div>
+   
+</div>
+                                        </div>
                                 </div>
                         </div>
                 </header>
@@ -83,40 +92,70 @@
                 <div class="container">
                         <div class="row">
                                 <div id="content" class="col-md-12">
-                                        <div class="container-sm-height">
-    <div class="row row-sm-height">
-        <div class="col-sm-8 right-border col-sm-height">
-            
-        <div class="post-list">
-            <a href="/posts/SyntaxHighlightingInWyam">
-                <h3 class="post-title">Syntax Highlighting In Wyam</h3>
-            </a>
-            <p class="post-meta">Posted on Sunday, January 5, 2020</p>      
-        </div>   
+                                        
+
+<p>The Xiaomi air purifier is a wifi device and to be able to use it in Jeedom you'll need to extract its token.</p>
+<p>It's possible to extract the token by using an old version of the Mi-Home app or using various strange manipulations.</p>
+<p>For me it never worked and by chance I found the <a href="https://github.com/PiotrMachowski/Xiaomi-cloud-tokens-extractor" target="_blank">Xiaomi Cloud tokens extractor</a>.</p>
+<p>Before to use it, you need to add your purifier in the Mi-Home app and then you can execute the &quot;token_extractor.exe&quot;.</p>
+<p>The tool will ask you to enter your Mi-Home login, your password and the server to use.  The last information isn't mandatory and if omitted the tool will scan all countries and will list different information about your devices.</p>
+<p>For the purifier we just need to get the token.</p>
+<p>As I've the Xiaomi Home plugin in Jeedom I thought it would be easy to add my new toy but it never worked (the information returned by the commands were always empty).</p>
+<p>After a few searches, I found the <a href="https://github.com/rytilahti/python-miio" target="_blank">miiocli</a> tool that can be installed on your Jeedom host (you'll be able to see a list of compatible devices on the Github page).</p>
+<p>First connect via SSH to your Jeedom host and execute the following command to install the JQ tool (used to manipulate JSON structure)</p>
+<pre><code class="language-bash">sudo apt-get install jq -y
+</code></pre>
+<p>Then you can install the miiocli tool:</p>
+<pre><code class="language-bash">sudo apt-get install libffi-dev libssl-dev -y
+sudo pip3 install python-miio
+</code></pre>
+<p>To be able to see what you can do with the Air Purifier 3C, you can the help command result and it will describe the options and commands you can use:</p>
+<pre><code class="language-bash">sudo miiocli airpurifiermb4 --ip [YourPurifierIP] --token [YourPurifierToken] --help
+</code></pre>
+<p>The parameter &quot;airpurifiermb4&quot; is the device type to use with the command and is linked to the <strong>Xiaomi Air Purifier 3C</strong>.</p>
+<p>When you validate the previous command, you'll see all the commands available to control your purifier.</p>
+<p style="text-align:center;">
+<img src="../images/miiocli-help.png" alt="miiocli-help" align="center"/></p>
+<p>In the following screenshot, I added a new script in Jeedom to be able to control my device.</p>
+<p style="text-align:center;">
+<img src="../images/air-purifier-xiaomi-jeedom.png" alt="script-1" align="center"/></p>
+<p>The first command is used to get a json with all the information from the purifier (power, air quality, ...) and then I save it in a file on my server (don't forget to set the IP of your purifier and its token).</p>
+<p>The second command is used to query the json file and get the power value (here the IP enter the IP of your Jeedom host).</p>
+<p>The third command is used to power on the purifier and so on...</p>
+<p>As you understood the sample, you'll be able to add more commands to get the rest of the information and with a few click you'll have a widget to control your device and I'm sure most of you will have a better design.</p>
+<p style="text-align:center;">
+<img src="../images/air-purifier-widget.png" alt="widget" align="center"/></p>
 
 
-            <nav>
-                <ul class="pager">
-                    <li class="previous">                
-                    </li>
-                    <li class="next">
-                    </li>
-                </ul>
-            </nav>
-            <hr class="visible-xs-block" />
-        </div>
-		
-        <div class="col-sm-4 col-sm-height">
-                <a role="button" href="/tags/JEEDOM" class="btn btn-default btn-xs">JEEDOM (7)</a>
-                <a role="button" href="/tags/NETWORK" class="btn btn-default btn-xs">NETWORK (5)</a>
-                <a role="button" href="/tags/XAMARIN" class="btn btn-default btn-xs">XAMARIN (2)</a>
-                <a role="button" href="/tags/WYAM" class="btn btn-primary btn-xs">WYAM (1)</a>
-                <a role="button" href="/tags/Introduction" class="btn btn-default btn-xs">Introduction (1)</a>
-                <a role="button" href="/tags/CSS" class="btn btn-default btn-xs">CSS (1)</a>
-                <a role="button" href="/tags/XAMARINFORMS" class="btn btn-default btn-xs">XAMARIN.FORMS (1)</a>
-        </div>
-    </div>
-</div>
+  <div class="item-footer-tools">
+                        Share on: <a href="https://twitter.com/intent/tweet?url=https://www.fabmoll.be/posts/XiaomiAirPurifierInJeedom&text=Fabrice Moll&via=fabmoll">Twitter</a>, <a href="https://facebook.com/sharer.php?u=https://www.fabmoll.be/posts/XiaomiAirPurifierInJeedom">Facebook</a> or use the 
+                                  <a href="https://www.fabmoll.be/posts/XiaomiAirPurifierInJeedom" class="permalink" rel="bookmark">Permalink</a>
+</div> 
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'fabricemoll'; // required: replace example with your forum shortname
+    var disqus_identifier = 'XiaomiAirPurifierInJeedom';
+    var disqus_title = 'Add the Xiaomi Air Purifier 3C in Jeedom';
+    var disqus_url = 'https://www.fabmoll.be/posts/XiaomiAirPurifierInJeedom';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
                                 </div>
                         </div>
                 </div>

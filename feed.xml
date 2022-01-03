@@ -5,8 +5,47 @@
 		<link>https://www.fabmoll.be/</link>
 		<description />
 		<copyright>2022</copyright>
-		<pubDate>Mon, 03 Jan 2022 10:03:06 GMT</pubDate>
-		<lastBuildDate>Mon, 03 Jan 2022 10:03:06 GMT</lastBuildDate>
+		<pubDate>Mon, 03 Jan 2022 17:10:59 GMT</pubDate>
+		<lastBuildDate>Mon, 03 Jan 2022 17:10:59 GMT</lastBuildDate>
+		<item>
+			<title>Add the Xiaomi Air Purifier 3C in Jeedom</title>
+			<link>https://www.fabmoll.be/posts/XiaomiAirPurifierInJeedom</link>
+			<description>&lt;p&gt;The Xiaomi air purifier is a wifi device and to be able to use it in Jeedom you'll need to extract its token.&lt;/p&gt;</description>
+			<guid>https://www.fabmoll.be/posts/XiaomiAirPurifierInJeedom</guid>
+			<pubDate>Mon, 03 Jan 2022 00:00:00 GMT</pubDate>
+			<content:encoded>&lt;p&gt;The Xiaomi air purifier is a wifi device and to be able to use it in Jeedom you'll need to extract its token.&lt;/p&gt;
+&lt;p&gt;It's possible to extract the token by using an old version of the Mi-Home app or using various strange manipulations.&lt;/p&gt;
+&lt;p&gt;For me it never worked and by chance I found the &lt;a href="https://github.com/PiotrMachowski/Xiaomi-cloud-tokens-extractor" target="_blank"&gt;Xiaomi Cloud tokens extractor&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Before to use it, you need to add your purifier in the Mi-Home app and then you can execute the &amp;quot;token_extractor.exe&amp;quot;.&lt;/p&gt;
+&lt;p&gt;The tool will ask you to enter your Mi-Home login, your password and the server to use.  The last information isn't mandatory and if omitted the tool will scan all countries and will list different information about your devices.&lt;/p&gt;
+&lt;p&gt;For the purifier we just need to get the token.&lt;/p&gt;
+&lt;p&gt;As I've the Xiaomi Home plugin in Jeedom I thought it would be easy to add my new toy but it never worked (the information returned by the commands were always empty).&lt;/p&gt;
+&lt;p&gt;After a few searches, I found the &lt;a href="https://github.com/rytilahti/python-miio" target="_blank"&gt;miiocli&lt;/a&gt; tool that can be installed on your Jeedom host (you'll be able to see a list of compatible devices on the Github page).&lt;/p&gt;
+&lt;p&gt;First connect via SSH to your Jeedom host and execute the following command to install the JQ tool (used to manipulate JSON structure)&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;sudo apt-get install jq -y
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Then you can install the miiocli tool:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;sudo apt-get install libffi-dev libssl-dev -y
+sudo pip3 install python-miio
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;To be able to see what you can do with the Air Purifier 3C, you can the help command result and it will describe the options and commands you can use:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="language-bash"&gt;sudo miiocli airpurifiermb4 --ip [YourPurifierIP] --token [YourPurifierToken] --help
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The parameter &amp;quot;airpurifiermb4&amp;quot; is the device type to use with the command and is linked to the &lt;strong&gt;Xiaomi Air Purifier 3C&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;When you validate the previous command, you'll see all the commands available to control your purifier.&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;
+&lt;img src="../images/miiocli-help.png" alt="miiocli-help" align="center"/&gt;&lt;/p&gt;
+&lt;p&gt;In the following screenshot, I added a new script in Jeedom to be able to control my device.&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;
+&lt;img src="../images/air-purifier-xiaomi-jeedom.png" alt="script-1" align="center"/&gt;&lt;/p&gt;
+&lt;p&gt;The first command is used to get a json with all the information from the purifier (power, air quality, ...) and then I save it in a file on my server (don't forget to set the IP of your purifier and its token).&lt;/p&gt;
+&lt;p&gt;The second command is used to query the json file and get the power value (here the IP enter the IP of your Jeedom host).&lt;/p&gt;
+&lt;p&gt;The third command is used to power on the purifier and so on...&lt;/p&gt;
+&lt;p&gt;As you understood the sample, you'll be able to add more commands to get the rest of the information and with a few click you'll have a widget to control your device and I'm sure most of you will have a better design.&lt;/p&gt;
+&lt;p style="text-align:center;"&gt;
+&lt;img src="../images/air-purifier-widget.png" alt="widget" align="center"/&gt;&lt;/p&gt;
+</content:encoded>
+		</item>
 		<item>
 			<title>Force HTTPS access in Apache</title>
 			<link>https://www.fabmoll.be/posts/ForceHttpsAccessInApache</link>

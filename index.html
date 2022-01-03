@@ -89,6 +89,54 @@
 <div class="row">
     <div style="padding-right:15px;padding-left:15px">
                 <div class="post-preview">
+                    <a href="/posts/XiaomiAirPurifierInJeedom">
+                        <h2 class="post-title">Add the Xiaomi Air Purifier 3C in Jeedom</h2>
+                    </a>
+                    <p class="post-meta">Monday, January 3, 2022 - Posted in 
+                                       
+                                <!-- <div class="tags"> -->
+                                            <a role="button" href="/tags/JEEDOM" class="post-meta">JEEDOM</a>
+                                <!-- </div>      -->
+                    </p>
+
+<p>The Xiaomi air purifier is a wifi device and to be able to use it in Jeedom you'll need to extract its token.</p>
+<p>It's possible to extract the token by using an old version of the Mi-Home app or using various strange manipulations.</p>
+<p>For me it never worked and by chance I found the <a href="https://github.com/PiotrMachowski/Xiaomi-cloud-tokens-extractor" target="_blank">Xiaomi Cloud tokens extractor</a>.</p>
+<p>Before to use it, you need to add your purifier in the Mi-Home app and then you can execute the &quot;token_extractor.exe&quot;.</p>
+<p>The tool will ask you to enter your Mi-Home login, your password and the server to use.  The last information isn't mandatory and if omitted the tool will scan all countries and will list different information about your devices.</p>
+<p>For the purifier we just need to get the token.</p>
+<p>As I've the Xiaomi Home plugin in Jeedom I thought it would be easy to add my new toy but it never worked (the information returned by the commands were always empty).</p>
+<p>After a few searches, I found the <a href="https://github.com/rytilahti/python-miio" target="_blank">miiocli</a> tool that can be installed on your Jeedom host (you'll be able to see a list of compatible devices on the Github page).</p>
+<p>First connect via SSH to your Jeedom host and execute the following command to install the JQ tool (used to manipulate JSON structure)</p>
+<pre><code class="language-bash">sudo apt-get install jq -y
+</code></pre>
+<p>Then you can install the miiocli tool:</p>
+<pre><code class="language-bash">sudo apt-get install libffi-dev libssl-dev -y
+sudo pip3 install python-miio
+</code></pre>
+<p>To be able to see what you can do with the Air Purifier 3C, you can the help command result and it will describe the options and commands you can use:</p>
+<pre><code class="language-bash">sudo miiocli airpurifiermb4 --ip [YourPurifierIP] --token [YourPurifierToken] --help
+</code></pre>
+<p>The parameter &quot;airpurifiermb4&quot; is the device type to use with the command and is linked to the <strong>Xiaomi Air Purifier 3C</strong>.</p>
+<p>When you validate the previous command, you'll see all the commands available to control your purifier.</p>
+<p style="text-align:center;">
+<img src="../images/miiocli-help.png" alt="miiocli-help" align="center"/></p>
+<p>In the following screenshot, I added a new script in Jeedom to be able to control my device.</p>
+<p style="text-align:center;">
+<img src="../images/air-purifier-xiaomi-jeedom.png" alt="script-1" align="center"/></p>
+<p>The first command is used to get a json with all the information from the purifier (power, air quality, ...) and then I save it in a file on my server (don't forget to set the IP of your purifier and its token).</p>
+<p>The second command is used to query the json file and get the power value (here the IP enter the IP of your Jeedom host).</p>
+<p>The third command is used to power on the purifier and so on...</p>
+<p>As you understood the sample, you'll be able to add more commands to get the rest of the information and with a few click you'll have a widget to control your device and I'm sure most of you will have a better design.</p>
+<p style="text-align:center;">
+<img src="../images/air-purifier-widget.png" alt="widget" align="center"/></p>
+                    
+                    <div class="item-footer-tools">
+                        Share on: <a href="https://twitter.com/intent/tweet?url=https://www.fabmoll.be/posts/XiaomiAirPurifierInJeedom&text=Fabrice Moll&via=fabmoll">Twitter</a>, <a href="https://facebook.com/sharer.php?u=https://www.fabmoll.be/posts/XiaomiAirPurifierInJeedom">Facebook</a> or use the 
+                                  <a href="https://www.fabmoll.be/posts/XiaomiAirPurifierInJeedom" class="permalink" rel="bookmark">Permalink</a>
+                    </div>            
+                </div>       
+                <div class="post-preview">
                     <a href="/posts/ForceHttpsAccessInApache">
                         <h2 class="post-title">Force HTTPS access in Apache</h2>
                     </a>
@@ -251,41 +299,6 @@ The main goal was to be able to access our Jeedom from outside our private netwo
                                   <a href="https://www.fabmoll.be/posts/CreateADynHostToAccessJeedom" class="permalink" rel="bookmark">Permalink</a>
                     </div>            
                 </div>       
-                <div class="post-preview">
-                    <a href="/posts/CSScurrentColorValue">
-                        <h2 class="post-title">CSS currentColor value</h2>
-                    </a>
-                    <p class="post-meta">Friday, July 16, 2021 - Posted in 
-                                       
-                                <!-- <div class="tags"> -->
-                                            <a role="button" href="/tags/CSS" class="post-meta">CSS</a>
-                                <!-- </div>      -->
-                    </p>
-
-<p>A few days ago, I started to learn CSS and HTML.  I already played with CSS and HTML but I had a very very limited knowledge.</p>
-<p>As I don't like to repeat a code or a property value, I found recently that you can apply a color (defined once) in different properties.</p>
-<p>Let's see an example:</p>
-<pre><code class="language-css">div {
-    color: blue;
-    border: 1px solid currentColor;
-}
-</code></pre>
-<p>With the <strong>currentColor</strong> property you indicate that you'll use the value of the color property in other properties that accept a color value.</p>
-<p>With my example, the border color will be blue.</p>
-<p>You can even use it in a cascade:</p>
-<pre><code class="language-css">body {
-    color: blue;
-}
-div {
-     border: 1px solid currentColor;
-}
-</code></pre>
-                    
-                    <div class="item-footer-tools">
-                        Share on: <a href="https://twitter.com/intent/tweet?url=https://www.fabmoll.be/posts/CSScurrentColorValue&text=Fabrice Moll&via=fabmoll">Twitter</a>, <a href="https://facebook.com/sharer.php?u=https://www.fabmoll.be/posts/CSScurrentColorValue">Facebook</a> or use the 
-                                  <a href="https://www.fabmoll.be/posts/CSScurrentColorValue" class="permalink" rel="bookmark">Permalink</a>
-                    </div>            
-                </div>       
         <ul class="pager">
             <li class="previous">                
             </li>
@@ -299,13 +312,13 @@ div {
 
             <h5>Tags</h5>
             <div>
-                    <a role="button" href="/tags/JEEDOM" class="btn btn-default btn-sm"> JEEDOM (6)</a>
+                    <a role="button" href="/tags/JEEDOM" class="btn btn-default btn-sm"> JEEDOM (7)</a>
                     <a role="button" href="/tags/NETWORK" class="btn btn-default btn-sm"> NETWORK (5)</a>
                     <a role="button" href="/tags/XAMARIN" class="btn btn-default btn-sm"> XAMARIN (2)</a>
-                    <a role="button" href="/tags/CSS" class="btn btn-default btn-sm"> CSS (1)</a>
-                    <a role="button" href="/tags/Introduction" class="btn btn-default btn-sm"> Introduction (1)</a>
                     <a role="button" href="/tags/WYAM" class="btn btn-default btn-sm"> WYAM (1)</a>
+                    <a role="button" href="/tags/Introduction" class="btn btn-default btn-sm"> Introduction (1)</a>
                     <a role="button" href="/tags/XAMARINFORMS" class="btn btn-default btn-sm"> XAMARIN.FORMS (1)</a>
+                    <a role="button" href="/tags/CSS" class="btn btn-default btn-sm"> CSS (1)</a>
             </div>
             <ul class="pager">
                 <li class="next">
