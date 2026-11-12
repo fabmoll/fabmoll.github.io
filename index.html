@@ -1,166 +1,24 @@
-﻿
-<!DOCTYPE html>
-<html lang="en">
-        <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
-
-        <title>Fabrice Moll</title>
-        <meta name="description" content="" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">        
-
-        <link type="application/rss+xml" rel="alternate" title="Fabrice Moll" href="/feed.xml" />
-                <link type="application/atom+xml" rel="alternate" title="Fabrice Moll" href="/feed.atom" />
-        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-        <link rel="icon" href="/favicon.ico" type="image/x-icon">
-
-        <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
-        <link href="/assets/css/highlight.css" rel="stylesheet">
-        <link href="/assets/css/clean-blog.css" rel="stylesheet" />
-        <link href="/assets/css/master.css" rel="stylesheet" />
-        <link href="/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <link href='//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-        <link href="/assets/css/override.css" rel="stylesheet" />
-
-
-        <meta name="application-name" content="Fabrice Moll" />
-        <meta name="msapplication-tooltip" content="Fabrice Moll" />
-        <meta name="msapplication-starturl" content="/" />
-
-        <meta property="og:title" content="Fabrice Moll" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.fabmoll.be/" />
-        <!-- TODO: More social graph meta tags -->
-
-        
-
-
-        </head>
-        <body>
-                
-                <!-- Navigation -->
-                <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-                        <div class="container-fluid">
-                                <!-- Brand and toggle get grouped for better mobile display -->
-                                <div class="navbar-header page-scroll">
-                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
-                                        <span class="sr-only">Toggle navigation</span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        <span class="icon-bar"></span>
-                                        </button>
-                                        <a class="navbar-brand" href="/">Fabrice Moll</a>
-                                </div>
-                        
-                                <!-- Collect the nav links, forms, and other content for toggling -->
-                                <div class="collapse navbar-collapse" id="navbar-collapse">
-                                        <ul class="nav navbar-nav navbar-right">
-                                                        <li><a href="/posts">Archive</a></li>
-        <li><a href="/tags">Tags</a></li>
-        <li><a href="/about">About Me</a></li>
- 
-                                        </ul>
-                                </div>
-                                <!-- /.navbar-collapse -->
-                        </div>
-                        <!-- /.container -->
-                </nav>
-                
-                <!-- Page Header -->
-                <header class="intro-header" id="intro-header">
-                        <div class="container">
-                                <div class="row">
-                                        <div class="col-md-12">
-
-    <div class="site-heading">
-        <h1></h1>
-    </div>
-                                        </div>
-                                </div>
-                        </div>
-                </header>
-                
-                <!-- Main Content -->
-                <div class="container">
-                        <div class="row">
-                                <div id="content" class="col-md-12">
-                                        
-<div class="row">
-    <div style="padding-right:15px;padding-left:15px">
-                <div class="post-preview">
-                    <a href="/posts/XiaomiAirPurifierInJeedom">
-                        <h2 class="post-title">Add the Xiaomi Air Purifier 3C in Jeedom</h2>
-                    </a>
-                    <p class="post-meta">Monday, January 3, 2022 - Posted in 
-                                       
-                                <!-- <div class="tags"> -->
-                                            <a role="button" href="/tags/JEEDOM" class="post-meta">JEEDOM</a>
-                                <!-- </div>      -->
-                    </p>
-
-<p>The Xiaomi air purifier is a wifi device and to be able to use it in Jeedom you'll need to extract its token.</p>
-<p>It's possible to extract the token by using an old version of the Mi-Home app or using various strange manipulations.</p>
-<p>For me it never worked and by chance I found the <a href="https://github.com/PiotrMachowski/Xiaomi-cloud-tokens-extractor" target="_blank">Xiaomi Cloud tokens extractor</a>.</p>
-<p>Before to use it, you need to add your purifier in the Mi-Home app and then you can execute the &quot;token_extractor.exe&quot;.</p>
-<p>The tool will ask you to enter your Mi-Home login, your password and the server to use.  The last information isn't mandatory and if omitted the tool will scan all countries and will list different information about your devices.</p>
-<p>For the purifier we just need to get the token.</p>
-<p>As I've the Xiaomi Home plugin in Jeedom I thought it would be easy to add my new toy but it never worked (the information returned by the commands were always empty).</p>
-<p>After a few searches, I found the <a href="https://github.com/rytilahti/python-miio" target="_blank">miiocli</a> tool that can be installed on your Jeedom host (you'll be able to see a list of compatible devices on the Github page).</p>
-<p>First connect via SSH to your Jeedom host and execute the following command to install the JQ tool (used to manipulate JSON structure)</p>
-<pre><code class="language-bash">sudo apt-get install jq -y
-</code></pre>
-<p>Then you can install the miiocli tool:</p>
-<pre><code class="language-bash">sudo apt-get install libffi-dev libssl-dev -y
+<!doctype html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=Edge"><title>Fabrice Moll</title><meta name=description content><meta name=viewport content="width=device-width,initial-scale=1"><link type=application/rss+xml rel=alternate title="Fabrice Moll" href=/feed.xml><link rel="shortcut icon" href=/favicon.ico type=image/x-icon><link rel=icon href=/favicon.ico type=image/x-icon><link href=/assets/css/bootstrap.min.css rel=stylesheet><link href=/assets/css/highlight.css rel=stylesheet><link href=/assets/css/clean-blog.css rel=stylesheet><link href=/assets/css/master.css rel=stylesheet><link href=/assets/css/font-awesome.min.css rel=stylesheet type=text/css><link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel=stylesheet type=text/css><link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel=stylesheet type=text/css><link href=/assets/css/override.css rel=stylesheet><meta property="og:title" content="Fabrice Moll"><meta property="og:type" content="website"><meta property="og:url" content="https://www.fabmoll.be/index.html"><meta name=generator content="Hugo 0.169.0"></head><body><nav class="navbar navbar-default navbar-custom navbar-fixed-top"><div class=container-fluid><div class="navbar-header page-scroll"><button type=button class=navbar-toggle data-toggle=collapse data-target=#navbar-collapse>
+<span class=sr-only>Toggle navigation</span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+<span class=icon-bar></span>
+</button>
+<a class=navbar-brand href=/>Fabrice Moll</a></div><div class="collapse navbar-collapse" id=navbar-collapse><ul class="nav navbar-nav navbar-right"><li><a href=/posts>Archive</a></li><li><a href=/tags>Tags</a></li><li><a href=/about>About Me</a></li></ul></div></div></nav><header class=intro-header id=intro-header><div class=container><div class=row><div class=col-md-12><div class=site-heading><h1>Fabrice Moll</h1></div></div></div></div></header><div class=container><div class=row><div id=content class=col-md-12><div class=post-preview><a href=/posts/XiaomiAirPurifierInJeedom.html><h2 class=post-title>Add the Xiaomi Air Purifier 3C in Jeedom</h2></a><p class=post-meta>Monday, January 3, 2022 - Posted in
+<a role=button href=/tags/JEEDOM.html class=post-meta>JEEDOM</a></p><p>The Xiaomi air purifier is a wifi device and to be able to use it in Jeedom you'll need to extract its token.</p><p>It's possible to extract the token by using an old version of the Mi-Home app or using various strange manipulations.</p><p>For me it never worked and by chance I found the <a href=https://github.com/PiotrMachowski/Xiaomi-cloud-tokens-extractor target=_blank>Xiaomi Cloud tokens extractor</a>.</p><p>Before to use it, you need to add your purifier in the Mi-Home app and then you can execute the "token_extractor.exe".</p><p>The tool will ask you to enter your Mi-Home login, your password and the server to use. The last information isn't mandatory and if omitted the tool will scan all countries and will list different information about your devices.</p><p>For the purifier we just need to get the token.</p><p>As I've the Xiaomi Home plugin in Jeedom I thought it would be easy to add my new toy but it never worked (the information returned by the commands were always empty).</p><p>After a few searches, I found the <a href=https://github.com/rytilahti/python-miio target=_blank>miiocli</a> tool that can be installed on your Jeedom host (you'll be able to see a list of compatible devices on the Github page).</p><p>First connect via SSH to your Jeedom host and execute the following command to install the JQ tool (used to manipulate JSON structure)</p><pre><code class=language-bash>sudo apt-get install jq -y
+</code></pre><p>Then you can install the miiocli tool:</p><pre><code class=language-bash>sudo apt-get install libffi-dev libssl-dev -y
 sudo pip3 install python-miio
-</code></pre>
-<p>To be able to see what you can do with the Air Purifier 3C, you can type the help command and it will describe the options and commands you can use:</p>
-<pre><code class="language-bash">sudo miiocli airpurifiermb4 --ip [YourPurifierIP] --token [YourPurifierToken] --help
-</code></pre>
-<p>The parameter &quot;airpurifiermb4&quot; is the device type to use with the command and is linked to the <strong>Xiaomi Air Purifier 3C</strong>.</p>
-<p>When you validate the previous command, you'll see all the commands available to control your purifier.</p>
-<p style="text-align:center;">
-<img src="../images/miiocli-help.png" alt="miiocli-help" align="center"/></p>
-<p>In the following screenshot, I added a new script in Jeedom to be able to control my device.</p>
-<p style="text-align:center;">
-<img src="../images/air-purifier-xiaomi-jeedom.png" alt="script-1" align="center"/></p>
-<p>The first command is used to get a json with all the information from the purifier (power, air quality, ...) and then I save it in a file on my server (don't forget to set the IP of your purifier and its token).</p>
-<p>The second command is used to query the json file and get the power value (enter the IP of your Jeedom host).</p>
-<p>The third command is used to power on the purifier and so on...</p>
-<p>As you understood the sample, you'll be able to add more commands to get the rest of the information and with a few click you'll have a widget to control your device and I'm sure most of you will have a better design.</p>
-<p style="text-align:center;">
-<img src="../images/air-purifier-widget.png" alt="widget" align="center"/></p>
-                    
-                    <div class="item-footer-tools">
-                        Share on: <a href="https://twitter.com/intent/tweet?url=https://www.fabmoll.be/posts/XiaomiAirPurifierInJeedom&text=Fabrice Moll&via=fabmoll">Twitter</a>, <a href="https://facebook.com/sharer.php?u=https://www.fabmoll.be/posts/XiaomiAirPurifierInJeedom">Facebook</a> or use the 
-                                  <a href="https://www.fabmoll.be/posts/XiaomiAirPurifierInJeedom" class="permalink" rel="bookmark">Permalink</a>
-                    </div>            
-                </div>       
-                <div class="post-preview">
-                    <a href="/posts/ForceHttpsAccessInApache">
-                        <h2 class="post-title">Force HTTPS access in Apache</h2>
-                    </a>
-                    <p class="post-meta">Saturday, August 14, 2021 - Posted in 
-                                       
-                                <!-- <div class="tags"> -->
-                                            <a role="button" href="/tags/JEEDOM" class="post-meta">JEEDOM</a>
-                                <!-- </div>      -->
-                    </p>
-
-<p>If you configured a certificate to access your Jeedom with HTTPS and you don't want to let the HTTP access available, you can change your Apache settings to redirect HTTP access to the HTTPS automatically.</p>
-<p>You'll need to ssh on your Jeedom server and edit the following file:</p>
-<pre><code class="language-bash">nano /etc/apache2/sites-available/000-default.conf
-</code></pre>
-<p>The part we want to modify is the virtual host defined for the HTTP port (80)</p>
-<pre><code class="language-bash">&lt;VirtualHost *:80&gt;
-        ServerAdmin webmaster&#64;localhost
+</code></pre><p>To be able to see what you can do with the Air Purifier 3C, you can type the help command and it will describe the options and commands you can use:</p><pre><code class=language-bash>sudo miiocli airpurifiermb4 --ip [YourPurifierIP] --token [YourPurifierToken] --help
+</code></pre><p>The parameter "airpurifiermb4" is the device type to use with the command and is linked to the <strong>Xiaomi Air Purifier 3C</strong>.</p><p>When you validate the previous command, you'll see all the commands available to control your purifier.</p><p style=text-align:center><img src=../images/miiocli-help.png alt=miiocli-help align=center></p><p>In the following screenshot, I added a new script in Jeedom to be able to control my device.</p><p style=text-align:center><img src=../images/air-purifier-xiaomi-jeedom.png alt=script-1 align=center></p><p>The first command is used to get a json with all the information from the purifier (power, air quality, ...) and then I save it in a file on my server (don't forget to set the IP of your purifier and its token).</p><p>The second command is used to query the json file and get the power value (enter the IP of your Jeedom host).</p><p>The third command is used to power on the purifier and so on...</p><p>As you understood the sample, you'll be able to add more commands to get the rest of the information and with a few click you'll have a widget to control your device and I'm sure most of you will have a better design.</p><p style=text-align:center><img src=../images/air-purifier-widget.png alt=widget align=center></p><div class=item-footer-tools>Share on: <a href="https://twitter.com/intent/tweet?url=https%3a%2f%2fwww.fabmoll.be%2fposts%2fXiaomiAirPurifierInJeedom&text=Fabrice%20Moll&via=fabmoll">Twitter</a>, <a href="https://facebook.com/sharer.php?u=https%3a%2f%2fwww.fabmoll.be%2fposts%2fXiaomiAirPurifierInJeedom">Facebook</a> or use the
+<a href=https://www.fabmoll.be/posts/XiaomiAirPurifierInJeedom class=permalink rel=bookmark>Permalink</a></div></div><div class=post-preview><a href=/posts/ForceHttpsAccessInApache.html><h2 class=post-title>Force HTTPS access in Apache</h2></a><p class=post-meta>Saturday, August 14, 2021 - Posted in
+<a role=button href=/tags/JEEDOM.html class=post-meta>JEEDOM</a></p><p>If you configured a certificate to access your Jeedom with HTTPS and you don't want to let the HTTP access available, you can change your Apache settings to redirect HTTP access to the HTTPS automatically.</p><p>You'll need to ssh on your Jeedom server and edit the following file:</p><pre><code class=language-bash>nano /etc/apache2/sites-available/000-default.conf
+</code></pre><p>The part we want to modify is the virtual host defined for the HTTP port (80)</p><pre><code class=language-bash>&lt;VirtualHost *:80&gt;
+        ServerAdmin webmaster@localhost
         DocumentRoot /var/www/html
         ErrorLog /var/www/html/log/http.error
 &lt;/VirtualHost&gt;
-</code></pre>
-<p>And we'll edit the file to rewrite the HTTP access to the HTTPS access</p>
-<pre><code class="language-bash">&lt;VirtualHost *:80&gt;
-        ServerAdmin webmaster&#64;localhost
+</code></pre><p>And we'll edit the file to rewrite the HTTP access to the HTTPS access</p><pre><code class=language-bash>&lt;VirtualHost *:80&gt;
+        ServerAdmin webmaster@localhost
         DocumentRoot /var/www/html
 
         RewriteEngine on
@@ -169,243 +27,22 @@ sudo pip3 install python-miio
 
         ErrorLog /var/www/html/log/http.error
 &lt;/VirtualHost&gt;
-</code></pre>
-<p>You need to replace the &quot;My.JeedomDomain.com&quot; by your actual domain name used to access your Jeedom from outside your network.</p>
-<p>When it's done, you just need to enable the rewrite module and restart Apache:</p>
-<pre><code class="language-bash">a2enmod rewrite
+</code></pre><p>You need to replace the "My.JeedomDomain.com" by your actual domain name used to access your Jeedom from outside your network.</p><p>When it's done, you just need to enable the rewrite module and restart Apache:</p><pre><code class=language-bash>a2enmod rewrite
 systemctl restart apache2
-</code></pre>
-                    
-                    <div class="item-footer-tools">
-                        Share on: <a href="https://twitter.com/intent/tweet?url=https://www.fabmoll.be/posts/ForceHttpsAccessInApache&text=Fabrice Moll&via=fabmoll">Twitter</a>, <a href="https://facebook.com/sharer.php?u=https://www.fabmoll.be/posts/ForceHttpsAccessInApache">Facebook</a> or use the 
-                                  <a href="https://www.fabmoll.be/posts/ForceHttpsAccessInApache" class="permalink" rel="bookmark">Permalink</a>
-                    </div>            
-                </div>       
-                <div class="post-preview">
-                    <a href="/posts/SecureTheAccessToYourJeedomWithCertbot">
-                        <h2 class="post-title">Secure the access to your Jeedom with Certbot</h2>
-                    </a>
-                    <p class="post-meta">Tuesday, August 3, 2021 - Posted in 
-                                       
-                                <!-- <div class="tags"> -->
-                                            <a role="button" href="/tags/JEEDOM" class="post-meta">JEEDOM</a>
-                                            <a role="button" href="/tags/NETWORK" class="post-meta">NETWORK</a>
-                                <!-- </div>      -->
-                    </p>
-
-<p>A few days ago, I created a <a href="/posts/RedirectHTTPPortToJeedom">post</a> on how to redirect the HTTPS external traffic to a Jeedom in a private network.</p>
-<p>Everything will work but you'll see in your browser that the website isn't secure.
-The reason is that there is no certificate available on your webserver (on your Jeedom).</p>
-<p>To generate, use and auto renew a certificate we'll use <a href="https://certbot.eff.org/" target="_blank">CertBot</a></p>
-<blockquote class="blockquote">
-<p>Certbot is a free, open source software tool for automatically using Let’s Encrypt certificates on manually-administrated websites to enable HTTPS.</p>
-<p>Certbot is made by the Electronic Frontier Foundation (EFF), a 501(c)3 nonprofit based in San Francisco, CA, that defends digital privacy, free speech, and innovation.</p>
-</blockquote>
-<p>First, open a SSH connection to your Jeedom.</p>
-<p>Install snapd</p>
-<pre><code class="language-bash">sudo snap install core; sudo snap refresh core
-</code></pre>
-<p>Install Certbot</p>
-<pre><code class="language-bash">sudo snap install --classic certbot
-</code></pre>
-<p>Check if you can run the certbot command</p>
-<pre><code class="language-bash">sudo ln -s /snap/bin/certbot /usr/bin/certbot
-</code></pre>
-<p>To get a certificate and have certbot automatically change your Apache configuration to serve it and to turn on HTTPS access in a single step, use the following command:</p>
-<pre><code class="language-bash">sudo certbot --apache
-</code></pre>
-<p>The certbot comes with a cron to automatically renew your certificate. But if you want to check if the auto renewal is working, you can use this command:</p>
-<pre><code class="language-bash">sudo certbot renew --dry-run
-</code></pre>
-<p>If it completes without errors, your certificate will be renewed automatically.</p>
-<p><strong>Please note that your HTTP(80) and HTTPS(443) port must be opened</strong> or the auto renewal will not work.</p>
-<p>Now you can try to access your Jeedom with the HTTPS url and you'll see that the browser will display that the connection is &quot;secure&quot;.</p>
-<p>As a wise man said once:</p>
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">HTTPS &amp; SSL doesn&#39;t mean &quot;trust this.&quot; It means &quot;this is private.&quot; You may be having a private conversation with Satan.</p>&mdash; Scott Hanselman (&#64;shanselman) <a href="https://twitter.com/shanselman/status/187572289724887041?ref_src=twsrc%5Etfw">April 4, 2012</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-<p>Please note that you'll need to change your Jeedom configuration to add the HTTPS URL (and port) to be able to use the HTTPS URL to access Jeedom.</p>
-                    
-                    <div class="item-footer-tools">
-                        Share on: <a href="https://twitter.com/intent/tweet?url=https://www.fabmoll.be/posts/SecureTheAccessToYourJeedomWithCertbot&text=Fabrice Moll&via=fabmoll">Twitter</a>, <a href="https://facebook.com/sharer.php?u=https://www.fabmoll.be/posts/SecureTheAccessToYourJeedomWithCertbot">Facebook</a> or use the 
-                                  <a href="https://www.fabmoll.be/posts/SecureTheAccessToYourJeedomWithCertbot" class="permalink" rel="bookmark">Permalink</a>
-                    </div>            
-                </div>       
-                <div class="post-preview">
-                    <a href="/posts/RedirectHTTPPortToJeedom">
-                        <h2 class="post-title">Redirect HTTP/HTTPS port to your Jeedom</h2>
-                    </a>
-                    <p class="post-meta">Tuesday, July 20, 2021 - Posted in 
-                                       
-                                <!-- <div class="tags"> -->
-                                            <a role="button" href="/tags/JEEDOM" class="post-meta">JEEDOM</a>
-                                            <a role="button" href="/tags/NETWORK" class="post-meta">NETWORK</a>
-                                <!-- </div>      -->
-                    </p>
-
-<p>In the previous blog <a href="/posts/CreateADynHostToAccessJeedom">post</a> we saw how to create a custom domain name to point to our public IP address.
-The main goal was to be able to access our Jeedom from outside our private network.</p>
-<p>But if you just type your public IP address or use the new custom domain name to access Jeedom you'll just hit your modem or firewall and they'll not know what do to with the traffic. And you can be sure the traffic will not go to your Jeedom by default.</p>
-<p>If you're using a Dream Machine Pro (controller 6.2.26) you can redirect the HTTP/HTTPS traffic to your Jeedom by following these steps:</p>
-<ol>
-<li>Open your Dream Machine Network Manager web page</li>
-<li>Go to Advanced features - Advanced Gateway Settings and click on the Create a new Port Forwarding button</li>
-<li>Fill in the form as below and validate</li>
-</ol>
-<p style="text-align:center;">
-<img src="../images/NewPortForwardingRule.png" align="center"/></p>
-<p>You can repeat the process to redirect the HTTPS port (443).</p>
-<p>Now if you enter your custom domain in a browser, you'll be able to access your Jeedom in your private network</p>
-                    
-                    <div class="item-footer-tools">
-                        Share on: <a href="https://twitter.com/intent/tweet?url=https://www.fabmoll.be/posts/RedirectHTTPPortToJeedom&text=Fabrice Moll&via=fabmoll">Twitter</a>, <a href="https://facebook.com/sharer.php?u=https://www.fabmoll.be/posts/RedirectHTTPPortToJeedom">Facebook</a> or use the 
-                                  <a href="https://www.fabmoll.be/posts/RedirectHTTPPortToJeedom" class="permalink" rel="bookmark">Permalink</a>
-                    </div>            
-                </div>       
-                <div class="post-preview">
-                    <a href="/posts/CreateADynHostToAccessJeedom">
-                        <h2 class="post-title">Create a DynHost to access your Jeedom</h2>
-                    </a>
-                    <p class="post-meta">Sunday, July 18, 2021 - Posted in 
-                                       
-                                <!-- <div class="tags"> -->
-                                            <a role="button" href="/tags/JEEDOM" class="post-meta">JEEDOM</a>
-                                <!-- </div>      -->
-                    </p>
-
-<p>If you want to access your Jeedom from outside your private network, you can do it using your public IP address or using a custom domain name pointing to your public IP address (if the HTTP or HTTPS port is opened).</p>
-<p>For me and maybe for you, it's easier to remember a custom domain name and I decided to go with one on <a href="https://www.ovh.com/" target="_blank">OVH</a>.</p>
-<p>Now that I have my custom domain I would like to use it to access my Jeedom and trust me or not, I didn't know it was so simple.</p>
-<h1 id="create-a-new-user">Create a new user</h1>
-<p style="text-align:center;">
-<img src="../images/OVHCreateUser.png" align="center"/></p>
-<p>Go in the DynHost menu and choose to create a username.</p>
-<p style="text-align:center;">
-<img src="../images/CreateUserOVHDetail.png" align="center"/></p>
-<ul>
-<li>Enter a username suffix</li>
-<li>Enter the sub-domain that you want to define to point to your Jeedom</li>
-<li>Define a password to use with your username and confirm</li>
-</ul>
-<h1 id="create-a-dynhostrecord">Create a DynHostRecord</h1>
-<p>When it's done, you can add a new DynHost record and re-enter the sub-domain name you choosed earlier, enter the target IP (the public IP address of your Jeedom) and confirm.</p>
-<p style="text-align:center;">
-<img src="../images/DynHostRecord.png" align="center"/></p>
-<p style="text-align:center;">
-<img src="../images/DynHostRecordDetail.png" align="center"/></p>
-<p><em>If you want to know your public IP address you can go to <a href="https://whatismyipaddress.com/" target="_blank">whatismyipaddress</a> and copy the address displayed in the IPv4 field.</em></p>
-<p>In an upcoming blog <a href="/posts/RedirectHTTPPortToJeedom">post</a>, we'll see how to automatically refresh your public IP address to DynHost (if you don't have a fixed IP address) and how to redirect incoming traffic on the HTTP port to your Jeedom.</p>
-                    
-                    <div class="item-footer-tools">
-                        Share on: <a href="https://twitter.com/intent/tweet?url=https://www.fabmoll.be/posts/CreateADynHostToAccessJeedom&text=Fabrice Moll&via=fabmoll">Twitter</a>, <a href="https://facebook.com/sharer.php?u=https://www.fabmoll.be/posts/CreateADynHostToAccessJeedom">Facebook</a> or use the 
-                                  <a href="https://www.fabmoll.be/posts/CreateADynHostToAccessJeedom" class="permalink" rel="bookmark">Permalink</a>
-                    </div>            
-                </div>       
-        <ul class="pager">
-            <li class="previous">                
-            </li>
-            <li class="next">
-                    <a href="/index2">Older <span aria-hidden="true">&rarr;</span></a>
-            </li>
-        </ul>
-    </div>
-    <!-- <div class="col-sm-4 sidebar">
-        <hr class="visible-xs-block" />
-
-            <h5>Tags</h5>
-            <div>
-                    <a role="button" href="/tags/JEEDOM" class="btn btn-default btn-sm"> JEEDOM (7)</a>
-                    <a role="button" href="/tags/NETWORK" class="btn btn-default btn-sm"> NETWORK (5)</a>
-                    <a role="button" href="/tags/XAMARIN" class="btn btn-default btn-sm"> XAMARIN (2)</a>
-                    <a role="button" href="/tags/CSS" class="btn btn-default btn-sm"> CSS (1)</a>
-                    <a role="button" href="/tags/Introduction" class="btn btn-default btn-sm"> Introduction (1)</a>
-                    <a role="button" href="/tags/XAMARINFORMS" class="btn btn-default btn-sm"> XAMARIN.FORMS (1)</a>
-                    <a role="button" href="/tags/WYAM" class="btn btn-default btn-sm"> WYAM (1)</a>
-            </div>
-            <ul class="pager">
-                <li class="next">
-                    <a href="/tags">View All Tags &rarr;</a>
-                </li>
-            </ul>
-
-
-        
-    </div>  -->
-</div>
-
-                                </div>
-                        </div>
-                </div>
-                
-                <hr>
-                
-                <!-- Footer -->
-                <footer>
-                        <div class="container">
-        <div class="row">
-                <div class="col-md-12 text-center">
-                    <p class="copyright text-muted">
-                        Copyright © 2022
-                        <br />
-                            <a href="/feed.xml"><i class="fa fa-rss"></i> RSS Feed</a>
-                        |
-                            <a href="/feed.atom"><i class="fa fa-rss"></i> Atom Feed</a>
-                        <br />
-                        <strong><a href="https://wyam.io">Generated by Wyam</a></strong>
-                    </p>
-                </div>
-        </div>
-</div>
-
-                </footer> 
-
-                <script src="/assets/js/jquery.min.js"></script>
-                <script src="/assets/js/bootstrap.min.js"></script>     
-                <script src="/assets/js/highlight.pack.js"></script>   
-                <script src="/assets/js/clean-blog.js"></script>
-                <script src="/assets/js/d3.v3.min.js"></script>
-                <script src="/assets/js/trianglify.min.js"></script>
-                <script src="/assets/js/Please-compressed.js"></script>
-                <script src="/assets/js/background-check.min.js"></script>
-
-                <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-                <!--[if lt IE 9]>
-                        <script src="/assets/js/html5shiv.js"></script>
-                        <script src="/assets/js/respond.min.js"></script>
-                <![endif]-->
-                
-                <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-26045778-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-26045778-1');
-</script>
-
-                <script>hljs.initHighlightingOnLoad();</script>
-
-                        <script type="text/javascript">                
-                                // Header background                        
-                                var colors = Please.make_color({
-                                        colors_returned: 3,
-                                        saturation: .6
-                                });
-                                var t = new Trianglify({
-                                        x_gradient: colors,
-                                        y_gradient: ["#FFFFFF"]
-                                });
-                                var header = document.getElementById("intro-header");
-                                var pattern = t.generate(header.clientWidth, header.clientHeight);
-                                header.setAttribute('style', 'background-image: ' + pattern.dataUrl);                        
-                        </script>
-
-                <script>
-                        BackgroundCheck.init({
-                                targets: '.intro-header,.navbar',
-                                images: '.intro-header'
-                        });
-                </script>
-        </body>
-</html>
-
+</code></pre><div class=item-footer-tools>Share on: <a href="https://twitter.com/intent/tweet?url=https%3a%2f%2fwww.fabmoll.be%2fposts%2fForceHttpsAccessInApache&text=Fabrice%20Moll&via=fabmoll">Twitter</a>, <a href="https://facebook.com/sharer.php?u=https%3a%2f%2fwww.fabmoll.be%2fposts%2fForceHttpsAccessInApache">Facebook</a> or use the
+<a href=https://www.fabmoll.be/posts/ForceHttpsAccessInApache class=permalink rel=bookmark>Permalink</a></div></div><div class=post-preview><a href=/posts/SecureTheAccessToYourJeedomWithCertbot.html><h2 class=post-title>Secure the access to your Jeedom with Certbot</h2></a><p class=post-meta>Tuesday, August 3, 2021 - Posted in
+<a role=button href=/tags/JEEDOM.html class=post-meta>JEEDOM</a>
+<a role=button href=/tags/NETWORK.html class=post-meta>NETWORK</a></p><p>A few days ago, I created a <a href=/posts/RedirectHTTPPortToJeedom>post</a> on how to redirect the HTTPS external traffic to a Jeedom in a private network.</p><p>Everything will work but you'll see in your browser that the website isn't secure.
+The reason is that there is no certificate available on your webserver (on your Jeedom).</p><p>To generate, use and auto renew a certificate we'll use <a href=https://certbot.eff.org/ target=_blank>CertBot</a></p><blockquote><p>Certbot is a free, open source software tool for automatically using Let’s Encrypt certificates on manually-administrated websites to enable HTTPS.</p><p>Certbot is made by the Electronic Frontier Foundation (EFF), a 501(c)3 nonprofit based in San Francisco, CA, that defends digital privacy, free speech, and innovation.</p></blockquote><p>First, open a SSH connection to your Jeedom.</p><p>Install snapd</p><pre><code class=language-bash>sudo snap install core; sudo snap refresh core
+</code></pre><p>Install Certbot</p><pre><code class=language-bash>sudo snap install --classic certbot
+</code></pre><p>Check if you can run the certbot command</p><pre><code class=language-bash>sudo ln -s /snap/bin/certbot /usr/bin/certbot
+</code></pre><p>To get a certificate and have certbot automatically change your Apache configuration to serve it and to turn on HTTPS access in a single step, use the following command:</p><pre><code class=language-bash>sudo certbot --apache
+</code></pre><p>The certbot comes with a cron to automatically renew your certificate. But if you want to check if the auto renewal is working, you can use this command:</p><pre><code class=language-bash>sudo certbot renew --dry-run
+</code></pre><p>If it completes without errors, your certificate will be renewed automatically.</p><p><strong>Please note that your HTTP(80) and HTTPS(443) port must be opened</strong> or the auto renewal will not work.</p><p>Now you can try to access your Jeedom with the HTTPS url and you'll see that the browser will display that the connection is "secure".</p><p>As a wise man said once:</p><blockquote class=twitter-tweet><p lang=en dir=ltr>HTTPS & SSL doesn't mean "trust this." It means "this is private." You may be having a private conversation with Satan.</p>&mdash; Scott Hanselman (@shanselman) <a href="https://twitter.com/shanselman/status/187572289724887041?ref_src=twsrc%5Etfw">April 4, 2012</a></blockquote><script async src=https://platform.twitter.com/widgets.js></script><p>Please note that you'll need to change your Jeedom configuration to add the HTTPS URL (and port) to be able to use the HTTPS URL to access Jeedom.</p><div class=item-footer-tools>Share on: <a href="https://twitter.com/intent/tweet?url=https%3a%2f%2fwww.fabmoll.be%2fposts%2fSecureTheAccessToYourJeedomWithCertbot&text=Fabrice%20Moll&via=fabmoll">Twitter</a>, <a href="https://facebook.com/sharer.php?u=https%3a%2f%2fwww.fabmoll.be%2fposts%2fSecureTheAccessToYourJeedomWithCertbot">Facebook</a> or use the
+<a href=https://www.fabmoll.be/posts/SecureTheAccessToYourJeedomWithCertbot class=permalink rel=bookmark>Permalink</a></div></div><div class=post-preview><a href=/posts/RedirectHTTPPortToJeedom.html><h2 class=post-title>Redirect HTTP/HTTPS port to your Jeedom</h2></a><p class=post-meta>Tuesday, July 20, 2021 - Posted in
+<a role=button href=/tags/JEEDOM.html class=post-meta>JEEDOM</a>
+<a role=button href=/tags/NETWORK.html class=post-meta>NETWORK</a></p><p>In the previous blog <a href=/posts/CreateADynHostToAccessJeedom>post</a> we saw how to create a custom domain name to point to our public IP address.
+The main goal was to be able to access our Jeedom from outside our private network.</p><p>But if you just type your public IP address or use the new custom domain name to access Jeedom you'll just hit your modem or firewall and they'll not know what do to with the traffic. And you can be sure the traffic will not go to your Jeedom by default.</p><p>If you're using a Dream Machine Pro (controller 6.2.26) you can redirect the HTTP/HTTPS traffic to your Jeedom by following these steps:</p><ol><li>Open your Dream Machine Network Manager web page</li><li>Go to Advanced features - Advanced Gateway Settings and click on the Create a new Port Forwarding button</li><li>Fill in the form as below and validate</li></ol><p style=text-align:center><img src=../images/NewPortForwardingRule.png align=center></p><p>You can repeat the process to redirect the HTTPS port (443).</p><p>Now if you enter your custom domain in a browser, you'll be able to access your Jeedom in your private network</p><div class=item-footer-tools>Share on: <a href="https://twitter.com/intent/tweet?url=https%3a%2f%2fwww.fabmoll.be%2fposts%2fRedirectHTTPPortToJeedom&text=Fabrice%20Moll&via=fabmoll">Twitter</a>, <a href="https://facebook.com/sharer.php?u=https%3a%2f%2fwww.fabmoll.be%2fposts%2fRedirectHTTPPortToJeedom">Facebook</a> or use the
+<a href=https://www.fabmoll.be/posts/RedirectHTTPPortToJeedom class=permalink rel=bookmark>Permalink</a></div></div><div class=post-preview><a href=/posts/CreateADynHostToAccessJeedom.html><h2 class=post-title>Create a DynHost to access your Jeedom</h2></a><p class=post-meta>Sunday, July 18, 2021 - Posted in
+<a role=button href=/tags/JEEDOM.html class=post-meta>JEEDOM</a></p><p>If you want to access your Jeedom from outside your private network, you can do it using your public IP address or using a custom domain name pointing to your public IP address (if the HTTP or HTTPS port is opened).</p><p>For me and maybe for you, it's easier to remember a custom domain name and I decided to go with one on <a href=https://www.ovh.com/ target=_blank>OVH</a>.</p><p>Now that I have my custom domain I would like to use it to access my Jeedom and trust me or not, I didn't know it was so simple.</p><h1 id=create-a-new-user>Create a new user</h1><p style=text-align:center><img src=../images/OVHCreateUser.png align=center></p><p>Go in the DynHost menu and choose to create a username.</p><p style=text-align:center><img src=../images/CreateUserOVHDetail.png align=center></p><ul><li>Enter a username suffix</li><li>Enter the sub-domain that you want to define to point to your Jeedom</li><li>Define a password to use with your username and confirm</li></ul><h1 id=create-a-dynhostrecord>Create a DynHostRecord</h1><p>When it's done, you can add a new DynHost record and re-enter the sub-domain name you choosed earlier, enter the target IP (the public IP address of your Jeedom) and confirm.</p><p style=text-align:center><img src=../images/DynHostRecord.png align=center></p><p style=text-align:center><img src=../images/DynHostRecordDetail.png align=center></p><p><em>If you want to know your public IP address you can go to <a href=https://whatismyipaddress.com/ target=_blank>whatismyipaddress</a> and copy the address displayed in the IPv4 field.</em></p><p>In an upcoming blog <a href=/posts/RedirectHTTPPortToJeedom>post</a>, we'll see how to automatically refresh your public IP address to DynHost (if you don't have a fixed IP address) and how to redirect incoming traffic on the HTTP port to your Jeedom.</p><div class=item-footer-tools>Share on: <a href="https://twitter.com/intent/tweet?url=https%3a%2f%2fwww.fabmoll.be%2fposts%2fCreateADynHostToAccessJeedom&text=Fabrice%20Moll&via=fabmoll">Twitter</a>, <a href="https://facebook.com/sharer.php?u=https%3a%2f%2fwww.fabmoll.be%2fposts%2fCreateADynHostToAccessJeedom">Facebook</a> or use the
+<a href=https://www.fabmoll.be/posts/CreateADynHostToAccessJeedom class=permalink rel=bookmark>Permalink</a></div></div><ul class=pager><li class=previous></li><li class=next><a href=/page/2/index.html>Older <span aria-hidden=true>&rarr;</span></a></li></ul></div></div></div><hr><footer><div class=container><div class=row><div class="col-md-12 text-center"><p class="copyright text-muted">Copyright © 2026<br><a href=/feed.xml><i class="fa fa-rss"></i> RSS Feed</a><br><strong><a href=https://gohugo.io>Generated by Hugo</a></strong></p></div></div></div></footer><script src=/assets/js/jquery.min.js></script><script src=/assets/js/bootstrap.min.js></script><script src=/assets/js/highlight.pack.js></script><script src=/assets/js/clean-blog.js></script><script>hljs.initHighlightingOnLoad()</script></body></html>
