@@ -1,7 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Fabrice Moll</title><link>https://www.fabmoll.be/index.html</link><description>Recent content on Fabrice Moll</description><generator>Hugo</generator><language>en-US</language><lastBuildDate>Mon, 03 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.fabmoll.be/feed.xml" rel="self" type="application/rss+xml"/><item><title>Add the Xiaomi Air Purifier 3C in Jeedom</title><link>https://www.fabmoll.be/posts/XiaomiAirPurifierInJeedom.html</link><pubDate>Mon, 03 Jan 2022 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/posts/XiaomiAirPurifierInJeedom.html</guid><description>&lt;p&gt;The Xiaomi air purifier is a wifi device and to be able to use it in Jeedom you'll need to extract its token.&lt;/p&gt;
-&lt;p&gt;It's possible to extract the token by using an old version of the Mi-Home app or using various strange manipulations.&lt;/p&gt;
-&lt;p&gt;For me it never worked and by chance I found the &lt;a href="https://github.com/PiotrMachowski/Xiaomi-cloud-tokens-extractor" target="_blank"&gt;Xiaomi Cloud tokens extractor&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Before to use it, you need to add your purifier in the Mi-Home app and then you can execute the &amp;quot;token_extractor.exe&amp;quot;.&lt;/p&gt;</description><content:encoded><![CDATA[<p>The Xiaomi air purifier is a wifi device and to be able to use it in Jeedom you'll need to extract its token.</p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Fabrice Moll</title><link>https://www.fabmoll.be/index.html</link><description>Recent content on Fabrice Moll</description><generator>Hugo</generator><language>en-US</language><lastBuildDate>Mon, 03 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.fabmoll.be/feed.xml" rel="self" type="application/rss+xml"/><item><title>Add the Xiaomi Air Purifier 3C in Jeedom</title><link>https://www.fabmoll.be/posts/XiaomiAirPurifierInJeedom.html</link><pubDate>Mon, 03 Jan 2022 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/posts/XiaomiAirPurifierInJeedom.html</guid><description>Extract the Xiaomi token with the cloud tokens extractor and control the Air Purifier 3C from Jeedom.</description><content:encoded><![CDATA[<p>The Xiaomi air purifier is a wifi device and to be able to use it in Jeedom you'll need to extract its token.</p>
 <p>It's possible to extract the token by using an old version of the Mi-Home app or using various strange manipulations.</p>
 <p>For me it never worked and by chance I found the <a href="https://github.com/PiotrMachowski/Xiaomi-cloud-tokens-extractor" target="_blank">Xiaomi Cloud tokens extractor</a>.</p>
 <p>Before to use it, you need to add your purifier in the Mi-Home app and then you can execute the &quot;token_extractor.exe&quot;.</p>
@@ -10,12 +7,12 @@
 <p>As I've the Xiaomi Home plugin in Jeedom I thought it would be easy to add my new toy but it never worked (the information returned by the commands were always empty).</p>
 <p>After a few searches, I found the <a href="https://github.com/rytilahti/python-miio" target="_blank">miiocli</a> tool that can be installed on your Jeedom host (you'll be able to see a list of compatible devices on the Github page).</p>
 <p>First connect via SSH to your Jeedom host and execute the following command to install the JQ tool (used to manipulate JSON structure)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt-get install jq -y
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt-get install jq -y
 </span></span></code></pre></div><p>Then you can install the miiocli tool:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt-get install libffi-dev libssl-dev -y
-</span></span><span style="display:flex;"><span>sudo pip3 install python-miio
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo apt-get install libffi-dev libssl-dev -y
+</span></span><span class="line"><span class="cl">sudo pip3 install python-miio
 </span></span></code></pre></div><p>To be able to see what you can do with the Air Purifier 3C, you can type the help command and it will describe the options and commands you can use:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo miiocli airpurifiermb4 --ip <span style="color:#f92672">[</span>YourPurifierIP<span style="color:#f92672">]</span> --token <span style="color:#f92672">[</span>YourPurifierToken<span style="color:#f92672">]</span> --help
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo miiocli airpurifiermb4 --ip <span class="o">[</span>YourPurifierIP<span class="o">]</span> --token <span class="o">[</span>YourPurifierToken<span class="o">]</span> --help
 </span></span></code></pre></div><p>The parameter &quot;airpurifiermb4&quot; is the device type to use with the command and is linked to the <strong>Xiaomi Air Purifier 3C</strong>.</p>
 <p>When you validate the previous command, you'll see all the commands available to control your purifier.</p>
 <p style="text-align:center;">
@@ -29,74 +26,56 @@
 <p>As you understood the sample, you'll be able to add more commands to get the rest of the information and with a few click you'll have a widget to control your device and I'm sure most of you will have a better design.</p>
 <p style="text-align:center;">
 <img src="../images/air-purifier-widget.png" alt="widget" align="center"/></p>
-]]></content:encoded></item><item><title>Force HTTPS access in Apache</title><link>https://www.fabmoll.be/posts/ForceHttpsAccessInApache.html</link><pubDate>Sat, 14 Aug 2021 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/posts/ForceHttpsAccessInApache.html</guid><description>&lt;p&gt;If you configured a certificate to access your Jeedom with HTTPS and you don't want to let the HTTP access available, you can change your Apache settings to redirect HTTP access to the HTTPS automatically.&lt;/p&gt;
-&lt;p&gt;You'll need to ssh on your Jeedom server and edit the following file:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;nano /etc/apache2/sites-available/000-default.conf
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The part we want to modify is the virtual host defined for the HTTP port (80)&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;lt;VirtualHost *:80&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ServerAdmin webmaster@localhost
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; DocumentRoot /var/www/html
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ErrorLog /var/www/html/log/http.error
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;lt;/VirtualHost&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And we'll edit the file to rewrite the HTTP access to the HTTPS access&lt;/p&gt;</description><content:encoded><![CDATA[<p>If you configured a certificate to access your Jeedom with HTTPS and you don't want to let the HTTP access available, you can change your Apache settings to redirect HTTP access to the HTTPS automatically.</p>
+]]></content:encoded></item><item><title>Force HTTPS access in Apache</title><link>https://www.fabmoll.be/posts/ForceHttpsAccessInApache.html</link><pubDate>Sat, 14 Aug 2021 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/posts/ForceHttpsAccessInApache.html</guid><description>Redirect every HTTP request to HTTPS with a few rewrite rules in Apache's default virtual host.</description><content:encoded><![CDATA[<p>If you configured a certificate to access your Jeedom with HTTPS and you don't want to let the HTTP access available, you can change your Apache settings to redirect HTTP access to the HTTPS automatically.</p>
 <p>You'll need to ssh on your Jeedom server and edit the following file:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>nano /etc/apache2/sites-available/000-default.conf
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nano /etc/apache2/sites-available/000-default.conf
 </span></span></code></pre></div><p>The part we want to modify is the virtual host defined for the HTTP port (80)</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&lt;VirtualHost *:80&gt;
-</span></span><span style="display:flex;"><span>        ServerAdmin webmaster@localhost
-</span></span><span style="display:flex;"><span>        DocumentRoot /var/www/html
-</span></span><span style="display:flex;"><span>        ErrorLog /var/www/html/log/http.error
-</span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">&lt;VirtualHost *:80&gt;
+</span></span><span class="line"><span class="cl">        ServerAdmin webmaster@localhost
+</span></span><span class="line"><span class="cl">        DocumentRoot /var/www/html
+</span></span><span class="line"><span class="cl">        ErrorLog /var/www/html/log/http.error
+</span></span><span class="line"><span class="cl">&lt;/VirtualHost&gt;
 </span></span></code></pre></div><p>And we'll edit the file to rewrite the HTTP access to the HTTPS access</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&lt;VirtualHost *:80&gt;
-</span></span><span style="display:flex;"><span>        ServerAdmin webmaster@localhost
-</span></span><span style="display:flex;"><span>        DocumentRoot /var/www/html
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        RewriteEngine on
-</span></span><span style="display:flex;"><span>        RewriteCond %<span style="color:#f92672">{</span>SERVER_NAME<span style="color:#f92672">}</span> <span style="color:#f92672">=</span>My.JeedomDomain.com
-</span></span><span style="display:flex;"><span>        RewriteRule ^ https://%<span style="color:#f92672">{</span>SERVER_NAME<span style="color:#f92672">}</span>%<span style="color:#f92672">{</span>REQUEST_URI<span style="color:#f92672">}</span> <span style="color:#f92672">[</span>END,QSA,R<span style="color:#f92672">=</span>permanent<span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        ErrorLog /var/www/html/log/http.error
-</span></span><span style="display:flex;"><span>&lt;/VirtualHost&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">&lt;VirtualHost *:80&gt;
+</span></span><span class="line"><span class="cl">        ServerAdmin webmaster@localhost
+</span></span><span class="line"><span class="cl">        DocumentRoot /var/www/html
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        RewriteEngine on
+</span></span><span class="line"><span class="cl">        RewriteCond %<span class="o">{</span>SERVER_NAME<span class="o">}</span> <span class="o">=</span>My.JeedomDomain.com
+</span></span><span class="line"><span class="cl">        RewriteRule ^ https://%<span class="o">{</span>SERVER_NAME<span class="o">}</span>%<span class="o">{</span>REQUEST_URI<span class="o">}</span> <span class="o">[</span>END,QSA,R<span class="o">=</span>permanent<span class="o">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        ErrorLog /var/www/html/log/http.error
+</span></span><span class="line"><span class="cl">&lt;/VirtualHost&gt;
 </span></span></code></pre></div><p>You need to replace the &quot;My.JeedomDomain.com&quot; by your actual domain name used to access your Jeedom from outside your network.</p>
 <p>When it's done, you just need to enable the rewrite module and restart Apache:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>a2enmod rewrite
-</span></span><span style="display:flex;"><span>systemctl restart apache2
-</span></span></code></pre></div>]]></content:encoded></item><item><title>Secure the access to your Jeedom with Certbot</title><link>https://www.fabmoll.be/posts/SecureTheAccessToYourJeedomWithCertbot.html</link><pubDate>Tue, 03 Aug 2021 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/posts/SecureTheAccessToYourJeedomWithCertbot.html</guid><description>&lt;p&gt;A few days ago, I created a &lt;a href="https://www.fabmoll.be/posts/RedirectHTTPPortToJeedom"&gt;post&lt;/a&gt; on how to redirect the HTTPS external traffic to a Jeedom in a private network.&lt;/p&gt;
-&lt;p&gt;Everything will work but you'll see in your browser that the website isn't secure.
-The reason is that there is no certificate available on your webserver (on your Jeedom).&lt;/p&gt;
-&lt;p&gt;To generate, use and auto renew a certificate we'll use &lt;a href="https://certbot.eff.org/" target="_blank"&gt;CertBot&lt;/a&gt;&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Certbot is a free, open source software tool for automatically using Let’s Encrypt certificates on manually-administrated websites to enable HTTPS.&lt;/p&gt;
-&lt;p&gt;Certbot is made by the Electronic Frontier Foundation (EFF), a 501(c)3 nonprofit based in San Francisco, CA, that defends digital privacy, free speech, and innovation.&lt;/p&gt;
-&lt;/blockquote&gt;</description><content:encoded><![CDATA[<p>A few days ago, I created a <a href="/posts/RedirectHTTPPortToJeedom">post</a> on how to redirect the HTTPS external traffic to a Jeedom in a private network.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">a2enmod rewrite
+</span></span><span class="line"><span class="cl">systemctl restart apache2
+</span></span></code></pre></div>]]></content:encoded></item><item><title>Secure the access to your Jeedom with Certbot</title><link>https://www.fabmoll.be/posts/SecureTheAccessToYourJeedomWithCertbot.html</link><pubDate>Tue, 03 Aug 2021 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/posts/SecureTheAccessToYourJeedomWithCertbot.html</guid><description>Get a free Let's Encrypt certificate for Jeedom with Certbot, renewed automatically.</description><content:encoded><![CDATA[<p>A few days ago, I created a <a href="/posts/RedirectHTTPPortToJeedom">post</a> on how to redirect the HTTPS external traffic to a Jeedom in a private network.</p>
 <p>Everything will work but you'll see in your browser that the website isn't secure.
 The reason is that there is no certificate available on your webserver (on your Jeedom).</p>
 <p>To generate, use and auto renew a certificate we'll use <a href="https://certbot.eff.org/" target="_blank">CertBot</a></p>
 <blockquote>
-<p>Certbot is a free, open source software tool for automatically using Let’s Encrypt certificates on manually-administrated websites to enable HTTPS.</p>
+  <p>Certbot is a free, open source software tool for automatically using Let’s Encrypt certificates on manually-administrated websites to enable HTTPS.</p>
 <p>Certbot is made by the Electronic Frontier Foundation (EFF), a 501(c)3 nonprofit based in San Francisco, CA, that defends digital privacy, free speech, and innovation.</p>
-</blockquote>
-<p>First, open a SSH connection to your Jeedom.</p>
+
+</blockquote><p>First, open a SSH connection to your Jeedom.</p>
 <p>Install snapd</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo snap install core; sudo snap refresh core
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo snap install core<span class="p">;</span> sudo snap refresh core
 </span></span></code></pre></div><p>Install Certbot</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo snap install --classic certbot
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo snap install --classic certbot
 </span></span></code></pre></div><p>Check if you can run the certbot command</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo ln -s /snap/bin/certbot /usr/bin/certbot
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo ln -s /snap/bin/certbot /usr/bin/certbot
 </span></span></code></pre></div><p>To get a certificate and have certbot automatically change your Apache configuration to serve it and to turn on HTTPS access in a single step, use the following command:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo certbot --apache
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo certbot --apache
 </span></span></code></pre></div><p>The certbot comes with a cron to automatically renew your certificate. But if you want to check if the auto renewal is working, you can use this command:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo certbot renew --dry-run
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo certbot renew --dry-run
 </span></span></code></pre></div><p>If it completes without errors, your certificate will be renewed automatically.</p>
 <p><strong>Please note that your HTTP(80) and HTTPS(443) port must be opened</strong> or the auto renewal will not work.</p>
 <p>Now you can try to access your Jeedom with the HTTPS url and you'll see that the browser will display that the connection is &quot;secure&quot;.</p>
 <p>As a wise man said once:</p>
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">HTTPS &amp; SSL doesn&#39;t mean &quot;trust this.&quot; It means &quot;this is private.&quot; You may be having a private conversation with Satan.</p>&mdash; Scott Hanselman (@shanselman) <a href="https://twitter.com/shanselman/status/187572289724887041?ref_src=twsrc%5Etfw">April 4, 2012</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <p>Please note that you'll need to change your Jeedom configuration to add the HTTPS URL (and port) to be able to use the HTTPS URL to access Jeedom.</p>
-]]></content:encoded></item><item><title>Redirect HTTP/HTTPS port to your Jeedom</title><link>https://www.fabmoll.be/posts/RedirectHTTPPortToJeedom.html</link><pubDate>Tue, 20 Jul 2021 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/posts/RedirectHTTPPortToJeedom.html</guid><description>&lt;p&gt;In the previous blog &lt;a href="https://www.fabmoll.be/posts/CreateADynHostToAccessJeedom"&gt;post&lt;/a&gt; we saw how to create a custom domain name to point to our public IP address.
-The main goal was to be able to access our Jeedom from outside our private network.&lt;/p&gt;
-&lt;p&gt;But if you just type your public IP address or use the new custom domain name to access Jeedom you'll just hit your modem or firewall and they'll not know what do to with the traffic. And you can be sure the traffic will not go to your Jeedom by default.&lt;/p&gt;</description><content:encoded><![CDATA[<p>In the previous blog <a href="/posts/CreateADynHostToAccessJeedom">post</a> we saw how to create a custom domain name to point to our public IP address.
+]]></content:encoded></item><item><title>Redirect HTTP/HTTPS port to your Jeedom</title><link>https://www.fabmoll.be/posts/RedirectHTTPPortToJeedom.html</link><pubDate>Tue, 20 Jul 2021 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/posts/RedirectHTTPPortToJeedom.html</guid><description>Forward HTTP and HTTPS from a Dream Machine Pro to the Jeedom box on your private network.</description><content:encoded><![CDATA[<p>In the previous blog <a href="/posts/CreateADynHostToAccessJeedom">post</a> we saw how to create a custom domain name to point to our public IP address.
 The main goal was to be able to access our Jeedom from outside our private network.</p>
 <p>But if you just type your public IP address or use the new custom domain name to access Jeedom you'll just hit your modem or firewall and they'll not know what do to with the traffic. And you can be sure the traffic will not go to your Jeedom by default.</p>
 <p>If you're using a Dream Machine Pro (controller 6.2.26) you can redirect the HTTP/HTTPS traffic to your Jeedom by following these steps:</p>
@@ -109,9 +88,7 @@ The main goal was to be able to access our Jeedom from outside our private netwo
 <img src="../images/NewPortForwardingRule.png" align="center"/></p>
 <p>You can repeat the process to redirect the HTTPS port (443).</p>
 <p>Now if you enter your custom domain in a browser, you'll be able to access your Jeedom in your private network</p>
-]]></content:encoded></item><item><title>Create a DynHost to access your Jeedom</title><link>https://www.fabmoll.be/posts/CreateADynHostToAccessJeedom.html</link><pubDate>Sun, 18 Jul 2021 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/posts/CreateADynHostToAccessJeedom.html</guid><description>&lt;p&gt;If you want to access your Jeedom from outside your private network, you can do it using your public IP address or using a custom domain name pointing to your public IP address (if the HTTP or HTTPS port is opened).&lt;/p&gt;
-&lt;p&gt;For me and maybe for you, it's easier to remember a custom domain name and I decided to go with one on &lt;a href="https://www.ovh.com/" target="_blank"&gt;OVH&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Now that I have my custom domain I would like to use it to access my Jeedom and trust me or not, I didn't know it was so simple.&lt;/p&gt;</description><content:encoded><![CDATA[<p>If you want to access your Jeedom from outside your private network, you can do it using your public IP address or using a custom domain name pointing to your public IP address (if the HTTP or HTTPS port is opened).</p>
+]]></content:encoded></item><item><title>Create a DynHost to access your Jeedom</title><link>https://www.fabmoll.be/posts/CreateADynHostToAccessJeedom.html</link><pubDate>Sun, 18 Jul 2021 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/posts/CreateADynHostToAccessJeedom.html</guid><description>Point an OVH DynHost domain name to your home IP address to reach Jeedom from outside.</description><content:encoded><![CDATA[<p>If you want to access your Jeedom from outside your private network, you can do it using your public IP address or using a custom domain name pointing to your public IP address (if the HTTP or HTTPS port is opened).</p>
 <p>For me and maybe for you, it's easier to remember a custom domain name and I decided to go with one on <a href="https://www.ovh.com/" target="_blank">OVH</a>.</p>
 <p>Now that I have my custom domain I would like to use it to access my Jeedom and trust me or not, I didn't know it was so simple.</p>
 <h1 id="create-a-new-user">Create a new user</h1>
@@ -133,38 +110,26 @@ The main goal was to be able to access our Jeedom from outside our private netwo
 <img src="../images/DynHostRecordDetail.png" align="center"/></p>
 <p><em>If you want to know your public IP address you can go to <a href="https://whatismyipaddress.com/" target="_blank">whatismyipaddress</a> and copy the address displayed in the IPv4 field.</em></p>
 <p>In an upcoming blog <a href="/posts/RedirectHTTPPortToJeedom">post</a>, we'll see how to automatically refresh your public IP address to DynHost (if you don't have a fixed IP address) and how to redirect incoming traffic on the HTTP port to your Jeedom.</p>
-]]></content:encoded></item><item><title>CSS currentColor value</title><link>https://www.fabmoll.be/posts/CSScurrentColorValue.html</link><pubDate>Fri, 16 Jul 2021 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/posts/CSScurrentColorValue.html</guid><description>&lt;p&gt;A few days ago, I started to learn CSS and HTML. I already played with CSS and HTML but I had a very very limited knowledge.&lt;/p&gt;
-&lt;p&gt;As I don't like to repeat a code or a property value, I found recently that you can apply a color (defined once) in different properties.&lt;/p&gt;
-&lt;p&gt;Let's see an example:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-css" data-lang="css"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;div&lt;/span&gt; {
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;color&lt;/span&gt;: &lt;span style="color:#66d9ef"&gt;blue&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;border&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;&lt;span style="color:#66d9ef"&gt;px&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;solid&lt;/span&gt; &lt;span style="color:#66d9ef"&gt;currentColor&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;With the &lt;strong&gt;currentColor&lt;/strong&gt; property you indicate that you'll use the value of the color property in other properties that accept a color value.&lt;/p&gt;</description><content:encoded><![CDATA[<p>A few days ago, I started to learn CSS and HTML.  I already played with CSS and HTML but I had a very very limited knowledge.</p>
+]]></content:encoded></item><item><title>CSS currentColor value</title><link>https://www.fabmoll.be/posts/CSScurrentColorValue.html</link><pubDate>Fri, 16 Jul 2021 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/posts/CSScurrentColorValue.html</guid><description>Define a color once and reuse it in borders, shadows and more with the CSS currentColor keyword.</description><content:encoded><![CDATA[<p>A few days ago, I started to learn CSS and HTML.  I already played with CSS and HTML but I had a very very limited knowledge.</p>
 <p>As I don't like to repeat a code or a property value, I found recently that you can apply a color (defined once) in different properties.</p>
 <p>Let's see an example:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">div</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">color</span>: <span style="color:#66d9ef">blue</span>;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">border</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span> <span style="color:#66d9ef">currentColor</span>;
-</span></span><span style="display:flex;"><span>}
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">div</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">color</span><span class="p">:</span> <span class="kc">blue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">border</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span> <span class="kc">currentColor</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>With the <strong>currentColor</strong> property you indicate that you'll use the value of the color property in other properties that accept a color value.</p>
 <p>With my example, the border color will be blue.</p>
 <p>You can even use it in a cascade:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">body</span> {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">color</span>: <span style="color:#66d9ef">blue</span>;
-</span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span><span style="color:#f92672">div</span> {
-</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">border</span>: <span style="color:#ae81ff">1</span><span style="color:#66d9ef">px</span> <span style="color:#66d9ef">solid</span> <span style="color:#66d9ef">currentColor</span>;
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div>]]></content:encoded></item><item><title>Update Jeedom from version 4.0.x to 4.1.x</title><link>https://www.fabmoll.be/posts/UpdateJeedomFromVersion4_0_xTo4_1_x.html</link><pubDate>Sun, 24 Jan 2021 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/posts/UpdateJeedomFromVersion4_0_xTo4_1_x.html</guid><description>&lt;blockquote&gt;
-&lt;p&gt;Well, Mr. Hunt, this is not Mission: Difficult, its Mission: Impossible. Difficult should be a walk in the park for you. - &lt;em&gt;Boss, Mission: Impossible 2&lt;/em&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;Sometimes, a simple update is harder than you think.
-Since years, I've a &lt;a href="https://www.jeedom.com/en/" target="_blank"&gt;Jeedom&lt;/a&gt; running on a Raspberry 3B+ and the last Jeedom update installed is the version 4.0.x hosted in a Debian 9 Stretch.&lt;/p&gt;
-&lt;p&gt;A few days ago I saw that the Jeedom 4.1.x was available with some really nice &lt;a href="https://doc.jeedom.com/en_US/core/4.1/changelog" target="_blank"&gt;improvements&lt;/a&gt;.&lt;/p&gt;</description><content:encoded><![CDATA[<blockquote>
-<p>Well, Mr. Hunt, this is not Mission: Difficult, its Mission: Impossible. Difficult should be a walk in the park for you. - <em>Boss, Mission: Impossible 2</em></p>
-</blockquote>
-<p>Sometimes, a simple update is harder than you think.
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">body</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">color</span><span class="p">:</span> <span class="kc">blue</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="nt">div</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">     <span class="k">border</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span> <span class="kc">currentColor</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div>]]></content:encoded></item><item><title>Update Jeedom from version 4.0.x to 4.1.x</title><link>https://www.fabmoll.be/posts/UpdateJeedomFromVersion4_0_xTo4_1_x.html</link><pubDate>Sun, 24 Jan 2021 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/posts/UpdateJeedomFromVersion4_0_xTo4_1_x.html</guid><description>Moving a Raspberry Pi Jeedom from 4.0 on Debian 9 to 4.1 on Debian 10, without losing anything.</description><content:encoded><![CDATA[<blockquote>
+  <p>Well, Mr. Hunt, this is not Mission: Difficult, its Mission: Impossible. Difficult should be a walk in the park for you. - <em>Boss, Mission: Impossible 2</em></p>
+
+</blockquote><p>Sometimes, a simple update is harder than you think.
 Since years, I've a <a href="https://www.jeedom.com/en/" target="_blank">Jeedom</a> running on a Raspberry 3B+ and the last Jeedom update installed is the version 4.0.x hosted in a Debian 9 Stretch.</p>
 <p>A few days ago I saw that the Jeedom 4.1.x was available with some really nice <a href="https://doc.jeedom.com/en_US/core/4.1/changelog" target="_blank">improvements</a>.</p>
 <p>The condition to be able to install this version is to have the Debian 10 Buster installed.
@@ -175,53 +140,53 @@ As we can read in the install <a href="https://doc.jeedom.com/en_US/installation
 <p>When you check some websites, you'll read that you <strong>just</strong> need to install Debian on the SSD, plug it in the Raspberry and restart the device to boot from the SSD.  But there are lies! (It was in my case)</p>
 <p>The best thing I could find was to clone my SDCard to my SSD and it was really easy with the <a href="https://github.com/billw2/rpi-clone" target="_blank">rpi-clone</a> script.</p>
 <blockquote>
-<p>rpi-clone is a shell script that is for cloning a running Raspberry Pi booted source disk (SD card or USB disk) to a destination disk which will be bootable. Destination disks are SD cards in the SD card slot or a USB card reader, USB flash disks, or USB hard drives.</p>
-</blockquote>
-<p>First, clone the repository and copy the setup in your /usr/local/sbin directory:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>git clone https:<span style="color:#75715e">//github.com/billw2/rpi-clone.git</span>
-</span></span><span style="display:flex;"><span>cd rpi-clone
-</span></span><span style="display:flex;"><span>sudo cp rpi-clone rpi-clone-setup /usr/local/sbin
+  <p>rpi-clone is a shell script that is for cloning a running Raspberry Pi booted source disk (SD card or USB disk) to a destination disk which will be bootable. Destination disks are SD cards in the SD card slot or a USB card reader, USB flash disks, or USB hard drives.</p>
+
+</blockquote><p>First, clone the repository and copy the setup in your /usr/local/sbin directory:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="c1">//github.com/billw2/rpi-clone.git</span>
+</span></span><span class="line"><span class="cl"><span class="n">cd</span> <span class="n">rpi</span><span class="p">-</span><span class="n">clone</span>
+</span></span><span class="line"><span class="cl"><span class="n">sudo</span> <span class="n">cp</span> <span class="n">rpi</span><span class="p">-</span><span class="n">clone</span> <span class="n">rpi</span><span class="p">-</span><span class="n">clone</span><span class="p">-</span><span class="n">setup</span> <span class="p">/</span><span class="n">usr</span><span class="p">/</span><span class="n">local</span><span class="p">/</span><span class="n">sbin</span>
 </span></span></code></pre></div><p>Stop the following services:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>sudo service mysql stop
-</span></span><span style="display:flex;"><span>sudo service cron stop
-</span></span><span style="display:flex;"><span>sudo service apache2 stop
-</span></span><span style="display:flex;"><span>sudo service nginx stop
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">sudo</span> <span class="n">service</span> <span class="n">mysql</span> <span class="n">stop</span>
+</span></span><span class="line"><span class="cl"><span class="n">sudo</span> <span class="n">service</span> <span class="n">cron</span> <span class="n">stop</span>
+</span></span><span class="line"><span class="cl"><span class="n">sudo</span> <span class="n">service</span> <span class="n">apache2</span> <span class="n">stop</span>
+</span></span><span class="line"><span class="cl"><span class="n">sudo</span> <span class="n">service</span> <span class="n">nginx</span> <span class="n">stop</span>
 </span></span></code></pre></div><p>Connect your SSD to your Raspberry and clone your SDCard to your SSD:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>rpi-clone sda -f
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">rpi</span><span class="p">-</span><span class="n">clone</span> <span class="n">sda</span> <span class="p">-</span><span class="n">f</span>
 </span></span></code></pre></div><p>When it's done, you can restart the services:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>sudo service mysql start
-</span></span><span style="display:flex;"><span>sudo service cron start
-</span></span><span style="display:flex;"><span>sudo service apache2 start
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">sudo</span> <span class="n">service</span> <span class="n">mysql</span> <span class="n">start</span>
+</span></span><span class="line"><span class="cl"><span class="n">sudo</span> <span class="n">service</span> <span class="n">cron</span> <span class="n">start</span>
+</span></span><span class="line"><span class="cl"><span class="n">sudo</span> <span class="n">service</span> <span class="n">apache2</span> <span class="n">start</span>
 </span></span></code></pre></div><p>The next thing to do is to configure your Raspberry to be able to boot on the USB port.
 For that, you'll need to backup your current config.txt file, set the boot mode and then restart the Raspberry:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>cp /boot/config.txt /boot/config.txt.old
-</span></span><span style="display:flex;"><span>echo program_usb_boot_mode=<span style="color:#ae81ff">1</span> | sudo tee -a /boot/config.txt
-</span></span><span style="display:flex;"><span>sudo reboot
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">cp</span> <span class="p">/</span><span class="n">boot</span><span class="p">/</span><span class="n">config</span><span class="p">.</span><span class="n">txt</span> <span class="p">/</span><span class="n">boot</span><span class="p">/</span><span class="n">config</span><span class="p">.</span><span class="n">txt</span><span class="p">.</span><span class="n">old</span>
+</span></span><span class="line"><span class="cl"><span class="n">echo</span> <span class="n">program_usb_boot_mode</span><span class="p">=</span><span class="m">1</span> <span class="p">|</span> <span class="n">sudo</span> <span class="n">tee</span> <span class="p">-</span><span class="n">a</span> <span class="p">/</span><span class="n">boot</span><span class="p">/</span><span class="n">config</span><span class="p">.</span><span class="n">txt</span>
+</span></span><span class="line"><span class="cl"><span class="n">sudo</span> <span class="n">reboot</span>
 </span></span></code></pre></div><p>When your device restarted, you can check if the boot mode is set to boot on USB with the following command:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>vcgencmd otp_dump | grep <span style="color:#ae81ff">17</span>
-</span></span><span style="display:flex;"><span>&gt;<span style="color:#ae81ff">17</span>:<span style="color:#ae81ff">3020000</span>a
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">vcgencmd</span> <span class="n">otp_dump</span> <span class="p">|</span> <span class="n">grep</span> <span class="m">17</span>
+</span></span><span class="line"><span class="cl"><span class="p">&gt;</span><span class="m">17</span><span class="p">:</span><span class="m">3020000</span><span class="n">a</span>
 </span></span></code></pre></div><p>If it returns 17:3020000a, the setting has been taken into account.
 Now we need to change the boot config to be able to boot on the SSD.</p>
 <p>Get the PARTUUID from your SSD (/dev/sda2):</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>sudo blkid
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">sudo</span> <span class="n">blkid</span>
 </span></span></code></pre></div><p style="text-align:center;">
 <img src="../images/subo-blkid.jpg" alt="sudo blkid" align="center"/></p>
 <p>Backup your current cmdline file:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>sudo cp /boot/cmdline.txt /boot/cmdline.txt.bak
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">sudo</span> <span class="n">cp</span> <span class="p">/</span><span class="n">boot</span><span class="p">/</span><span class="n">cmdline</span><span class="p">.</span><span class="n">txt</span> <span class="p">/</span><span class="n">boot</span><span class="p">/</span><span class="n">cmdline</span><span class="p">.</span><span class="n">txt</span><span class="p">.</span><span class="n">bak</span>
 </span></span></code></pre></div><p>Edit the cmdline file and replace the PARTUUID with the value we copied from the sudo blkid command, save and quit:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>sudo nano /boot/cmdline.txt
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">sudo</span> <span class="n">nano</span> <span class="p">/</span><span class="n">boot</span><span class="p">/</span><span class="n">cmdline</span><span class="p">.</span><span class="n">txt</span>
 </span></span></code></pre></div><p style="text-align:center;">
 <img src="../images/cmdline.jpg" alt="cmdline edit" align="center"/></p>
 <p>When it's done, you can reboot again:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>sudo reboot
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">sudo</span> <span class="n">reboot</span>
 </span></span></code></pre></div><p>After the reboot, the following command should display the /dev/sda2 device:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>findmnt -n -o SOURCE /
-</span></span><span style="display:flex;"><span>&gt; /dev/sda2
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">findmnt</span> <span class="p">-</span><span class="n">n</span> <span class="p">-</span><span class="n">o</span> <span class="n">SOURCE</span> <span class="p">/</span>
+</span></span><span class="line"><span class="cl"><span class="p">&gt;</span> <span class="p">/</span><span class="n">dev</span><span class="p">/</span><span class="n">sda2</span>
 </span></span></code></pre></div><p>Almost finished, now you need to change fstab to use the PARTUUID from your SSD device, save, quit and reboot again:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>sudo nano /etc/fstab
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">sudo</span> <span class="n">nano</span> <span class="p">/</span><span class="n">etc</span><span class="p">/</span><span class="n">fstab</span>
 </span></span></code></pre></div><p style="text-align:center;">
 <img src="../images/fstab.jpg" alt="fstab" align="center"/></p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>sudo reboot
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">sudo</span> <span class="n">reboot</span>
 </span></span></code></pre></div><p>The next step is done to create a new partition on your SSD. As you'll see later, the partition size on your SSD is the same as your SDCard. Here we want to use the entire SSD disk size:</p>
 <p style="text-align:center;">
 <img src="../images/fdisk.jpg" alt="fdisk" align="center"/></p>
@@ -230,13 +195,10 @@ Now we need to change the boot config to be able to boot on the SSD.</p>
 <p style="text-align:center;">
 <img src="../images/resize2fs.jpg" alt="fdisk" align="center"/></p>
 <p>If everything went well, you should see the new partition size with the df command:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>df -h
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="n">df</span> <span class="p">-</span><span class="n">h</span>
 </span></span></code></pre></div><p style="text-align:center;">
 <img src="../images/df.jpg" alt="df" align="center"/></p>
-]]></content:encoded></item><item><title>Refresh the Xiaomi door sensor status with a scenario in Jeedom</title><link>https://www.fabmoll.be/posts/RefreshTheXiaomiDoorSensorStatusWithAScenario.html</link><pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/posts/RefreshTheXiaomiDoorSensorStatusWithAScenario.html</guid><description>&lt;p&gt;Since the beginning I've never had an issue with my Xiaomi sensors but for no reason one of them started to not update his status.&lt;/p&gt;
-&lt;p&gt;If I close the door Jeedom still displays the door as opened.&lt;/p&gt;
-&lt;p&gt;I couldn't find the reason and I discovered that a simple refresh command could reset the status and display the right information.&lt;/p&gt;
-&lt;p&gt;If you don't want to refresh the status manually, you can do it with a scenario.&lt;/p&gt;</description><content:encoded><![CDATA[<p>Since the beginning I've never had an issue with my Xiaomi sensors but for no reason one of them started to not update his status.</p>
+]]></content:encoded></item><item><title>Refresh the Xiaomi door sensor status with a scenario in Jeedom</title><link>https://www.fabmoll.be/posts/RefreshTheXiaomiDoorSensorStatusWithAScenario.html</link><pubDate>Sun, 10 Jan 2021 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/posts/RefreshTheXiaomiDoorSensorStatusWithAScenario.html</guid><description>A Jeedom scenario that refreshes a Xiaomi door sensor that sometimes forgets its real state.</description><content:encoded><![CDATA[<p>Since the beginning I've never had an issue with my Xiaomi sensors but for no reason one of them started to not update his status.</p>
 <p>If I close the door Jeedom still displays the door as opened.</p>
 <p>I couldn't find the reason and I discovered that a simple refresh command could reset the status and display the right information.</p>
 <p>If you don't want to refresh the status manually, you can do it with a scenario.</p>
@@ -252,23 +214,14 @@ Now we need to change the boot config to be able to boot on the SSD.</p>
 <p style="text-align:center;">
 <img src="../images/RefreshtheXiaomidoorsensorstatuswithascenario.jpg" alt="Enable Use Conditional Forwarding" align="center"/></p>
 <p>Now if the door is closed and the status is not up to date the scenario will update it after 10 seconds.</p>
-]]></content:encoded></item><item><title>How to display device name in your Pi-hole</title><link>https://www.fabmoll.be/posts/HowToDisplayDeviceNameInYourPiHole.html</link><pubDate>Sun, 03 Jan 2021 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/posts/HowToDisplayDeviceNameInYourPiHole.html</guid><description>&lt;p&gt;When your &lt;a href="https://pi-hole.net/" target="_blank"&gt;Pi-hole&lt;/a&gt; doesn't act as a DHCP server (because you already have another one) you'll able to see only the IP addresses of the devices.&lt;/p&gt;
-&lt;p&gt;Not really user-friendly when you need to analyze the log of the Pi-Hole.&lt;/p&gt;
-&lt;p&gt;But don't be afraid, there is a &lt;span style="color:green"&gt;solution&lt;/span&gt;!&lt;/p&gt;
-&lt;p&gt;To be able to see the device name, you just need to enable the &lt;strong&gt;Use Conditional Forwarding&lt;/strong&gt; setting in the Settings - DNS.&lt;/p&gt;
-&lt;p style="text-align:center;"&gt;
-&lt;img src="../images/HowtodisplaydevicenameinyourPi-hole.jpg" alt="Enable Use Conditional Forwarding" align="center"/&gt;&lt;/p&gt;</description><content:encoded><![CDATA[<p>When your <a href="https://pi-hole.net/" target="_blank">Pi-hole</a> doesn't act as a DHCP server (because you already have another one) you'll able to see only the IP addresses of the devices.</p>
+]]></content:encoded></item><item><title>How to display device name in your Pi-hole</title><link>https://www.fabmoll.be/posts/HowToDisplayDeviceNameInYourPiHole.html</link><pubDate>Sun, 03 Jan 2021 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/posts/HowToDisplayDeviceNameInYourPiHole.html</guid><description>Show device names instead of IP addresses in Pi-hole with conditional forwarding.</description><content:encoded><![CDATA[<p>When your <a href="https://pi-hole.net/" target="_blank">Pi-hole</a> doesn't act as a DHCP server (because you already have another one) you'll able to see only the IP addresses of the devices.</p>
 <p>Not really user-friendly when you need to analyze the log of the Pi-Hole.</p>
 <p>But don't be afraid, there is a <span style="color:green">solution</span>!</p>
 <p>To be able to see the device name, you just need to enable the <strong>Use Conditional Forwarding</strong> setting in the Settings - DNS.</p>
 <p style="text-align:center;">
 <img src="../images/HowtodisplaydevicenameinyourPi-hole.jpg" alt="Enable Use Conditional Forwarding" align="center"/></p>
 <p>When the option is enabled, enter the local network to use and the IP address of your DHCP server as described in the screenshot, save and it's done. It's magic.</p>
-]]></content:encoded></item><item><title>Accept DNS queries to specific IP addresses within your Dream Machine Pro</title><link>https://www.fabmoll.be/posts/AcceptDNSQueriesToSpecificIPAddressesWithinYourDreamMachinePro.html</link><pubDate>Sun, 27 Dec 2020 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/posts/AcceptDNSQueriesToSpecificIPAddressesWithinYourDreamMachinePro.html</guid><description>&lt;p&gt;Holidays are nice when you want to try something new.&lt;br&gt;
-In my case, I wanted to install a &lt;a href="https://pi-hole.net/" target="_blank"&gt;Pi-Hole&lt;/a&gt;.&lt;br&gt;
-If you never heard about Pi-Hole, it's a DNS sinkhole that protects your devices from unwanted content, without installing any client-side software.&lt;/p&gt;
-&lt;p&gt;My post isn't a &lt;em&gt;How-to&lt;/em&gt; install/configure/... the thing.&lt;br&gt;
-Here we'll see how to create firewall rules on the Dream Machine Pro to refuse all DNS queries except the one to the Pi-Hole.&lt;/p&gt;</description><content:encoded><![CDATA[<p>Holidays are nice when you want to try something new.<br>
+]]></content:encoded></item><item><title>Accept DNS queries to specific IP addresses within your Dream Machine Pro</title><link>https://www.fabmoll.be/posts/AcceptDNSQueriesToSpecificIPAddressesWithinYourDreamMachinePro.html</link><pubDate>Sun, 27 Dec 2020 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/posts/AcceptDNSQueriesToSpecificIPAddressesWithinYourDreamMachinePro.html</guid><description>Firewall rules on a UniFi Dream Machine Pro so every DNS query goes through your Pi-hole and nowhere else.</description><content:encoded><![CDATA[<p>Holidays are nice when you want to try something new.<br>
 In my case, I wanted to install a <a href="https://pi-hole.net/" target="_blank">Pi-Hole</a>.<br>
 If you never heard about Pi-Hole, it's a DNS sinkhole that protects your devices from unwanted content, without installing any client-side software.</p>
 <p>My post isn't a <em>How-to</em> install/configure/... the thing.<br>
@@ -314,9 +267,7 @@ Here we'll see how to create firewall rules on the Dream Machine Pro to refuse a
 <li>Destination Port Group: DNS Port (the first group we created)</li>
 </ul>
 <p>With these rules, the devices connected to our LAN will only use the DNS we trust and if a malware tries to bypass our DNS, it will be blocked by the second firewall rule.</p>
-]]></content:encoded></item><item><title>Change Proximus Internet password</title><link>https://www.fabmoll.be/posts/ChangeProximusInternetPassword.html</link><pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/posts/ChangeProximusInternetPassword.html</guid><description>&lt;p&gt;In some cases you'll handle the PPPoE connection in your router.&lt;br&gt;
-The main reason is to connect to the Proximus network from your router and let your personal hardware manage the DHCP.&lt;/p&gt;
-&lt;p&gt;If you know your login and password, it's really easy. But if like me, you lost your original password / don't remember it / never saved it in your favorite password tool / ... you're doomed. Or not.&lt;/p&gt;</description><content:encoded><![CDATA[<p>In some cases you'll handle the PPPoE connection in your router.<br>
+]]></content:encoded></item><item><title>Change Proximus Internet password</title><link>https://www.fabmoll.be/posts/ChangeProximusInternetPassword.html</link><pubDate>Thu, 24 Dec 2020 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/posts/ChangeProximusInternetPassword.html</guid><description>Lost your Proximus PPPoE password? Set a new one from the MyProducts page, no old password needed.</description><content:encoded><![CDATA[<p>In some cases you'll handle the PPPoE connection in your router.<br>
 The main reason is to connect to the Proximus network from your router and let your personal hardware manage the DHCP.</p>
 <p>If you know your login and password, it's really easy.  But if like me, you lost your original password / don't remember it / never saved it in your favorite password tool / ... you're doomed.  Or not.</p>
 <p>Proximus made it simple, you can login on their website and in the MyProducts section you need to select your &quot;Internet&quot; product.<br>
@@ -337,165 +288,99 @@ In fact you can use the old password as long as Proximus didn't validate your ne
 In fact, the new password <strong>must be eight characters long and it must only contain alphanumeric characters</strong>.</p>
 <p>The thing I didn't say is that I used a password generator to have something complex on my first try.</p>
 <p>So before to call the Support, I changed my password to match the rule (on Proximus website and in my router) and it worked right away.</p>
-]]></content:encoded></item><item><title>Change the status bar color in your Xamarin.Forms app</title><link>https://www.fabmoll.be/posts/ChangeStatusBarColorInXamarinForms.html</link><pubDate>Mon, 05 Oct 2020 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/posts/ChangeStatusBarColorInXamarinForms.html</guid><description>&lt;p&gt;It's the second time I need to change the status bar color in a Xamarin.Forms (Android) and I didn't remember how to do it.&lt;/p&gt;
-&lt;p&gt;As I don't want to search it again, I decided to add the information here.&lt;/p&gt;
-&lt;p&gt;The status bar is the top part of the application where you can find the battery level, the network status,...&lt;/p&gt;
-&lt;p style="text-align:center;"&gt;
-&lt;img src="../images/ChangeStatusBarColorInXamarinForms.jpg" alt="Folder structure" align="center"/&gt;&lt;/p&gt;
-&lt;p&gt;In your Android project, just add the following line in the styles.xml file and use the color you like:&lt;/p&gt;</description><content:encoded><![CDATA[<p>It's the second time I need to change the status bar color in a Xamarin.Forms (Android) and I didn't remember how to do it.</p>
+]]></content:encoded></item><item><title>Change the status bar color in your Xamarin.Forms app</title><link>https://www.fabmoll.be/posts/ChangeStatusBarColorInXamarinForms.html</link><pubDate>Mon, 05 Oct 2020 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/posts/ChangeStatusBarColorInXamarinForms.html</guid><description>One line in styles.xml to change the Android status bar color of a Xamarin.Forms app.</description><content:encoded><![CDATA[<p>It's the second time I need to change the status bar color in a Xamarin.Forms (Android) and I didn't remember how to do it.</p>
 <p>As I don't want to search it again, I decided to add the information here.</p>
 <p>The status bar is the top part of the application where you can find the battery level, the network status,...</p>
 <p style="text-align:center;">
 <img src="../images/ChangeStatusBarColorInXamarinForms.jpg" alt="Folder structure" align="center"/></p>
 <p>In your Android project, just add the following line in the styles.xml file and use the color you like:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;item</span> <span style="color:#a6e22e">name=</span><span style="color:#e6db74">&#34;android:statusBarColor&#34;</span><span style="color:#f92672">&gt;</span>#3F4550<span style="color:#f92672">&lt;/item&gt;</span>
-</span></span></code></pre></div>]]></content:encoded></item><item><title>Frame HeightRequest not applied</title><link>https://www.fabmoll.be/posts/FrameHeightRequestNotApplied.html</link><pubDate>Thu, 16 Jan 2020 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/posts/FrameHeightRequestNotApplied.html</guid><description>&lt;p&gt;For each of my items in the ListView, I wanted to display the title of the show and the remaining episodes.&lt;br&gt;
-But it can be really difficult to see the label on an image.&lt;/p&gt;
-&lt;p&gt;A solution I used in my previous Windows Phone app was to add a border with a background color. So I decided to use the same tip with the &lt;strong&gt;Frame&lt;/strong&gt; control.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-csharp" data-lang="csharp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;lt;Frame Grid.Row=&lt;span style="color:#e6db74"&gt;&amp;#34;0&amp;#34;&lt;/span&gt; HeightRequest=&lt;span style="color:#e6db74"&gt;&amp;#34;22&amp;#34;&lt;/span&gt; VerticalOptions=&lt;span style="color:#e6db74"&gt;&amp;#34;End&amp;#34;&lt;/span&gt; BackgroundColor=&lt;span style="color:#e6db74"&gt;&amp;#34;#80000000&amp;#34;&lt;/span&gt; &amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;StackLayout Orientation=&lt;span style="color:#e6db74"&gt;&amp;#34;Horizontal&amp;#34;&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;Label Grid.Row=&lt;span style="color:#e6db74"&gt;&amp;#34;0&amp;#34;&lt;/span&gt; Text=&lt;span style="color:#e6db74"&gt;&amp;#34;{Binding Title}&amp;#34;&lt;/span&gt; TextColor=&lt;span style="color:#e6db74"&gt;&amp;#34;#FFFFFF&amp;#34;&lt;/span&gt; Margin=&lt;span style="color:#e6db74"&gt;&amp;#34;5,0,0,0&amp;#34;&lt;/span&gt; LineBreakMode=&lt;span style="color:#e6db74"&gt;&amp;#34;TailTruncation&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; HorizontalOptions=&lt;span style="color:#e6db74"&gt;&amp;#34;StartAndExpand&amp;#34;&lt;/span&gt; FontAttributes=&lt;span style="color:#e6db74"&gt;&amp;#34;Bold&amp;#34;&lt;/span&gt; FontSize=&lt;span style="color:#e6db74"&gt;&amp;#34;Subtitle&amp;#34;&lt;/span&gt;/&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;Label Grid.Row=&lt;span style="color:#e6db74"&gt;&amp;#34;0&amp;#34;&lt;/span&gt; Text=&lt;span style="color:#e6db74"&gt;&amp;#34;{Binding User.Remaining}&amp;#34;&lt;/span&gt; TextColor=&lt;span style="color:#e6db74"&gt;&amp;#34;#FFFFFF&amp;#34;&lt;/span&gt; Margin=&lt;span style="color:#e6db74"&gt;&amp;#34;0,0,5,0&amp;#34;&lt;/span&gt; HorizontalOptions=&lt;span style="color:#e6db74"&gt;&amp;#34;End&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; FontAttributes=&lt;span style="color:#e6db74"&gt;&amp;#34;Bold&amp;#34;&lt;/span&gt; FontSize=&lt;span style="color:#e6db74"&gt;&amp;#34;Subtitle&amp;#34;&lt;/span&gt; /&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;/StackLayout&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;lt;/Frame&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p style="text-align:center;"&gt;
-&lt;img src="../images/FrameHeightRequestnotappliedBadHeightRequest.jpg" alt="Wrong HeightRequest" align="center"/&gt;&lt;/p&gt;</description><content:encoded><![CDATA[<p>For each of my items in the ListView, I wanted to display the title of the show and the remaining episodes.<br>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-xml" data-lang="xml"><span class="line"><span class="cl"><span class="nt">&lt;item</span> <span class="na">name=</span><span class="s">&#34;android:statusBarColor&#34;</span><span class="nt">&gt;</span>#3F4550<span class="nt">&lt;/item&gt;</span>
+</span></span></code></pre></div>]]></content:encoded></item><item><title>Frame HeightRequest not applied</title><link>https://www.fabmoll.be/posts/FrameHeightRequestNotApplied.html</link><pubDate>Thu, 16 Jan 2020 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/posts/FrameHeightRequestNotApplied.html</guid><description>A Xamarin.Forms Frame ignores HeightRequest because of its default padding: set Padding to 0.</description><content:encoded><![CDATA[<p>For each of my items in the ListView, I wanted to display the title of the show and the remaining episodes.<br>
 But it can be really difficult to see the label on an image.</p>
 <p>A solution I used in my previous Windows Phone app was to add a border with a background color. So I decided to use the same tip with the <strong>Frame</strong> control.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>&lt;Frame Grid.Row=<span style="color:#e6db74">&#34;0&#34;</span> HeightRequest=<span style="color:#e6db74">&#34;22&#34;</span> VerticalOptions=<span style="color:#e6db74">&#34;End&#34;</span>  BackgroundColor=<span style="color:#e6db74">&#34;#80000000&#34;</span> &gt;
-</span></span><span style="display:flex;"><span>    &lt;StackLayout Orientation=<span style="color:#e6db74">&#34;Horizontal&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>        &lt;Label Grid.Row=<span style="color:#e6db74">&#34;0&#34;</span>  Text=<span style="color:#e6db74">&#34;{Binding Title}&#34;</span> TextColor=<span style="color:#e6db74">&#34;#FFFFFF&#34;</span> Margin=<span style="color:#e6db74">&#34;5,0,0,0&#34;</span> LineBreakMode=<span style="color:#e6db74">&#34;TailTruncation&#34;</span> 
-</span></span><span style="display:flex;"><span>                    HorizontalOptions=<span style="color:#e6db74">&#34;StartAndExpand&#34;</span> FontAttributes=<span style="color:#e6db74">&#34;Bold&#34;</span> FontSize=<span style="color:#e6db74">&#34;Subtitle&#34;</span>/&gt;
-</span></span><span style="display:flex;"><span>        &lt;Label Grid.Row=<span style="color:#e6db74">&#34;0&#34;</span>  Text=<span style="color:#e6db74">&#34;{Binding User.Remaining}&#34;</span> TextColor=<span style="color:#e6db74">&#34;#FFFFFF&#34;</span> Margin=<span style="color:#e6db74">&#34;0,0,5,0&#34;</span> HorizontalOptions=<span style="color:#e6db74">&#34;End&#34;</span> 
-</span></span><span style="display:flex;"><span>                    FontAttributes=<span style="color:#e6db74">&#34;Bold&#34;</span> FontSize=<span style="color:#e6db74">&#34;Subtitle&#34;</span> /&gt;
-</span></span><span style="display:flex;"><span>    &lt;/StackLayout&gt;
-</span></span><span style="display:flex;"><span>&lt;/Frame&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="n">Frame</span> <span class="n">Grid</span><span class="p">.</span><span class="n">Row</span><span class="p">=</span><span class="s">&#34;0&#34;</span> <span class="n">HeightRequest</span><span class="p">=</span><span class="s">&#34;22&#34;</span> <span class="n">VerticalOptions</span><span class="p">=</span><span class="s">&#34;End&#34;</span>  <span class="n">BackgroundColor</span><span class="p">=</span><span class="s">&#34;#80000000&#34;</span> <span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="n">StackLayout</span> <span class="n">Orientation</span><span class="p">=</span><span class="s">&#34;Horizontal&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="n">Label</span> <span class="n">Grid</span><span class="p">.</span><span class="n">Row</span><span class="p">=</span><span class="s">&#34;0&#34;</span>  <span class="n">Text</span><span class="p">=</span><span class="s">&#34;{Binding Title}&#34;</span> <span class="n">TextColor</span><span class="p">=</span><span class="s">&#34;#FFFFFF&#34;</span> <span class="n">Margin</span><span class="p">=</span><span class="s">&#34;5,0,0,0&#34;</span> <span class="n">LineBreakMode</span><span class="p">=</span><span class="s">&#34;TailTruncation&#34;</span> 
+</span></span><span class="line"><span class="cl">                    <span class="n">HorizontalOptions</span><span class="p">=</span><span class="s">&#34;StartAndExpand&#34;</span> <span class="n">FontAttributes</span><span class="p">=</span><span class="s">&#34;Bold&#34;</span> <span class="n">FontSize</span><span class="p">=</span><span class="s">&#34;Subtitle&#34;</span><span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="n">Label</span> <span class="n">Grid</span><span class="p">.</span><span class="n">Row</span><span class="p">=</span><span class="s">&#34;0&#34;</span>  <span class="n">Text</span><span class="p">=</span><span class="s">&#34;{Binding User.Remaining}&#34;</span> <span class="n">TextColor</span><span class="p">=</span><span class="s">&#34;#FFFFFF&#34;</span> <span class="n">Margin</span><span class="p">=</span><span class="s">&#34;0,0,5,0&#34;</span> <span class="n">HorizontalOptions</span><span class="p">=</span><span class="s">&#34;End&#34;</span> 
+</span></span><span class="line"><span class="cl">                    <span class="n">FontAttributes</span><span class="p">=</span><span class="s">&#34;Bold&#34;</span> <span class="n">FontSize</span><span class="p">=</span><span class="s">&#34;Subtitle&#34;</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="n">StackLayout</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="n">Frame</span><span class="p">&gt;</span>
 </span></span></code></pre></div><p style="text-align:center;">
 <img src="../images/FrameHeightRequestnotappliedBadHeightRequest.jpg" alt="Wrong HeightRequest" align="center"/></p>
 As you can see, the HeightRequest seems to be ignored. It's bigger than expected. In fact, the Frame control has a <a href="https://docs.microsoft.com/en-us/dotnet/api/Xamarin.Forms.Frame?view=xamarin-forms" target="_blank">default padding</a> of 20.
 <p>To have the expected result, you just need to set the Frame's <strong>Padding to 0</strong>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>&lt;Frame Grid.Row=<span style="color:#e6db74">&#34;0&#34;</span> HeightRequest=<span style="color:#e6db74">&#34;22&#34;</span> VerticalOptions=<span style="color:#e6db74">&#34;End&#34;</span>  BackgroundColor=<span style="color:#e6db74">&#34;#80000000&#34;</span> Padding=<span style="color:#e6db74">&#34;0&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;StackLayout Orientation=<span style="color:#e6db74">&#34;Horizontal&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>        &lt;Label Grid.Row=<span style="color:#e6db74">&#34;0&#34;</span>  Text=<span style="color:#e6db74">&#34;{Binding Title}&#34;</span> TextColor=<span style="color:#e6db74">&#34;#FFFFFF&#34;</span> Margin=<span style="color:#e6db74">&#34;5,0,0,0&#34;</span> LineBreakMode=<span style="color:#e6db74">&#34;TailTruncation&#34;</span> 
-</span></span><span style="display:flex;"><span>                    HorizontalOptions=<span style="color:#e6db74">&#34;StartAndExpand&#34;</span> FontAttributes=<span style="color:#e6db74">&#34;Bold&#34;</span> FontSize=<span style="color:#e6db74">&#34;Subtitle&#34;</span>/&gt;
-</span></span><span style="display:flex;"><span>        &lt;Label Grid.Row=<span style="color:#e6db74">&#34;0&#34;</span>  Text=<span style="color:#e6db74">&#34;{Binding User.Remaining}&#34;</span> TextColor=<span style="color:#e6db74">&#34;#FFFFFF&#34;</span> Margin=<span style="color:#e6db74">&#34;0,0,5,0&#34;</span> HorizontalOptions=<span style="color:#e6db74">&#34;End&#34;</span> 
-</span></span><span style="display:flex;"><span>                    FontAttributes=<span style="color:#e6db74">&#34;Bold&#34;</span> FontSize=<span style="color:#e6db74">&#34;Subtitle&#34;</span> /&gt;
-</span></span><span style="display:flex;"><span>    &lt;/StackLayout&gt;
-</span></span><span style="display:flex;"><span>&lt;/Frame&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="n">Frame</span> <span class="n">Grid</span><span class="p">.</span><span class="n">Row</span><span class="p">=</span><span class="s">&#34;0&#34;</span> <span class="n">HeightRequest</span><span class="p">=</span><span class="s">&#34;22&#34;</span> <span class="n">VerticalOptions</span><span class="p">=</span><span class="s">&#34;End&#34;</span>  <span class="n">BackgroundColor</span><span class="p">=</span><span class="s">&#34;#80000000&#34;</span> <span class="n">Padding</span><span class="p">=</span><span class="s">&#34;0&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="n">StackLayout</span> <span class="n">Orientation</span><span class="p">=</span><span class="s">&#34;Horizontal&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="n">Label</span> <span class="n">Grid</span><span class="p">.</span><span class="n">Row</span><span class="p">=</span><span class="s">&#34;0&#34;</span>  <span class="n">Text</span><span class="p">=</span><span class="s">&#34;{Binding Title}&#34;</span> <span class="n">TextColor</span><span class="p">=</span><span class="s">&#34;#FFFFFF&#34;</span> <span class="n">Margin</span><span class="p">=</span><span class="s">&#34;5,0,0,0&#34;</span> <span class="n">LineBreakMode</span><span class="p">=</span><span class="s">&#34;TailTruncation&#34;</span> 
+</span></span><span class="line"><span class="cl">                    <span class="n">HorizontalOptions</span><span class="p">=</span><span class="s">&#34;StartAndExpand&#34;</span> <span class="n">FontAttributes</span><span class="p">=</span><span class="s">&#34;Bold&#34;</span> <span class="n">FontSize</span><span class="p">=</span><span class="s">&#34;Subtitle&#34;</span><span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="n">Label</span> <span class="n">Grid</span><span class="p">.</span><span class="n">Row</span><span class="p">=</span><span class="s">&#34;0&#34;</span>  <span class="n">Text</span><span class="p">=</span><span class="s">&#34;{Binding User.Remaining}&#34;</span> <span class="n">TextColor</span><span class="p">=</span><span class="s">&#34;#FFFFFF&#34;</span> <span class="n">Margin</span><span class="p">=</span><span class="s">&#34;0,0,5,0&#34;</span> <span class="n">HorizontalOptions</span><span class="p">=</span><span class="s">&#34;End&#34;</span> 
+</span></span><span class="line"><span class="cl">                    <span class="n">FontAttributes</span><span class="p">=</span><span class="s">&#34;Bold&#34;</span> <span class="n">FontSize</span><span class="p">=</span><span class="s">&#34;Subtitle&#34;</span> <span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="n">StackLayout</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="n">Frame</span><span class="p">&gt;</span>
 </span></span></code></pre></div><p>And now the HeightRequest defined is applied.</p>
 <p style="text-align:center;">
-<img src="../images/FrameHeightRequestnotappliedGoodHeightRequest.jpg" alt="Wrong HeightRequest" align="center"/></p>]]></content:encoded></item><item><title>Syntax Highlighting In Wyam</title><link>https://www.fabmoll.be/posts/SyntaxHighlightingInWyam.html</link><pubDate>Sun, 05 Jan 2020 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/posts/SyntaxHighlightingInWyam.html</guid><description>&lt;p&gt;In my previous blog &lt;a href="https://www.fabmoll.be/posts/RowHeightInListViewItemTemplate"&gt;post&lt;/a&gt; I saw that the syntax highlighting was weird on a phone.&lt;br&gt;
-A carriage return was added automatically instead of taking advantage of the &lt;em&gt;power&lt;/em&gt; of a scrollbar.&lt;/p&gt;
-&lt;p style="text-align:center;"&gt;
-&lt;img src="../images/SyntaxHighlightingInWyamCarriageReturn.jpg" alt="Syntax with carriage return" align="center"/&gt;&lt;/p&gt;
-To avoid the carriage return and let the scrollbar work as expected we need to override the CSS with the following style:
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-css" data-lang="css"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;pre&lt;/span&gt; &lt;span style="color:#f92672"&gt;code&lt;/span&gt; {
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;white-space&lt;/span&gt;: &lt;span style="color:#66d9ef"&gt;pre&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;word-wrap&lt;/span&gt;: &lt;span style="color:#66d9ef"&gt;normal&lt;/span&gt;;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Just create the following folder structure in your input directory, create a file named &lt;strong&gt;override.css&lt;/strong&gt; and add the &lt;strong&gt;pre code&lt;/strong&gt; style in it.&lt;/p&gt;</description><content:encoded><![CDATA[<p>In my previous blog <a href="/posts/RowHeightInListViewItemTemplate">post</a> I saw that the syntax highlighting was weird on a phone.<br>
+<img src="../images/FrameHeightRequestnotappliedGoodHeightRequest.jpg" alt="Wrong HeightRequest" align="center"/></p>]]></content:encoded></item><item><title>Syntax Highlighting In Wyam</title><link>https://www.fabmoll.be/posts/SyntaxHighlightingInWyam.html</link><pubDate>Sun, 05 Jan 2020 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/posts/SyntaxHighlightingInWyam.html</guid><description>Stop code blocks from wrapping on phones and let them scroll horizontally, with two CSS lines.</description><content:encoded><![CDATA[<p>In my previous blog <a href="/posts/RowHeightInListViewItemTemplate">post</a> I saw that the syntax highlighting was weird on a phone.<br>
 A carriage return was added automatically instead of taking advantage of the <em>power</em> of a scrollbar.</p>
 <p style="text-align:center;">
 <img src="../images/SyntaxHighlightingInWyamCarriageReturn.jpg" alt="Syntax with carriage return" align="center"/></p>
 To avoid the carriage return and let the scrollbar work as expected we need to override the CSS with the following style:
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-css" data-lang="css"><span style="display:flex;"><span><span style="color:#f92672">pre</span> <span style="color:#f92672">code</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">white-space</span>: <span style="color:#66d9ef">pre</span>;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">word-wrap</span>: <span style="color:#66d9ef">normal</span>;
-</span></span><span style="display:flex;"><span>}
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-css" data-lang="css"><span class="line"><span class="cl"><span class="nt">pre</span> <span class="nt">code</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">white-space</span><span class="p">:</span> <span class="kc">pre</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">word-wrap</span><span class="p">:</span> <span class="kc">normal</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>Just create the following folder structure in your input directory, create a file named <strong>override.css</strong> and add the <strong>pre code</strong> style in it.</p>
 <p style="text-align:center;">
 <img src="../images/SyntaxHighlightingInWyamFolderStructure.jpg" alt="Folder structure" align="center"/></p>
 Build your blog and start the preview to see the result.
 <p style="text-align:center;">
 <img src="../images/SyntaxHighlightingInWyamWiithScrollbar.jpg" alt="Folder structure" align="center"/></p>
-]]></content:encoded></item><item><title>Row height in ListView ItemTemplate</title><link>https://www.fabmoll.be/posts/RowHeightInListViewItemTemplate.html</link><pubDate>Sat, 04 Jan 2020 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/posts/RowHeightInListViewItemTemplate.html</guid><description>&lt;p&gt;In my App I wanted to have a view for my TV shows.&lt;br&gt;
-As I have a WPF and Windows Phone background, I tried to set the row height on the Grid RowDefinition.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-csharp" data-lang="csharp"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;lt;ListView ItemsSource=&lt;span style="color:#e6db74"&gt;&amp;#34;{Binding Shows}&amp;#34;&lt;/span&gt; VerticalOptions=&lt;span style="color:#e6db74"&gt;&amp;#34;FillAndExpand&amp;#34;&lt;/span&gt; &amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;ListView.ItemTemplate&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;DataTemplate&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;ViewCell&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;Grid&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;Grid.ColumnDefinitions&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;ColumnDefinition Width=&lt;span style="color:#e6db74"&gt;&amp;#34;*&amp;#34;&lt;/span&gt;/&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;/Grid.ColumnDefinitions&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;Grid.RowDefinitions&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;RowDefinition Height=&lt;span style="color:#e6db74"&gt;&amp;#34;100&amp;#34;&lt;/span&gt;/&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;/Grid.RowDefinitions&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;ffimageloading:CachedImage Grid.Row=&lt;span style="color:#e6db74"&gt;&amp;#34;0&amp;#34;&lt;/span&gt; Source=&lt;span style="color:#e6db74"&gt;&amp;#34;{Binding Image.Banner}&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Aspect=&lt;span style="color:#e6db74"&gt;&amp;#34;AspectFill&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; RetryCount= &lt;span style="color:#e6db74"&gt;&amp;#34;3&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; RetryDelay= &lt;span style="color:#e6db74"&gt;&amp;#34;600&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; HeightRequest=&lt;span style="color:#e6db74"&gt;&amp;#34;100&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; DownsampleToViewSize = &lt;span style="color:#e6db74"&gt;&amp;#34;true&amp;#34;&lt;/span&gt; /&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;Frame Grid.Row=&lt;span style="color:#e6db74"&gt;&amp;#34;0&amp;#34;&lt;/span&gt; HeightRequest=&lt;span style="color:#e6db74"&gt;&amp;#34;20&amp;#34;&lt;/span&gt; VerticalOptions=&lt;span style="color:#e6db74"&gt;&amp;#34;End&amp;#34;&lt;/span&gt; Padding=&lt;span style="color:#e6db74"&gt;&amp;#34;0&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; BackgroundColor=&lt;span style="color:#e6db74"&gt;&amp;#34;#80000000&amp;#34;&lt;/span&gt; &amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;StackLayout Orientation=&lt;span style="color:#e6db74"&gt;&amp;#34;Horizontal&amp;#34;&lt;/span&gt;&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;Label Grid.Row=&lt;span style="color:#e6db74"&gt;&amp;#34;0&amp;#34;&lt;/span&gt; Text=&lt;span style="color:#e6db74"&gt;&amp;#34;{Binding Title}&amp;#34;&lt;/span&gt; TextColor=&lt;span style="color:#e6db74"&gt;&amp;#34;#FFFFFF&amp;#34;&lt;/span&gt; Margin=&lt;span style="color:#e6db74"&gt;&amp;#34;5,0,0,0&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; LineBreakMode=&lt;span style="color:#e6db74"&gt;&amp;#34;TailTruncation&amp;#34;&lt;/span&gt; HorizontalOptions=&lt;span style="color:#e6db74"&gt;&amp;#34;StartAndExpand&amp;#34;&lt;/span&gt;/&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;Label Grid.Row=&lt;span style="color:#e6db74"&gt;&amp;#34;0&amp;#34;&lt;/span&gt; Text=&lt;span style="color:#e6db74"&gt;&amp;#34;{Binding User.Remaining}&amp;#34;&lt;/span&gt; TextColor=&lt;span style="color:#e6db74"&gt;&amp;#34;#FFFFFF&amp;#34;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Margin=&lt;span style="color:#e6db74"&gt;&amp;#34;0,0,5,0&amp;#34;&lt;/span&gt; HorizontalOptions=&lt;span style="color:#e6db74"&gt;&amp;#34;End&amp;#34;&lt;/span&gt;/&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;/StackLayout&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;/Frame&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;/Grid&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;/ViewCell&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;/DataTemplate&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;/ListView.ItemTemplate&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;lt;/ListView&amp;gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;But the result was completely wrong. The black frame is too big and the show title is not displayed.&lt;/p&gt;</description><content:encoded><![CDATA[<p>In my App I wanted to have a view for my TV shows.<br>
+]]></content:encoded></item><item><title>Row height in ListView ItemTemplate</title><link>https://www.fabmoll.be/posts/RowHeightInListViewItemTemplate.html</link><pubDate>Sat, 04 Jan 2020 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/posts/RowHeightInListViewItemTemplate.html</guid><description>Grid row heights are ignored in a Xamarin.Forms ListView until you set HasUnevenRows to True.</description><content:encoded><![CDATA[<p>In my App I wanted to have a view for my TV shows.<br>
 As I have a WPF and Windows Phone background, I tried to set the row height on the Grid RowDefinition.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>&lt;ListView ItemsSource=<span style="color:#e6db74">&#34;{Binding Shows}&#34;</span> VerticalOptions=<span style="color:#e6db74">&#34;FillAndExpand&#34;</span> &gt;
-</span></span><span style="display:flex;"><span>    &lt;ListView.ItemTemplate&gt;
-</span></span><span style="display:flex;"><span>        &lt;DataTemplate&gt;
-</span></span><span style="display:flex;"><span>            &lt;ViewCell&gt;
-</span></span><span style="display:flex;"><span>                &lt;Grid&gt;
-</span></span><span style="display:flex;"><span>                    &lt;Grid.ColumnDefinitions&gt;
-</span></span><span style="display:flex;"><span>                         &lt;ColumnDefinition Width=<span style="color:#e6db74">&#34;*&#34;</span>/&gt;
-</span></span><span style="display:flex;"><span>                    &lt;/Grid.ColumnDefinitions&gt;
-</span></span><span style="display:flex;"><span>                    &lt;Grid.RowDefinitions&gt;								
-</span></span><span style="display:flex;"><span>                         &lt;RowDefinition Height=<span style="color:#e6db74">&#34;100&#34;</span>/&gt;
-</span></span><span style="display:flex;"><span>                    &lt;/Grid.RowDefinitions&gt;
-</span></span><span style="display:flex;"><span>                    
-</span></span><span style="display:flex;"><span>                    &lt;ffimageloading:CachedImage Grid.Row=<span style="color:#e6db74">&#34;0&#34;</span> Source=<span style="color:#e6db74">&#34;{Binding Image.Banner}&#34;</span>
-</span></span><span style="display:flex;"><span>                        Aspect=<span style="color:#e6db74">&#34;AspectFill&#34;</span>							
-</span></span><span style="display:flex;"><span>                        RetryCount= <span style="color:#e6db74">&#34;3&#34;</span>
-</span></span><span style="display:flex;"><span>                        RetryDelay= <span style="color:#e6db74">&#34;600&#34;</span>
-</span></span><span style="display:flex;"><span>                        HeightRequest=<span style="color:#e6db74">&#34;100&#34;</span>
-</span></span><span style="display:flex;"><span>                        DownsampleToViewSize = <span style="color:#e6db74">&#34;true&#34;</span>	/&gt;
-</span></span><span style="display:flex;"><span>                        
-</span></span><span style="display:flex;"><span>                    &lt;Frame Grid.Row=<span style="color:#e6db74">&#34;0&#34;</span> HeightRequest=<span style="color:#e6db74">&#34;20&#34;</span> VerticalOptions=<span style="color:#e6db74">&#34;End&#34;</span> Padding=<span style="color:#e6db74">&#34;0&#34;</span>
-</span></span><span style="display:flex;"><span>                        BackgroundColor=<span style="color:#e6db74">&#34;#80000000&#34;</span> &gt;
-</span></span><span style="display:flex;"><span>                        &lt;StackLayout Orientation=<span style="color:#e6db74">&#34;Horizontal&#34;</span>&gt;
-</span></span><span style="display:flex;"><span>                            &lt;Label Grid.Row=<span style="color:#e6db74">&#34;0&#34;</span>  Text=<span style="color:#e6db74">&#34;{Binding Title}&#34;</span> TextColor=<span style="color:#e6db74">&#34;#FFFFFF&#34;</span> Margin=<span style="color:#e6db74">&#34;5,0,0,0&#34;</span>
-</span></span><span style="display:flex;"><span>                            LineBreakMode=<span style="color:#e6db74">&#34;TailTruncation&#34;</span> HorizontalOptions=<span style="color:#e6db74">&#34;StartAndExpand&#34;</span>/&gt;
-</span></span><span style="display:flex;"><span>                            &lt;Label Grid.Row=<span style="color:#e6db74">&#34;0&#34;</span>  Text=<span style="color:#e6db74">&#34;{Binding User.Remaining}&#34;</span> TextColor=<span style="color:#e6db74">&#34;#FFFFFF&#34;</span>
-</span></span><span style="display:flex;"><span>                            Margin=<span style="color:#e6db74">&#34;0,0,5,0&#34;</span> HorizontalOptions=<span style="color:#e6db74">&#34;End&#34;</span>/&gt;
-</span></span><span style="display:flex;"><span>                        &lt;/StackLayout&gt;
-</span></span><span style="display:flex;"><span>                    &lt;/Frame&gt;
-</span></span><span style="display:flex;"><span>                &lt;/Grid&gt;
-</span></span><span style="display:flex;"><span>            &lt;/ViewCell&gt;
-</span></span><span style="display:flex;"><span>        &lt;/DataTemplate&gt;
-</span></span><span style="display:flex;"><span>    &lt;/ListView.ItemTemplate&gt;
-</span></span><span style="display:flex;"><span>&lt;/ListView&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="n">ListView</span> <span class="n">ItemsSource</span><span class="p">=</span><span class="s">&#34;{Binding Shows}&#34;</span> <span class="n">VerticalOptions</span><span class="p">=</span><span class="s">&#34;FillAndExpand&#34;</span> <span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="n">ListView</span><span class="p">.</span><span class="n">ItemTemplate</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="n">DataTemplate</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">&lt;</span><span class="n">ViewCell</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">&lt;</span><span class="n">Grid</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">&lt;</span><span class="n">Grid</span><span class="p">.</span><span class="n">ColumnDefinitions</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">                         <span class="p">&lt;</span><span class="n">ColumnDefinition</span> <span class="n">Width</span><span class="p">=</span><span class="s">&#34;*&#34;</span><span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">&lt;/</span><span class="n">Grid</span><span class="p">.</span><span class="n">ColumnDefinitions</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">&lt;</span><span class="n">Grid</span><span class="p">.</span><span class="n">RowDefinitions</span><span class="p">&gt;</span>								
+</span></span><span class="line"><span class="cl">                         <span class="p">&lt;</span><span class="n">RowDefinition</span> <span class="n">Height</span><span class="p">=</span><span class="s">&#34;100&#34;</span><span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">&lt;/</span><span class="n">Grid</span><span class="p">.</span><span class="n">RowDefinitions</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">                    
+</span></span><span class="line"><span class="cl">                    <span class="p">&lt;</span><span class="n">ffimageloading</span><span class="p">:</span><span class="n">CachedImage</span> <span class="n">Grid</span><span class="p">.</span><span class="n">Row</span><span class="p">=</span><span class="s">&#34;0&#34;</span> <span class="n">Source</span><span class="p">=</span><span class="s">&#34;{Binding Image.Banner}&#34;</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">Aspect</span><span class="p">=</span><span class="s">&#34;AspectFill&#34;</span>							
+</span></span><span class="line"><span class="cl">                        <span class="n">RetryCount</span><span class="p">=</span> <span class="s">&#34;3&#34;</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">RetryDelay</span><span class="p">=</span> <span class="s">&#34;600&#34;</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">HeightRequest</span><span class="p">=</span><span class="s">&#34;100&#34;</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">DownsampleToViewSize</span> <span class="p">=</span> <span class="s">&#34;true&#34;</span>	<span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">                        
+</span></span><span class="line"><span class="cl">                    <span class="p">&lt;</span><span class="n">Frame</span> <span class="n">Grid</span><span class="p">.</span><span class="n">Row</span><span class="p">=</span><span class="s">&#34;0&#34;</span> <span class="n">HeightRequest</span><span class="p">=</span><span class="s">&#34;20&#34;</span> <span class="n">VerticalOptions</span><span class="p">=</span><span class="s">&#34;End&#34;</span> <span class="n">Padding</span><span class="p">=</span><span class="s">&#34;0&#34;</span>
+</span></span><span class="line"><span class="cl">                        <span class="n">BackgroundColor</span><span class="p">=</span><span class="s">&#34;#80000000&#34;</span> <span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">&lt;</span><span class="n">StackLayout</span> <span class="n">Orientation</span><span class="p">=</span><span class="s">&#34;Horizontal&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">                            <span class="p">&lt;</span><span class="n">Label</span> <span class="n">Grid</span><span class="p">.</span><span class="n">Row</span><span class="p">=</span><span class="s">&#34;0&#34;</span>  <span class="n">Text</span><span class="p">=</span><span class="s">&#34;{Binding Title}&#34;</span> <span class="n">TextColor</span><span class="p">=</span><span class="s">&#34;#FFFFFF&#34;</span> <span class="n">Margin</span><span class="p">=</span><span class="s">&#34;5,0,0,0&#34;</span>
+</span></span><span class="line"><span class="cl">                            <span class="n">LineBreakMode</span><span class="p">=</span><span class="s">&#34;TailTruncation&#34;</span> <span class="n">HorizontalOptions</span><span class="p">=</span><span class="s">&#34;StartAndExpand&#34;</span><span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">                            <span class="p">&lt;</span><span class="n">Label</span> <span class="n">Grid</span><span class="p">.</span><span class="n">Row</span><span class="p">=</span><span class="s">&#34;0&#34;</span>  <span class="n">Text</span><span class="p">=</span><span class="s">&#34;{Binding User.Remaining}&#34;</span> <span class="n">TextColor</span><span class="p">=</span><span class="s">&#34;#FFFFFF&#34;</span>
+</span></span><span class="line"><span class="cl">                            <span class="n">Margin</span><span class="p">=</span><span class="s">&#34;0,0,5,0&#34;</span> <span class="n">HorizontalOptions</span><span class="p">=</span><span class="s">&#34;End&#34;</span><span class="p">/&gt;</span>
+</span></span><span class="line"><span class="cl">                        <span class="p">&lt;/</span><span class="n">StackLayout</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">                    <span class="p">&lt;/</span><span class="n">Frame</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">                <span class="p">&lt;/</span><span class="n">Grid</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">&lt;/</span><span class="n">ViewCell</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;/</span><span class="n">DataTemplate</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="n">ListView</span><span class="p">.</span><span class="n">ItemTemplate</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="n">ListView</span><span class="p">&gt;</span>
 </span></span></code></pre></div><p>But the result was completely wrong. The black frame is too big and the show title is not displayed.</p>
 <p style="text-align:center;">
 <img src="../images/RowHeightInListViewItemTemplate-WrongHeight.jpg" alt="WrongRowHeight" align="center"/></p>
 <p>I tried to change the row definition of the Grid to <strong>Auto</strong> and let the image take the needed height but the result was the same.</p>
 <p>In fact, you have to set the <strong>HasUnevenRows</strong> property of the ListView to <strong>True</strong> to force the row height otherwise the ListView will use his default row height size (and the behaviour will be really strange).</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>&lt;ListView ItemsSource=<span style="color:#e6db74">&#34;{Binding Shows}&#34;</span>  VerticalOptions=<span style="color:#e6db74">&#34;FillAndExpand&#34;</span> HasUnevenRows=<span style="color:#e6db74">&#34;True&#34;</span> &gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="n">ListView</span> <span class="n">ItemsSource</span><span class="p">=</span><span class="s">&#34;{Binding Shows}&#34;</span>  <span class="n">VerticalOptions</span><span class="p">=</span><span class="s">&#34;FillAndExpand&#34;</span> <span class="n">HasUnevenRows</span><span class="p">=</span><span class="s">&#34;True&#34;</span> <span class="p">&gt;</span>
 </span></span></code></pre></div><p>For iOS, I read that you have to set the <strong>RowHeight</strong> on the ListView or the size will be ignored. I couldn't verify the behaviour but since my items have the same height, I can set the <strong>RowHeight</strong> property on the ListView and remove the <strong>HasUnevenRows</strong> property to use its default value (False).</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-csharp" data-lang="csharp"><span style="display:flex;"><span>&lt;ListView ItemsSource=<span style="color:#e6db74">&#34;{Binding Shows}&#34;</span>  VerticalOptions=<span style="color:#e6db74">&#34;FillAndExpand&#34;</span> RowHeight=<span style="color:#e6db74">&#34;100&#34;</span>&gt;
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-csharp" data-lang="csharp"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="n">ListView</span> <span class="n">ItemsSource</span><span class="p">=</span><span class="s">&#34;{Binding Shows}&#34;</span>  <span class="n">VerticalOptions</span><span class="p">=</span><span class="s">&#34;FillAndExpand&#34;</span> <span class="n">RowHeight</span><span class="p">=</span><span class="s">&#34;100&#34;</span><span class="p">&gt;</span>
 </span></span></code></pre></div><p>And here is the result:</p>
 <p style="text-align:center;">
-<img src="../images/RowHeightInListViewItemTemplate-GoodHeight.jpg" alt="WrongRowHeight" align="center"/></p>]]></content:encoded></item><item><title>A new adventure</title><link>https://www.fabmoll.be/posts/first-post.html</link><pubDate>Tue, 19 Nov 2019 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/posts/first-post.html</guid><description>&lt;p&gt;Yeah! The first post.&lt;br&gt;
-I really wanted to start my blog and I finally decided to install everything to do so.&lt;br&gt;
-Even if you only see a simple page, I had a fun time with my Azure Pipeline.&lt;/p&gt;
-&lt;p&gt;The source code of my blog is hosted on &lt;a href="https://azure.microsoft.com/en-us/services/devops/" target="_blank"&gt;Azure DevOps&lt;/a&gt; and with one push to the Git repository, the Pipeline compiles my blog and publishes the result automatically to my GitHub Pages. It's magic!&lt;br&gt;
-Like you can see, there are still several things to configure on this blog but if I don't start now I'll never start!&lt;br&gt;
-Enjoy ;)&lt;/p&gt;</description><content:encoded><![CDATA[<p>Yeah! The first post.<br>
+<img src="../images/RowHeightInListViewItemTemplate-GoodHeight.jpg" alt="WrongRowHeight" align="center"/></p>]]></content:encoded></item><item><title>A new adventure</title><link>https://www.fabmoll.be/posts/first-post.html</link><pubDate>Tue, 19 Nov 2019 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/posts/first-post.html</guid><description>The first post: why this blog exists and how it gets published.</description><content:encoded><![CDATA[<p>Yeah! The first post.<br>
 I really wanted to start my blog and I finally decided to install everything to do so.<br>
 Even if you only see a simple page, I had a fun time with my Azure Pipeline.</p>
 <p>The source code of my blog is hosted on <a href="https://azure.microsoft.com/en-us/services/devops/" target="_blank">Azure DevOps</a> and with one push to the Git repository, the Pipeline compiles my blog and publishes the result automatically to my GitHub Pages. It's magic!<br>
@@ -506,4 +391,36 @@ Enjoy ;)</p>
 &lt;p&gt;You can subscribe to my &lt;a href="https://www.fabmoll.be/feed.xml"&gt;feed&lt;/a&gt; and you can find me on &lt;a href="https://x.com/fabmoll" target="_blank"&gt;X&lt;/a&gt;.&lt;/p&gt;</description><content:encoded><![CDATA[<p>My name is Fabrice Moll. I'm a <a href="https://github.com/fabmoll" target="_blank">Software Developer</a>. I like movies, manga, anime and... more.
 <strong>This blog, its content and opinions are my own</strong>.</p>
 <p>You can subscribe to my <a href="/feed.xml">feed</a> and you can find me on <a href="https://x.com/fabmoll" target="_blank">X</a>.</p>
+]]></content:encoded></item><item><title>Credits</title><link>https://www.fabmoll.be/credits.html</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/credits.html</guid><description>&lt;p&gt;The articles, screenshots and opinions on this blog are © Fabrice Moll, unless stated otherwise.&lt;/p&gt;
+&lt;p&gt;This site is built with free and open source software. Thanks to their authors.&lt;/p&gt;
+&lt;h2 id="software"&gt;Software&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://gohugo.io/"&gt;Hugo&lt;/a&gt;, static site generator, Apache License 2.0.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/adityatelange/hugo-PaperMod"&gt;PaperMod&lt;/a&gt;, Hugo theme by Aditya Telange and contributors, MIT License. The design of this site is customized on top of it.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="fonts"&gt;Fonts&lt;/h2&gt;
+&lt;p&gt;All fonts are hosted on this site, no request is made to a third-party font service.&lt;/p&gt;</description><content:encoded><![CDATA[<p>The articles, screenshots and opinions on this blog are © Fabrice Moll, unless stated otherwise.</p>
+<p>This site is built with free and open source software. Thanks to their authors.</p>
+<h2 id="software">Software</h2>
+<ul>
+<li><a href="https://gohugo.io/">Hugo</a>, static site generator, Apache License 2.0.</li>
+<li><a href="https://github.com/adityatelange/hugo-PaperMod">PaperMod</a>, Hugo theme by Aditya Telange and contributors, MIT License. The design of this site is customized on top of it.</li>
+</ul>
+<h2 id="fonts">Fonts</h2>
+<p>All fonts are hosted on this site, no request is made to a third-party font service.</p>
+<ul>
+<li><a href="https://rsms.me/inter/">Inter</a>, by Rasmus Andersson and the Inter Project Authors, SIL Open Font License 1.1.</li>
+<li><a href="https://github.com/undercasetype/Fraunces">Fraunces</a>, by Undercase Type (Phaedra Charles and Flavia Zimbardi), SIL Open Font License 1.1.</li>
+<li><a href="https://www.jetbrains.com/lp/mono/">JetBrains Mono</a>, by JetBrains, SIL Open Font License 1.1.</li>
+</ul>
+<p>The license texts are published with the fonts: <a href="/licenses/LICENSE-inter.txt">Inter</a>, <a href="/licenses/LICENSE-fraunces.txt">Fraunces</a>, <a href="/licenses/LICENSE-jetbrains-mono.txt">JetBrains Mono</a>.</p>
+<h2 id="icons">Icons</h2>
+<ul>
+<li><a href="https://tabler.io/icons">Tabler Icons</a>, by Paweł Kuna, MIT License (<a href="/licenses/LICENSE-tabler.txt">license text</a>).</li>
+</ul>
+<p>GitHub and X logos are trademarks of their respective owners and are only used to link to my profiles.</p>
+<h2 id="comments">Comments</h2>
+<ul>
+<li>Comments are provided by <a href="https://disqus.com/">Disqus</a>, subject to the <a href="https://disqus.com/privacy-policy">Disqus privacy policy</a>.</li>
+</ul>
 ]]></content:encoded></item></channel></rss>
