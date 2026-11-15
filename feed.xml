@@ -397,6 +397,7 @@ Enjoy ;)</p>
 &lt;ul&gt;
 &lt;li&gt;&lt;a href="https://gohugo.io/"&gt;Hugo&lt;/a&gt;, static site generator, Apache License 2.0.&lt;/li&gt;
 &lt;li&gt;&lt;a href="https://github.com/adityatelange/hugo-PaperMod"&gt;PaperMod&lt;/a&gt;, Hugo theme by Aditya Telange and contributors, MIT License. The design of this site is customized on top of it.&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.fusejs.io/"&gt;Fuse.js&lt;/a&gt;, fuzzy search used by the search field, by Kiro Risk, Apache License 2.0 (&lt;a href="https://www.fabmoll.be/licenses/LICENSE-fusejs.txt"&gt;license text&lt;/a&gt;).&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="fonts"&gt;Fonts&lt;/h2&gt;
 &lt;p&gt;All fonts are hosted on this site, no request is made to a third-party font service.&lt;/p&gt;</description><content:encoded><![CDATA[<p>The articles, screenshots and opinions on this blog are © Fabrice Moll, unless stated otherwise.</p>
@@ -405,6 +406,7 @@ Enjoy ;)</p>
 <ul>
 <li><a href="https://gohugo.io/">Hugo</a>, static site generator, Apache License 2.0.</li>
 <li><a href="https://github.com/adityatelange/hugo-PaperMod">PaperMod</a>, Hugo theme by Aditya Telange and contributors, MIT License. The design of this site is customized on top of it.</li>
+<li><a href="https://www.fusejs.io/">Fuse.js</a>, fuzzy search used by the search field, by Kiro Risk, Apache License 2.0 (<a href="/licenses/LICENSE-fusejs.txt">license text</a>).</li>
 </ul>
 <h2 id="fonts">Fonts</h2>
 <p>All fonts are hosted on this site, no request is made to a third-party font service.</p>
@@ -413,7 +415,7 @@ Enjoy ;)</p>
 <li><a href="https://github.com/undercasetype/Fraunces">Fraunces</a>, by Undercase Type (Phaedra Charles and Flavia Zimbardi), SIL Open Font License 1.1.</li>
 <li><a href="https://www.jetbrains.com/lp/mono/">JetBrains Mono</a>, by JetBrains, SIL Open Font License 1.1.</li>
 </ul>
-<p>The license texts are published with the fonts: <a href="/licenses/LICENSE-inter.txt">Inter</a>, <a href="/licenses/LICENSE-fraunces.txt">Fraunces</a>, <a href="/licenses/LICENSE-jetbrains-mono.txt">JetBrains Mono</a>.</p>
+<p>The same fonts are used to draw the share images of the posts. The license texts are published with the fonts: <a href="/licenses/LICENSE-inter.txt">Inter</a>, <a href="/licenses/LICENSE-fraunces.txt">Fraunces</a>, <a href="/licenses/LICENSE-jetbrains-mono.txt">JetBrains Mono</a>.</p>
 <h2 id="icons">Icons</h2>
 <ul>
 <li><a href="https://tabler.io/icons">Tabler Icons</a>, by Paweł Kuna, MIT License (<a href="/licenses/LICENSE-tabler.txt">license text</a>).</li>
