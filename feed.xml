@@ -1,4 +1,198 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Fabrice Moll</title><link>https://www.fabmoll.be/index.html</link><description>Recent content on Fabrice Moll</description><generator>Hugo</generator><language>en-US</language><lastBuildDate>Mon, 03 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://www.fabmoll.be/feed.xml" rel="self" type="application/rss+xml"/><item><title>Add the Xiaomi Air Purifier 3C in Jeedom</title><link>https://www.fabmoll.be/posts/XiaomiAirPurifierInJeedom.html</link><pubDate>Mon, 03 Jan 2022 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/posts/XiaomiAirPurifierInJeedom.html</guid><description>Extract the Xiaomi token with the cloud tokens extractor and control the Air Purifier 3C from Jeedom.</description><content:encoded><![CDATA[<p>The Xiaomi air purifier is a wifi device and to be able to use it in Jeedom you'll need to extract its token.</p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Fabrice Moll</title><link>https://www.fabmoll.be/index.html</link><description>Recent content on Fabrice Moll</description><generator>Hugo</generator><language>en-US</language><lastBuildDate>Mon, 16 Nov 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://www.fabmoll.be/feed.xml" rel="self" type="application/rss+xml"/><item><title>Teaching my robot vacuum some manners: presence-based vacuuming with Home Assistant</title><link>https://www.fabmoll.be/posts/PresenceBasedVacuumingWithHomeAssistant.html</link><pubDate>Mon, 16 Nov 2026 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/posts/PresenceBasedVacuumingWithHomeAssistant.html</guid><description>How I made my robot vacuum clean once a day, only when nobody is home, and politely step aside when someone comes back, using Home Assistant, zone.home and four small automations.</description><content:encoded><![CDATA[<p>A robot vacuum is great until it decides to clean the living room right when you sit down with a coffee. I wanted mine to follow a few simple house rules:</p>
+<ul>
+<li>Clean <strong>once a day</strong>.</li>
+<li>Only when <strong>nobody is home</strong>.</li>
+<li>Only during the day, <strong>between 10:00 and 18:00</strong>.</li>
+<li>If someone comes back mid-run, <strong>pause</strong>. If they leave again quickly, resume. If they stay, go back to the dock and try again at the next opportunity.</li>
+</ul>
+<p>Here is how I built it in Home Assistant with one helper and four automations.</p>
+<h2 id="what-you-need">What you need</h2>
+<ul>
+<li><strong>Home Assistant</strong> with your robot vacuum integrated. In the examples it is <code>vacuum.robot_vacuum</code>: replace it with your own entity ID. Any <code>vacuum</code> entity works, whatever the brand.</li>
+<li><strong>Presence detection</strong> for everyone in the house. I use the Home Assistant Companion app on each phone.</li>
+<li>Each phone's <code>device_tracker</code> <strong>assigned to a Person</strong> (<em>Settings → People → Track devices</em>).</li>
+</ul>
+<p>That last point matters. It powers the entity this whole setup depends on: <code>zone.home</code>.</p>
+<h2 id="why-zonehome-instead-of-a-group">Why <code>zone.home</code> instead of a group</h2>
+<p>My first version used an old-school group of phone trackers:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">phone_group</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">PhoneGroup</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">entities</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">device_tracker.phone_1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">device_tracker.phone_2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="l">device_tracker.phone_3</span><span class="w">
+</span></span></span></code></pre></div><p>A group of trackers is <code>home</code> when at least one member is home and <code>not_home</code> otherwise. It works, but there is a cleaner built-in option.</p>
+<p><strong><code>zone.home</code>'s state is the number of people currently at home.</strong> No group to maintain: add a person, and they are counted automatically. &quot;Nobody is home&quot; becomes <code>zone.home &lt; 1</code>, and &quot;someone is home&quot; becomes <code>zone.home &gt; 0</code>.</p>
+<p>Since the state is a number, the right tool is a <strong><code>numeric_state</code></strong> trigger or condition, not a <code>state</code> one. More on that in the gotchas section.</p>
+<h2 id="step-1-a-cleaned-today-flag">Step 1: a &quot;cleaned today&quot; flag</h2>
+<p>I need to remember whether the vacuum already cleaned today. That's a job for an <code>input_boolean</code>. You can create it in the UI (<em>Settings → Devices &amp; services → Helpers → Create helper → Toggle</em>) or in <code>configuration.yaml</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">input_boolean</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">vacuum_cleaned_today</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Vacuum cleaned today&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">icon</span><span class="p">:</span><span class="w"> </span><span class="l">mdi:robot-vacuum</span><span class="w">
+</span></span></span></code></pre></div><blockquote>
+  <p><strong>Watch out:</strong> no <code>-</code> under the helper ID. I first wrote <code>- name: ...</code>, which turns the properties into a list. Home Assistant rejected the whole helper with <em>&quot;expected a mapping for dictionary value&quot;</em>, and my automations then complained about an <em>unknown entity</em>. The <code>-</code> is for lists of things (triggers, actions, group members), not for describing a single object.</p>
+
+</blockquote><h2 id="step-2-the-four-automations">Step 2: the four automations</h2>
+<p>All four go into <code>automations.yaml</code> as-is, or into the UI editor one at a time via <em>⋮ → Edit in YAML</em> (drop the leading <code>- </code>). They use the current syntax: <code>triggers</code> / <code>conditions</code> / <code>actions</code>, <code>trigger:</code> instead of <code>platform:</code>, and <code>action:</code> instead of <code>service:</code>.</p>
+<h3 id="1-start-when-nobody-is-home">1. Start when nobody is home</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl">- <span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l">vacuum_start_when_away</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Vacuum - Start when nobody is home&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l">single</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">triggers</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># 5 minutes after the last person leaves</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">trigger</span><span class="p">:</span><span class="w"> </span><span class="l">numeric_state</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="l">zone.home</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">below</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">for</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;00:05:00&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># everyone already left before 10:00</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">trigger</span><span class="p">:</span><span class="w"> </span><span class="l">time</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">at</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;10:00:00&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">conditions</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l">time</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">after</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;10:00:00&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">before</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;18:00:00&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l">numeric_state</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="l">zone.home</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">below</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l">state</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="l">input_boolean.vacuum_cleaned_today</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;off&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l">state</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="l">vacuum.robot_vacuum</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># some models report &#34;idle&#34; on the dock, see the gotchas below</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;docked&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">actions</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l">vacuum.start</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">target</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="l">vacuum.robot_vacuum</span><span class="w">
+</span></span></span></code></pre></div><p>There are two triggers because there are two ways to end up &quot;home empty, during the cleaning window&quot;:</p>
+<ul>
+<li><strong>Everyone leaves during the window.</strong> The first trigger fires after 5 minutes of an empty house. The delay keeps a phone that briefly drops off Wi-Fi from launching a run.</li>
+<li><strong>Everyone left before 10:00.</strong> Nothing changes at 10:00, so the second trigger re-checks at the start of the window.</li>
+</ul>
+<p>The conditions then make sure that the time is right, the house is still empty, the vacuum hasn't run today and it is sitting on its dock.</p>
+<h3 id="2-mark-today-as-done">2. Mark today as done</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl">- <span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l">vacuum_mark_cleaned_today</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Vacuum - Mark today&#39;s cleaning&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l">single</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">triggers</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># any start, automatic or manual</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">trigger</span><span class="p">:</span><span class="w"> </span><span class="l">state</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="l">vacuum.robot_vacuum</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">to</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;cleaning&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">actions</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l">input_boolean.turn_on</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">target</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="l">input_boolean.vacuum_cleaned_today</span><span class="w">
+</span></span></span></code></pre></div><p>I deliberately trigger on the vacuum's state rather than setting the flag in automation #1. This way a run started from the manufacturer's app or the button on the robot also counts.</p>
+<h3 id="3-pause-when-someone-comes-home">3. Pause when someone comes home</h3>
+<p>This is the most interesting one.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl">- <span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l">vacuum_pause_on_return</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Vacuum - Pause when someone comes home&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l">single</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">triggers</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">trigger</span><span class="p">:</span><span class="w"> </span><span class="l">numeric_state</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="l">zone.home</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">above</span><span class="p">:</span><span class="w"> </span><span class="m">0</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">conditions</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">condition</span><span class="p">:</span><span class="w"> </span><span class="l">state</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="l">vacuum.robot_vacuum</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;cleaning&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">actions</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l">vacuum.pause</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">target</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="l">vacuum.robot_vacuum</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">wait_for_trigger</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">trigger</span><span class="p">:</span><span class="w"> </span><span class="l">numeric_state</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="l">zone.home</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">below</span><span class="p">:</span><span class="w"> </span><span class="m">1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;00:10:00&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">choose</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c"># still someone home after 10 minutes: back to the dock</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">conditions</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;{{ wait.trigger is none }}&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">sequence</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l">vacuum.return_to_base</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">target</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="l">vacuum.robot_vacuum</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="c"># not finished: it will try again at the next absence (10:00-18:00)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span>- <span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l">input_boolean.turn_off</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">              </span><span class="nt">target</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">                </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="l">input_boolean.vacuum_cleaned_today</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># nobody home again: resume</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">default</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l">vacuum.start</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">target</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="l">vacuum.robot_vacuum</span><span class="w">
+</span></span></span></code></pre></div><p>When the first person arrives, the vacuum pauses immediately, then the automation waits up to 10 minutes:</p>
+<ul>
+<li><strong>The house empties again</strong> (someone just popped in to grab their keys): <code>wait.trigger</code> is set, so we fall through to <code>default</code> and resume cleaning.</li>
+<li><strong>The timeout expires</strong> (<code>wait.trigger is none</code>): someone is staying. The vacuum goes back to its dock and I <strong>reset the &quot;cleaned today&quot; flag</strong>. That run doesn't count, so automation #1 can start a fresh one at the next absence within the window.</li>
+</ul>
+<h3 id="4-reset-at-midnight">4. Reset at midnight</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl">- <span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l">vacuum_reset_at_midnight</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Vacuum - Reset at midnight&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">mode</span><span class="p">:</span><span class="w"> </span><span class="l">single</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">triggers</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">trigger</span><span class="p">:</span><span class="w"> </span><span class="l">time</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">at</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;00:00:00&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">actions</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">action</span><span class="p">:</span><span class="w"> </span><span class="l">input_boolean.turn_off</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">target</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">entity_id</span><span class="p">:</span><span class="w"> </span><span class="l">input_boolean.vacuum_cleaned_today</span><span class="w">
+</span></span></span></code></pre></div><p>New day, new chance to clean.</p>
+<h2 id="how-it-plays-out">How it plays out</h2>
+<table>
+	<thead>
+			<tr>
+					<th>Situation</th>
+					<th>What the vacuum does</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Last person leaves at 11:30</td>
+					<td>Starts at 11:35</td>
+			</tr>
+			<tr>
+					<td>Everyone left at 8:00</td>
+					<td>Starts at 10:00</td>
+			</tr>
+			<tr>
+					<td>Last person leaves at 19:00</td>
+					<td>Nothing, outside the window</td>
+			</tr>
+			<tr>
+					<td>Someone comes back for 3 minutes mid-run</td>
+					<td>Pauses, then resumes</td>
+			</tr>
+			<tr>
+					<td>Someone comes back for good mid-run</td>
+					<td>Pauses, docks after 10 min, retries at the next absence</td>
+			</tr>
+			<tr>
+					<td>Already cleaned today, house empties again</td>
+					<td>Nothing</td>
+			</tr>
+			<tr>
+					<td>Started by hand from the app</td>
+					<td>Counts as today's run</td>
+			</tr>
+	</tbody>
+</table>
+<h2 id="gotchas-i-ran-into">Gotchas I ran into</h2>
+<p><strong>The UI won't offer <code>0</code> or <code>1</code> for <code>zone.home</code>.</strong> With a <em>State</em> trigger, the &quot;From/To&quot; dropdown only lists <code>Unavailable</code> and <code>Unknown</code>, because the state is a number and the UI can't list numbers in advance. Use a <strong>Numeric state</strong> trigger with <em>Above</em> / <em>Below</em> instead.</p>
+<p><strong><code>numeric_state</code> is more robust than <code>to: &quot;0&quot;</code>.</strong> A <code>state</code> trigger with <code>to: &quot;0&quot;</code> can also fire when Home Assistant starts and <code>zone.home</code> goes from <code>unknown</code> to <code>0</code>, which looks like &quot;everyone just left&quot; when nobody did. A <code>numeric_state</code> trigger only fires when the value actually <em>crosses</em> the threshold. Note that &quot;nobody home&quot; is <code>below: 1</code>, not <code>below: 0</code>: the count can never go negative, so <code>below: 0</code> never fires.</p>
+<p><strong><code>docked</code> vs <code>idle</code>: check your robot's states.</strong> The state names depend on the integration and the model. A vacuum sitting on its dock may report <code>idle</code> instead of <code>docked</code>, and some never report <code>docked</code> at all. If yours does that, automation #1 will never start it. Check <em>Developer tools → States</em> while the robot is charging, and again while it is cleaning (<code>cleaning</code> is used in automations #2 and #3), then adapt the conditions to what your robot actually reports.</p>
+<p><strong>Give automations an <code>id</code>.</strong> Without it, automations written in <code>automations.yaml</code> can't be edited in the visual editor.</p>
+<p><strong>Validate before reloading.</strong> <em>Developer tools → YAML → Check configuration</em> catches indentation and structure errors and points to the exact file and line. Once it's green, reload <em>Automations</em> (and <em>Input booleans</em>) from the same page. No full restart needed.</p>
+<h2 id="ideas-for-later">Ideas for later</h2>
+<ul>
+<li>A notification when the run finishes, or when the vacuum gets stuck.</li>
+<li>Skip days, for example a <code>workday</code> condition or a &quot;guests&quot; toggle.</li>
+<li>Room-specific cleaning (kitchen every day, bedrooms twice a week), if the integration supports segments.</li>
+</ul>
+<p>For now, my vacuum has learned the most important rule of shared living: do your chores when nobody's watching, and get out of the way when someone walks in.</p>]]></content:encoded></item><item><title>Add the Xiaomi Air Purifier 3C in Jeedom</title><link>https://www.fabmoll.be/posts/XiaomiAirPurifierInJeedom.html</link><pubDate>Mon, 03 Jan 2022 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/posts/XiaomiAirPurifierInJeedom.html</guid><description>Extract the Xiaomi token with the cloud tokens extractor and control the Air Purifier 3C from Jeedom.</description><content:encoded><![CDATA[<p>The Xiaomi air purifier is a wifi device and to be able to use it in Jeedom you'll need to extract its token.</p>
 <p>It's possible to extract the token by using an old version of the Mi-Home app or using various strange manipulations.</p>
 <p>For me it never worked and by chance I found the <a href="https://github.com/PiotrMachowski/Xiaomi-cloud-tokens-extractor" target="_blank">Xiaomi Cloud tokens extractor</a>.</p>
 <p>Before to use it, you need to add your purifier in the Mi-Home app and then you can execute the &quot;token_extractor.exe&quot;.</p>
@@ -386,43 +580,4 @@ Even if you only see a simple page, I had a fun time with my Azure Pipeline.</p>
 <p>The source code of my blog is hosted on <a href="https://azure.microsoft.com/en-us/services/devops/" target="_blank">Azure DevOps</a> and with one push to the Git repository, the Pipeline compiles my blog and publishes the result automatically to my GitHub Pages. It's magic!<br>
 Like you can see, there are still several things to configure on this blog but if I don't start now I'll never start!<br>
 Enjoy ;)</p>
-]]></content:encoded></item><item><title>About Me</title><link>https://www.fabmoll.be/about.html</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/about.html</guid><description>&lt;p&gt;My name is Fabrice Moll. I'm a &lt;a href="https://github.com/fabmoll" target="_blank"&gt;Software Developer&lt;/a&gt;. I like movies, manga, anime and... more.
-&lt;strong&gt;This blog, its content and opinions are my own&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;You can subscribe to my &lt;a href="https://www.fabmoll.be/feed.xml"&gt;feed&lt;/a&gt; and you can find me on &lt;a href="https://x.com/fabmoll" target="_blank"&gt;X&lt;/a&gt;.&lt;/p&gt;</description><content:encoded><![CDATA[<p>My name is Fabrice Moll. I'm a <a href="https://github.com/fabmoll" target="_blank">Software Developer</a>. I like movies, manga, anime and... more.
-<strong>This blog, its content and opinions are my own</strong>.</p>
-<p>You can subscribe to my <a href="/feed.xml">feed</a> and you can find me on <a href="https://x.com/fabmoll" target="_blank">X</a>.</p>
-]]></content:encoded></item><item><title>Credits</title><link>https://www.fabmoll.be/credits.html</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://www.fabmoll.be/credits.html</guid><description>&lt;p&gt;The articles, screenshots and opinions on this blog are © Fabrice Moll, unless stated otherwise.&lt;/p&gt;
-&lt;p&gt;This site is built with free and open source software. Thanks to their authors.&lt;/p&gt;
-&lt;h2 id="software"&gt;Software&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href="https://gohugo.io/"&gt;Hugo&lt;/a&gt;, static site generator, Apache License 2.0.&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://github.com/adityatelange/hugo-PaperMod"&gt;PaperMod&lt;/a&gt;, Hugo theme by Aditya Telange and contributors, MIT License. The design of this site is customized on top of it.&lt;/li&gt;
-&lt;li&gt;&lt;a href="https://www.fusejs.io/"&gt;Fuse.js&lt;/a&gt;, fuzzy search used by the search field, by Kiro Risk, Apache License 2.0 (&lt;a href="https://www.fabmoll.be/licenses/LICENSE-fusejs.txt"&gt;license text&lt;/a&gt;).&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="fonts"&gt;Fonts&lt;/h2&gt;
-&lt;p&gt;All fonts are hosted on this site, no request is made to a third-party font service.&lt;/p&gt;</description><content:encoded><![CDATA[<p>The articles, screenshots and opinions on this blog are © Fabrice Moll, unless stated otherwise.</p>
-<p>This site is built with free and open source software. Thanks to their authors.</p>
-<h2 id="software">Software</h2>
-<ul>
-<li><a href="https://gohugo.io/">Hugo</a>, static site generator, Apache License 2.0.</li>
-<li><a href="https://github.com/adityatelange/hugo-PaperMod">PaperMod</a>, Hugo theme by Aditya Telange and contributors, MIT License. The design of this site is customized on top of it.</li>
-<li><a href="https://www.fusejs.io/">Fuse.js</a>, fuzzy search used by the search field, by Kiro Risk, Apache License 2.0 (<a href="/licenses/LICENSE-fusejs.txt">license text</a>).</li>
-</ul>
-<h2 id="fonts">Fonts</h2>
-<p>All fonts are hosted on this site, no request is made to a third-party font service.</p>
-<ul>
-<li><a href="https://rsms.me/inter/">Inter</a>, by Rasmus Andersson and the Inter Project Authors, SIL Open Font License 1.1.</li>
-<li><a href="https://github.com/undercasetype/Fraunces">Fraunces</a>, by Undercase Type (Phaedra Charles and Flavia Zimbardi), SIL Open Font License 1.1.</li>
-<li><a href="https://www.jetbrains.com/lp/mono/">JetBrains Mono</a>, by JetBrains, SIL Open Font License 1.1.</li>
-</ul>
-<p>The same fonts are used to draw the share images of the posts. The license texts are published with the fonts: <a href="/licenses/LICENSE-inter.txt">Inter</a>, <a href="/licenses/LICENSE-fraunces.txt">Fraunces</a>, <a href="/licenses/LICENSE-jetbrains-mono.txt">JetBrains Mono</a>.</p>
-<h2 id="icons">Icons</h2>
-<ul>
-<li><a href="https://tabler.io/icons">Tabler Icons</a>, by Paweł Kuna, MIT License (<a href="/licenses/LICENSE-tabler.txt">license text</a>).</li>
-</ul>
-<p>GitHub and X logos are trademarks of their respective owners and are only used to link to my profiles.</p>
-<h2 id="comments">Comments</h2>
-<ul>
-<li>Comments are provided by <a href="https://disqus.com/">Disqus</a>, subject to the <a href="https://disqus.com/privacy-policy">Disqus privacy policy</a>.</li>
-</ul>
 ]]></content:encoded></item></channel></rss>
